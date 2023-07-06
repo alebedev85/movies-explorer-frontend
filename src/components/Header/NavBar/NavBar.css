@@ -1,6 +1,6 @@
 .navbar {
   margin: 0;
-  padding: 21px 0 0;
+  padding: 0;
   display: flex;
   align-items: center;
   gap: 30px;
@@ -36,10 +36,32 @@
   height: 32px;
   padding: 0;
   color: #000000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
   cursor: pointer;
 }
 
 .navbar__button:hover {
   opacity: 0.80;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    gap: 14px;
+  }
+  .navbar__link {
+    font-size: 10px;
+  }
+
+  .navbar__button {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
 }

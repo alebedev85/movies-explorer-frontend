@@ -6,6 +6,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #073042;
 }
 
@@ -16,22 +17,16 @@
 }
 
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 768px) {
   .header{
-    padding-left: 27px;
-    padding-right: 27px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 
-@media screen and (max-width: 634px) {
+@media screen and (max-width: 768px) {
   .header{
-    flex-direction: column-reverse;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .header {
-    padding-top: 28px;
-    min-height: 84px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }
