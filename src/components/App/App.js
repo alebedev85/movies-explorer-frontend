@@ -2,6 +2,8 @@ import React from 'react';
 
 import Header from '../Header/Header';
 import NavBar from '../Header/NavBar/NavBar';
+import Main from '../Main/Main';
+import Promo from '../Main/Promo/Promo'
 
 function App() {
   return (
@@ -9,6 +11,9 @@ function App() {
       <Header>
         <NavBar />
       </Header>
+      <Main>
+        <Promo />
+      </Main>
     </body>
   );
 }
