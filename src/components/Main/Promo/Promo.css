@@ -51,8 +51,7 @@
 
 .promo__button {
   color: #FFFFFF;
-  border: 1px solid #FFFFFF;
-  opacity: 0.6;
+  border: 1px solid rgb(255, 255, 255, .6);
   border-radius: 3px;
   background: #073042;
   width: 129px;
@@ -63,4 +62,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+}
+
+.promo__button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
