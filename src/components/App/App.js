@@ -1,12 +1,15 @@
 import React from 'react';
 
 import Header from '../Header/Header';
+import NavBar from '../Header/NavBar/NavBar';
 
 function App() {
   return (
-    <div className="page">
-      <Header />
-    </div>
+    <body className="page">
+      <Header>
+        <NavBar />
+      </Header>
+    </body>
   );
 }
 

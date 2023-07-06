@@ -1,0 +1,40 @@
+.navbar {
+  margin: 0;
+  padding: 21px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  height: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+
+.navbar__link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+
+}
+
+.navbar__link:hover {
+  opacity: 0.60;
+  cursor: pointer;
+}
+
+.navbar__button {
+  border: none;
+  border-radius: 3px;
+  background: #3DDC84;
+  width: 76px;
+  height: 32px;
+  padding: 0;
+  color: #000000;
+  cursor: pointer;
+}
