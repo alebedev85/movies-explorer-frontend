@@ -2,3 +2,15 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+
+@media screen and (max-width: 1280px) {
+  .main {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main{
+    width: 100%;
+  }
+}

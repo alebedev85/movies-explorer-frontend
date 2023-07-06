@@ -28,6 +28,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 58px;
+  max-width: 640px;
 }
 
 .promo__subtitle {
@@ -67,4 +68,66 @@
 .promo__button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    align-items: center;
+    padding-top: 140px;
+    padding-bottom: 76px;
+    min-height: 850px;
+  }
+
+  .promo__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0;
+  }
+
+  .promo__title {
+    padding-top: 49px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .promo__subtitle {
+    padding-top: 22px;
+    text-align: center;
+    max-width: 260px;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .promo {
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    min-height: 636px;
+  }
+
+  .promo__title {
+    padding-top: 44px;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -1.2px;
+  }
+
+  .promo__subtitle {
+    padding-top: 24px;
+  }
+
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .promo {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
