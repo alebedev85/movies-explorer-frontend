@@ -91,10 +91,9 @@
   }
 
   .about-project__info {
-    padding-top: 60px;
+    padding-top: 69px;
     gap: 37px;
     min-height: 217px;
-    flex-direction: column;
   }
 
   .about-project__info__subtitle {
@@ -111,11 +110,11 @@
     grid-template-columns: 140px auto;
     grid-template-rows: 36px 36px;
   }
-}
 
-.about-project__deadline__paragraph {
-  color: #A0A0A0;
-  font-weight: 400;
+  .about-project__deadline__paragraph {
+    color: #A0A0A0;
+    font-weight: 400;
+  }
 }
 
 
@@ -131,6 +130,7 @@
   }
 
   .about-project__info {
+    flex-direction: column;
     gap: 56px;
     min-height: 332px;
   }

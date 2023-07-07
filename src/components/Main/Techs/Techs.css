@@ -71,3 +71,55 @@
   border-radius: 10px;
   background: #303030;
 }
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 88px 50px 89px;
+  }
+
+  .techs__list {
+    padding-top: 81px;
+  }
+
+  .techs__list__subtitle {
+    margin-bottom: 21px;
+  }
+
+  .techs__list__paragraph {
+    max-width: 460px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__list__items {
+    padding-top: 84px;
+  }
+
+  .techs__list__item {
+    padding-top: 21px;
+    padding-bottom: 21px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    width: 84px;
+    border-radius: 10px;
+    background: #303030;
+  }
+
+}
+
+
+@media screen and (max-width: 549px) {
+  .techs {
+    padding: 70px 18px 70px;
+  }
+
+  .techs__title {
+    padding-bottom: 28px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+
+}
