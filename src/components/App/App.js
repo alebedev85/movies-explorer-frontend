@@ -5,6 +5,7 @@ import NavBar from '../Header/NavBar/NavBar';
 import Main from '../Main/Main';
 import Promo from '../Main/Promo/Promo'
 import AboutProject from '../Main/AboutProject/AboutProject'
+import Techs from '../Main/Techs/Techs'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Main>
         <Promo />
         <AboutProject />
+        <Techs />
       </Main>
     </body>
   );

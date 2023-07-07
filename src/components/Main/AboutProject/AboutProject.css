@@ -1,11 +1,11 @@
 .about-project {
-  padding: 110px 70px;
+  padding: 109px 70px;
 }
 
 .about-project__title {
   margin: 0;
   padding: 0;
-  padding-bottom: 23px;
+  padding-bottom: 24px;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -47,7 +47,7 @@
   grid-template-rows: 36px 36px;
 }
 
-.about-project__deadline__title_1 {
+.about-project__deadline__stage_1 {
   margin: 0;
   padding: 0;
   padding-top: 9px;
@@ -60,7 +60,7 @@
   background: #3DDC84;
 }
 
-.about-project__deadline__title_2 {
+.about-project__deadline__stage_2 {
   margin: 0;
   padding: 0;
   padding-top: 9px;
@@ -152,12 +152,12 @@
     grid-template-rows: 35px 35px;
   }
 
-  .about-project__deadline__title_1 {
+  .about-project__deadline__stage_1 {
     padding-top: 11px;
     font-size: 11px;
   }
 
-  .about-project__deadline__title_2 {
+  .about-project__deadline__stage_2 {
     padding-top: 11px;
     font-size: 11px;
   }
