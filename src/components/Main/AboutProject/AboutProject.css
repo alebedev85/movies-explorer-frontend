@@ -1,0 +1,49 @@
+.about-project {
+  min-height: 608px;
+  padding: 110px 70px;
+}
+
+.about-project__title {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 23px;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid #DADADA;
+}
+
+.about-project__flex {
+  display: flex;
+  padding-top: 70px;
+  min-height: 270px;
+  gap: 52px;
+}
+
+.about-project__subtitle {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 26px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+}
+
+.about-project__paragraph {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.progress-bar {}
+
+.progress-bar__stage-1 {}
+
+.progress-bar__stage-2 {}
