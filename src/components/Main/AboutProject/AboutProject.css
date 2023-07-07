@@ -1,5 +1,4 @@
 .about-project {
-  min-height: 608px;
   padding: 110px 70px;
 }
 
@@ -15,14 +14,14 @@
   border-bottom: 1px solid #DADADA;
 }
 
-.about-project__flex {
+.about-project__info {
   display: flex;
   padding-top: 70px;
-  min-height: 270px;
+  min-height: 201px;
   gap: 52px;
 }
 
-.about-project__subtitle {
+.about-project__info__subtitle {
   margin: 0;
   padding: 0;
   padding-bottom: 26px;
@@ -33,7 +32,7 @@
   letter-spacing: -0.8px;
 }
 
-.about-project__paragraph {
+.about-project__info__paragraph {
   margin: 0;
   padding: 0;
   font-size: 14px;
@@ -42,8 +41,47 @@
   line-height: 20px;
 }
 
-.progress-bar {}
+.about-project__deadline {
+  display: grid;
+  grid-template-columns: 228px auto;
+  grid-template-rows: 36px 36px;
 
-.progress-bar__stage-1 {}
+}
 
-.progress-bar__stage-2 {}
+.about-project__deadline__title_1 {
+  margin: 0;
+  padding: 0;
+  padding-top: 9px;
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background: #3DDC84;
+}
+
+.about-project__deadline__title_2 {
+  margin: 0;
+  padding: 0;
+  padding-top: 9px;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background: #303030;
+}
+
+.about-project__deadline__paragraph {
+  margin: 0;
+  padding: 0;
+  padding-top: 14px;
+  color: #8B8B8B;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+}
