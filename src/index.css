@@ -11,10 +11,5 @@
   text-rendering: optimizeLegibility;
   background-color: #202020;
   color: #FFFFFF;
-}
-
-@media screen and (max-width: 635px) {
-  .page {
-    width: 320px;
-  }
+  min-width: 320px;
 }
