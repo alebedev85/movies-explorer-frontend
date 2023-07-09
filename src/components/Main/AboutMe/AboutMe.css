@@ -1,0 +1,146 @@
+.about-me {
+  padding: 115px 70px 100px;
+}
+
+.about-me__title {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 23px;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid #DADADA;
+}
+
+.about-me__biography {
+  margin: 0;
+  padding: 0;
+  padding-top: 66px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 59px 38px 88px auto;
+  grid-template-areas:
+    "name avatar"
+    "info avatar"
+    "paragraph avatar"
+    "github avatar";
+  justify-content: space-between;
+  row-gap: 0;
+}
+
+.about-me__biography__name {
+  grid-area: name;
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+.about-me__biography__info {
+  grid-area: info;
+  margin: 0;
+  padding: 0;
+  padding-top: 18px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.about-me__biography__paragraph {
+  grid-area: paragraph;
+  margin: 0;
+  padding: 0;
+  padding-top: 26px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  max-width: 600px;
+}
+
+.about-me__biography_link {
+  grid-area: github;
+  margin: 0;
+  padding: 0;
+  padding-top: 125px;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.about-me__biography_link:hover {
+  opacity: 0.70;
+  cursor: pointer;
+}
+
+.about-me__biography__avatar {
+  grid-area: avatar;
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding: 87px 50px 89px;
+  }
+
+}
+
+
+@media screen and (max-width: 549px) {
+  .about-me {
+    padding: 59px 18px 70px;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .about-me__title {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 28px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .techs__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+  }
+
+  .techs__list__subtitle {
+    margin-bottom: 24px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__list__paragraph {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  .techs__list__items {
+    padding-top: 50px;
+    padding-left: 52px;
+    max-width: 271px;
+  }
+
+  .techs__list__item {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    width: 84px;
+    border-radius: 10px;
+  }
+}
