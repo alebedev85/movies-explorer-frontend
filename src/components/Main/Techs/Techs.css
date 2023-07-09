@@ -6,7 +6,7 @@
 .techs__title {
   margin: 0;
   padding: 0;
-  padding-bottom: 22px;
+  padding-bottom: 23px;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
@@ -52,6 +52,7 @@
   padding-top: 100px;
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -74,11 +75,11 @@
 
 @media screen and (max-width: 768px) {
   .techs {
-    padding: 88px 50px 89px;
+    padding: 87px 50px 89px;
   }
 
   .techs__list {
-    padding-top: 81px;
+    padding-top: 80px;
   }
 
   .techs__list__subtitle {
@@ -112,14 +113,50 @@
 
 @media screen and (max-width: 549px) {
   .techs {
-    padding: 70px 18px 70px;
+    padding: 59px 18px 70px;
   }
+}
 
+
+@media screen and (max-width: 320px) {
   .techs__title {
+    margin: 0;
+    padding: 0;
     padding-bottom: 28px;
     font-size: 18px;
     letter-spacing: -0.72px;
   }
 
+  .techs__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+  }
 
+  .techs__list__subtitle {
+    margin-bottom: 24px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__list__paragraph {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  .techs__list__items {
+    padding-top: 50px;
+    padding-left: 52px;
+    max-width: 271px;
+  }
+
+  .techs__list__item {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    width: 84px;
+    border-radius: 10px;
+  }
 }
