@@ -1,5 +1,5 @@
 .about-me {
-  padding: 115px 70px 100px;
+  padding: 115px 70px 0;
 }
 
 .about-me__title {
@@ -20,14 +20,13 @@
   padding-top: 66px;
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: 59px 38px 88px auto;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas:
     "name avatar"
     "info avatar"
     "paragraph avatar"
     "github avatar";
   justify-content: space-between;
-  row-gap: 0;
 }
 
 .about-me__biography__name {
@@ -68,7 +67,10 @@
   grid-area: github;
   margin: 0;
   padding: 0;
-  padding-top: 125px;
+  padding-top: 100px;
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
@@ -85,11 +87,44 @@
   width: 270px;
   height: 327px;
   border-radius: 10px;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 768px) {
   .about-me {
-    padding: 87px 50px 89px;
+    padding-top: 93px;
+    padding-left:50px;
+    padding-right: 50px;
+  }
+
+  .about-me__biography__name {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+  }
+
+  .about-me__biography__info {
+    padding-top: 16px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__biography__paragraph {
+    padding-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 364px;
+  }
+
+  .about-me__biography_link {
+    font-size: 14px;
+    padding-top: 87px;
+    font-weight: 500;
+  }
+
+  .about-me__biography__avatar {
+    width: 255px;
+    height: 307px;
   }
 
 }
