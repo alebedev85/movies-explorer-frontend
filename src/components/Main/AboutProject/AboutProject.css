@@ -119,7 +119,7 @@
 
 @media screen and (max-width: 549px) {
   .about-project {
-    padding: 71px 18px 70px;
+    padding: 70px 18px 70px;
   }
 
   .about-project__title {
@@ -131,12 +131,12 @@
   .about-project__info {
     padding-top: 61px;
     flex-direction: column;
-    gap: 57px;
+    gap: 55px;
     min-height: 331px;
   }
 
   .about-project__info__subtitle {
-    padding-bottom: 17px;
+    padding-bottom: 15px;
     font-size: 18px;
     letter-spacing: -0.72px;
   }

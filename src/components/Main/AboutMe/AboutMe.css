@@ -24,9 +24,10 @@
   grid-template-areas:
     "name avatar"
     "info avatar"
-    "paragraph avatar"
+    "bio avatar"
     "github avatar";
   justify-content: space-between;
+  column-gap: 50px;
 }
 
 .about-me__biography__name {
@@ -51,8 +52,8 @@
   line-height: 20px;
 }
 
-.about-me__biography__paragraph {
-  grid-area: paragraph;
+.about-me__biography__bio {
+  grid-area: bio;
   margin: 0;
   padding: 0;
   padding-top: 26px;
@@ -87,13 +88,13 @@
   width: 270px;
   height: 327px;
   border-radius: 10px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 768px) {
   .about-me {
     padding-top: 93px;
-    padding-left:50px;
+    padding-left: 50px;
     padding-right: 50px;
   }
 
@@ -109,7 +110,7 @@
     line-height: 18px;
   }
 
-  .about-me__biography__paragraph {
+  .about-me__biography__bio {
     padding-top: 20px;
     font-size: 12px;
     line-height: 18px;
@@ -132,50 +133,51 @@
 
 @media screen and (max-width: 549px) {
   .about-me {
-    padding: 59px 18px 70px;
+    padding-top: 71px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
-}
 
-
-@media screen and (max-width: 320px) {
   .about-me__title {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 28px;
     font-size: 18px;
+    line-height: normal;
     letter-spacing: -0.72px;
+    padding-bottom: 28px;
   }
 
-  .techs__list {
+  .about-me__biography {
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 60px;
   }
 
-  .techs__list__subtitle {
-    margin-bottom: 24px;
+  .about-me__biography__name {
+    padding-top: 40px;
     font-size: 30px;
     line-height: normal;
     letter-spacing: -1.2px;
   }
 
-  .techs__list__paragraph {
+  .about-me__biography__info {
+    padding-top: 19px;
     font-size: 11px;
     line-height: 16px;
-    letter-spacing: -0.44px;
   }
 
-  .techs__list__items {
-    padding-top: 50px;
-    padding-left: 52px;
-    max-width: 271px;
+  .about-me__biography__bio {
+    padding-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
   }
 
-  .techs__list__item {
-    font-size: 12px;
-    letter-spacing: -0.48px;
-    width: 84px;
-    border-radius: 10px;
+  .about-me__biography_link {
+    padding-top: 40px;
+  }
+
+  .about-me__biography__avatar {
+    margin-left: auto;
+    margin-right: auto;
+    width: 292px;
+    height: 352px;
   }
 }
