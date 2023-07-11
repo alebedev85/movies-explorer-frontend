@@ -25,3 +25,13 @@
   opacity: 0.70;
   cursor: pointer;
 }
+
+.button {
+  border: none;
+  border-radius: 3px;
+}
+
+.button:hover {
+  opacity: 0.80;
+  cursor: pointer;
+}

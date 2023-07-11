@@ -20,8 +20,6 @@
 }
 
 .navbar__button {
-  border: none;
-  border-radius: 3px;
   background: #3DDC84;
   width: 76px;
   height: 32px;
@@ -31,12 +29,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  cursor: pointer;
-}
-
-.navbar__button:hover {
-  opacity: 0.80;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
