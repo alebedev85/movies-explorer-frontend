@@ -13,3 +13,13 @@
   color: #FFFFFF;
   min-width: 320px;
 }
+
+.link {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.link:hover {
+  opacity: 0.70;
+  cursor: pointer;
+}
