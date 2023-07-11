@@ -65,22 +65,13 @@
   max-width: 600px;
 }
 
-.about-me__biography_link {
+.about-me__biography__link {
   grid-area: github;
-  margin: 0;
-  padding: 0;
-  color: #FFF;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
-  color: #FFFFFF;
-}
-
-.about-me__biography_link:hover {
-  opacity: 0.70;
-  cursor: pointer;
 }
 
 .about-me__biography__avatar {

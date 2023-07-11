@@ -12,20 +12,11 @@
 }
 
 .navbar__link {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  color: #FFFFFF;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
 
-}
-
-.navbar__link:hover {
-  opacity: 0.70;
-  cursor: pointer;
 }
 
 .navbar__button {
