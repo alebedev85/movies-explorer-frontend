@@ -11,7 +11,7 @@ function Footer() {
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className='footer__navigation'>
-        <p className='footer__links__text'>
+        <p className='footer__links__text footer__links__text_gray'>
           &copy; {currentYear}
         </p>
         <ul className='footer__links'>
