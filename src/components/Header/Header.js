@@ -4,10 +4,10 @@ import './Header.css';
 import NavBar from '../NavBar/NavBar';
 import logo from '../../images/logo_header.svg';
 
-function Header() {
+function Header({loggedIn}) {
   return (
-    <header className="header">
-      <img src={logo} className="header__logo" alt="Логотип сайта" />
+    <header className={`header ${!loggedIn && 'header__color'}`}>
+      <img src={logo} className='header__logo' alt='Логотип сайта' />
       <NavBar />
     </header>
   );

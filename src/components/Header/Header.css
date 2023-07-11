@@ -7,6 +7,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* background-color: #073042; */
+}
+
+.header__color{
   background-color: #073042;
 }
 
