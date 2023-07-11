@@ -8,7 +8,7 @@ function Header({loggedIn}) {
   return (
     <header className={`header ${!loggedIn && 'header__color'}`}>
       <img src={logo} className='header__logo' alt='Логотип сайта' />
-      <NavBar />
+      <NavBar loggedIn={loggedIn}/>
     </header>
   );
 }

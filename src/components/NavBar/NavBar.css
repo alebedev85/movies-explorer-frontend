@@ -31,10 +31,44 @@
   line-height: 16px;
 }
 
+.navbar__link__size_14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.navbar-links {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar__gap_48{
+  gap: 48px;
+  line-height: 19px;
+}
+
+.navbar__account-button {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  justify-content: space-between;
+}
+
+.navbar__account-button__icon {
+  padding: 8px 7.5px;
+  width: 11.5px;
+  height: 14px;
+  border-radius: 4px;
+  background: #313131;
+}
+
 @media screen and (max-width: 320px) {
   .navbar {
     gap: 14px;
   }
+
   .navbar__link {
     font-size: 10px;
   }
