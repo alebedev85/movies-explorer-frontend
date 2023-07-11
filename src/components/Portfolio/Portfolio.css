@@ -25,6 +25,11 @@
   border-bottom: 1px solid #424242;
 }
 
+.portfolio__link:hover {
+  opacity: 0.70;
+  cursor: pointer;
+}
+
 .portfolio__link__text {
   margin: 0;
   padding: 0;

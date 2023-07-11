@@ -57,6 +57,7 @@
   margin: 0;
   padding: 0;
   padding-top: 26px;
+  padding-bottom: 100px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -68,7 +69,6 @@
   grid-area: github;
   margin: 0;
   padding: 0;
-  padding-top: 100px;
   color: #FFF;
   font-size: 14px;
   font-style: normal;
@@ -112,6 +112,7 @@
 
   .about-me__biography__bio {
     padding-top: 20px;
+    padding-bottom: 87px;
     font-size: 12px;
     line-height: 18px;
     max-width: 364px;
@@ -119,7 +120,6 @@
 
   .about-me__biography_link {
     font-size: 14px;
-    padding-top: 87px;
     font-weight: 500;
   }
 
@@ -166,12 +166,9 @@
 
   .about-me__biography__bio {
     padding-top: 20px;
+    padding-bottom: 40px;
     font-size: 11px;
     line-height: 16px;
-  }
-
-  .about-me__biography_link {
-    padding-top: 40px;
   }
 
   .about-me__biography__avatar {
