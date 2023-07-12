@@ -12,9 +12,7 @@ function SearchForm() {
             required />
           <button
             className='search__form__input-container__button button'
-            type='submit'>
-            Найти
-          </button>
+            type='submit' />
         </div>
         <div className='search__form__checkbox-conteiner'>
           <input type='checkbox'

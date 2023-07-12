@@ -10,4 +10,46 @@
   background: #222;
   box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.search__form__input-container {}
+
+.search__form__input-container__input {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  text-align: center;
+  color: #A0A0A0;
+  border: #FFFFFF;
+  width: 80%;
+}
+
+.search__form__input-container__button {
+  border-radius: 48px;
+  background-color: #2BE080;
+  background-image: url("../../images/search-button.svg");
+  width: 80px;
+  height: 34px;
+  background-repeat: no-repeat;
+  background-position: bottom 50% right 50%;
+  border: #FFFFFF;
+  cursor: pointer;
+}
+
+.button {}
+
+.search__form__checkbox-conteiner {}
+
+.search__form__checkbox {}
+
+.search__form__label {
+  color: #FFF;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.link {}
