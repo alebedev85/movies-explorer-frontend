@@ -1,0 +1,76 @@
+.card {
+  width: 364px;
+  height: 271px;
+  background: #222;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "name button"
+    "duration button"
+    "poster poster";
+
+}
+
+.card__link {
+  grid-area: poster;
+  padding: 0;
+  margin: 0;
+}
+
+.card__poster {
+  margin: 0;
+  padding: 0;
+  width: 364px;
+  height: 203px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__name {
+  grid-area: name;
+  margin: 0;
+  padding: 0;
+  max-width: 260px;
+  color: #fff;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.card__button {
+  grid-area: button;
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border: none;
+}
+
+.card__button_save {
+  background: url(../../images/save-button.svg) transparent no-repeat center;
+}
+
+.card__button_save-active {
+  background: url(../../images/save-button_active.svg) transparent no-repeat center;
+}
+
+/* .card__btn_delete {
+  background: url(../../images/del.svg) transparent no-repeat center;
+} */
+
+.card__duration {
+  grid-area: duration;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 14px;
+  margin-left: 12px;
+  text-align: start;
+  color: #8b8b8b;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+}
