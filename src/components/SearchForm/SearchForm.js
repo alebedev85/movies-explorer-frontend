@@ -27,7 +27,7 @@ function SearchForm() {
             id='search__form__checkbox'
             value='yes' />
           <label
-            className='search__form__label link'
+            className='search__form__label'
             htmlFor='search__form__checkbox'>
             Короткометражки
           </label>
