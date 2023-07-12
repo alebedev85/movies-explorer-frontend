@@ -6,7 +6,8 @@ import searchIcon from '../../images/search-icon.svg'
 function SearchForm() {
   return (
     <section className='search'>
-      <form className='search__form'>
+      <div className='search_container'>
+        <form className='search__form'>
         <div className='search__form__input-container'>
           <img
             src={searchIcon}
@@ -33,6 +34,8 @@ function SearchForm() {
           </label>
         </div>
       </form>
+      </div>
+
 
     </section>
   );
