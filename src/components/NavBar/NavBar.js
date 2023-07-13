@@ -29,11 +29,11 @@ function NavBar({ loggedIn, onClick }) {
         </li>
         <li>
           <NavLink
-            to="/seved-movies"
+            to="/saved-movies"
             className={`navbar__link
           navbar__link__size_14
           link
-          ${location.pathname === "/seved-movies" && 'navbar__link_active'}`
+          ${location.pathname === "/saved-movies" && 'navbar__link_active'}`
             }>
             Сохранённые фильмы
           </NavLink>

@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 
 function App() {
@@ -31,6 +32,13 @@ function App() {
         <Route path="/movies"
           element={
             <Movies
+              cards={cards}
+            />
+          }
+        />
+        <Route path="/saved-movies"
+          element={
+            <SavedMovies
               cards={cards}
             />
           }
