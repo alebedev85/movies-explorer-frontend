@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -9,20 +9,26 @@ import Movies from '../Movies/Movies';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(true);
 
-  const cards = [];
+  const cards = Array(12).fill(null)
   const saveCards = [];
 
   return (
     <body className="page">
-      <Header loggedIn={true}/>
+      <Header loggedIn={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<Main loggedIn={loggedIn} />} />
+        <Route path="*" element={true ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
+        <Route path="/"
+          element={
+            <Main
+              loggedIn={isLoggedIn}
+            />
+          }
+        />
         <Route path="/movies"
           element={
             <Movies
-              loggedIn={loggedIn}
               cards={cards}
             />
           }

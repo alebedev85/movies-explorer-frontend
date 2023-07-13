@@ -5,8 +5,8 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 import poster from '../../images/poster.png'
 
-function MoviesCardList() {
-  const card = {
+function MoviesCardList({ cards }) {
+  const testCard = {
     country: "Россия",
     director: "AAAAA",
     duration: 107,
@@ -22,7 +22,12 @@ function MoviesCardList() {
   }
   return (
     <section className="card-list" aria-label="Картачки c фильмами">
-      <MoviesCard card={card}/>
+      <ul className='cerd-list_container'>
+        {cards.map((card, index) => (
+          <MoviesCard key={index} card={testCard}/>
+        ))}
+      </ul>
+      <button className='caerd-list__next-button button'>Ещё</button>
     </section>
   );
 }
