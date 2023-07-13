@@ -1,5 +1,5 @@
 .card-list {
-  padding: 80px 70px 114px;
+  padding: 80px 70px;
   display: flex;
   flex-direction: column;
   align-items: center
@@ -9,7 +9,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  padding-bottom: 78px;
+  padding-bottom: 80px;
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, 364px);
@@ -37,7 +37,7 @@
   .card-list {
     padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 100px;
+    padding-bottom: 98px;
   }
 
   .cerd-list_container {
@@ -58,7 +58,7 @@
 
   .cerd-list_container {
     grid-template-columns: repeat(auto-fill, 300px);
-    padding-bottom: 80px;
+    padding-bottom: 75px;
     gap: 10px;
   }
 }

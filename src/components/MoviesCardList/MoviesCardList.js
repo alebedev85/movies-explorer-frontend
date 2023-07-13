@@ -31,7 +31,7 @@ function MoviesCardList({ cards }) {
           />
         ))}
       </ul>
-      {false && (
+      {true && (
           <button className='caerd-list__next-button button'>
             Еще
           </button>
