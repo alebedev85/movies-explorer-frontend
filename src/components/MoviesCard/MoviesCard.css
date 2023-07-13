@@ -63,9 +63,9 @@
   background: url(../../images/save-button_active.svg) transparent no-repeat center;
 }
 
-/* .card__btn_delete {
-  background: url(../../images/del.svg) transparent no-repeat center;
-} */
+.card__button__delete {
+  background: url(../../images/delete-button.svg) transparent no-repeat center;
+}
 
 .card__duration {
   grid-area: duration;
