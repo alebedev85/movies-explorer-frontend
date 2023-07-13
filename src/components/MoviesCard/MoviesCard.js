@@ -1,7 +1,7 @@
 import React from 'react';
 import './MoviesCard.css';
 
-function MoviesCard({ card }) {
+function MoviesCard({ card, isSaved }) {
   return (
     <li className="card" >
       <div className='card_info'>
@@ -11,10 +11,16 @@ function MoviesCard({ card }) {
         <p className='card__duration'>
           {Math.floor(card.duration / 60)}ч {card.duration - 60 * Math.floor(card.duration / 60)}м
         </p>
-        <button className='card__button
+        {/* <button className='card__button
         card__button_save
         card__button_save-active
         button'
+          type='button' /> */}
+          <button className={`
+          card__button
+          button
+          ${isSaved ? 'card__button_save-active' : 'card__button_save'}
+          `}
           type='button' />
       </div>
       <a href={card.trailerLink} className='card__link link' target="_blank" rel="noreferrer">

@@ -24,7 +24,11 @@ function MoviesCardList({ cards }) {
     <section className="card-list" aria-label="Картачки c фильмами">
       <ul className='cerd-list_container'>
         {cards.map((card, index) => (
-          <MoviesCard key={index} card={testCard}/>
+          <MoviesCard
+          key={index}
+          card={testCard}
+          isSaved = {index % 2 === 0}
+          />
         ))}
       </ul>
       <button className='caerd-list__next-button button'>Ещё</button>
