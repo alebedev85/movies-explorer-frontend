@@ -1,10 +1,13 @@
 import React from 'react';
-import { NavLink, Routes, Route } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './NavBar.css';
 
 import accountIcon from '../../images/account_icon.svg';
 
 function NavBar({ loggedIn, onClick }) {
+
+  const location = useLocation();
+
   return !loggedIn ? (
     <nav className="navbar">
       <NavLink to="/#" className="navbar__link link">Регистрация</NavLink>
@@ -14,10 +17,26 @@ function NavBar({ loggedIn, onClick }) {
     <nav className="navbar navbar__gap_48">
       <ul className='navbar-links'>
         <li>
-          <NavLink to="/#" className="navbar__link navbar__link__size_14 link">Фильмы</NavLink>
+          <NavLink
+            to="/movies"
+            className={`navbar__link
+          navbar__link__size_14
+          link
+          ${location.pathname === "/movies" && 'navbar__link_active'}`
+            }>
+            Фильмы
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/#" className="navbar__link navbar__link__size_14 link">Сохранённые фильмы</NavLink>
+          <NavLink
+            to="/seved-movies"
+            className={`navbar__link
+          navbar__link__size_14
+          link
+          ${location.pathname === "/seved-movies" && 'navbar__link_active'}`
+            }>
+            Сохранённые фильмы
+          </NavLink>
         </li>
       </ul>
 

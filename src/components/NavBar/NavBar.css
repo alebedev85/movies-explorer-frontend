@@ -8,7 +8,6 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  color: #FFFFFF;
 }
 
 .navbar__link {
@@ -16,7 +15,10 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+}
 
+.navbar__link_active {
+  border-bottom: 2px solid #FFFFFF;
 }
 
 .navbar__button {

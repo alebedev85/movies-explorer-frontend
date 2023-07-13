@@ -16,7 +16,9 @@ function App() {
 
   return (
     <body className="page">
-      <Header loggedIn={isLoggedIn} />
+      <Header
+        loggedIn={isLoggedIn}
+      />
       <Routes>
         <Route path="*" element={true ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
         <Route path="/"
