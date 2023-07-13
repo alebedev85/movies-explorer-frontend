@@ -11,7 +11,7 @@ function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(true);
 
-  const cards = Array(12).fill(null)
+  const cards = Array(8).fill(null)
   const saveCards = [];
 
   return (
