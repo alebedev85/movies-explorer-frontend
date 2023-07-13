@@ -31,7 +31,11 @@ function MoviesCardList({ cards }) {
           />
         ))}
       </ul>
-      <button className='caerd-list__next-button button'>Ещё</button>
+      {false && (
+          <button className='caerd-list__next-button button'>
+            Еще
+          </button>
+        )}
     </section>
   );
 }

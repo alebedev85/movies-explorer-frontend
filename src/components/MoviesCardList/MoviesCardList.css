@@ -1,6 +1,5 @@
 .card-list {
-  min-height: 59vh;
-  padding: 80px 70px;
+  padding: 80px 70px 114px;
   display: flex;
   flex-direction: column;
   align-items: center
@@ -12,9 +11,11 @@
   width: 100%;
   padding-bottom: 78px;
   list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 364px);
+  column-gap: 24px;
+  row-gap: 30px;
+  justify-content: center;
 }
 
 .caerd-list__next-button {
@@ -40,6 +41,9 @@
   }
 
   .cerd-list_container {
+    grid-template-columns: repeat(auto-fill, 339px);
+    column-gap: 30px;
+    row-gap: 36px;
     padding-bottom: 75px;
     gap: 30px;
   }
@@ -53,7 +57,8 @@
   }
 
   .cerd-list_container {
+    grid-template-columns: repeat(auto-fill, 300px);
     padding-bottom: 80px;
-    gap: 16px;
+    gap: 10px;
   }
 }
