@@ -9,6 +9,7 @@
 .cerd-list_container {
   margin: 0;
   padding: 0;
+  width: 100%;
   padding-bottom: 78px;
   list-style-type: none;
   display: flex;
@@ -45,7 +46,14 @@
 }
 
 @media screen and (max-width: 549px) {
-  .main {
-    width: 100%;
+  .card-list {
+    padding-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .cerd-list_container {
+    padding-bottom: 80px;
+    gap: 16px;
   }
 }
