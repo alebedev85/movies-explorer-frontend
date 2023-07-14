@@ -109,3 +109,42 @@
   padding-top: 16px;
   color: #EE3465;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__container {
+    padding-top: 235px;
+  }
+
+  .profile__form {
+    padding-top: 81px;
+  }
+
+  .profile__buttons {
+    padding-top: 195px;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .profile__container {
+    padding-top: 70px;
+    padding-bottom: 0;
+    width: 260px;
+  }
+
+  .profile__title {
+    padding-right: 0;
+  }
+
+  .profile__form {
+    padding-top: 63px;
+  }
+
+  .profile__buttons {
+    padding-top: 365px;
+    padding-bottom: 40px;
+  }
+
+  .profile__button {
+    font-size: 12px;
+  }
+}
