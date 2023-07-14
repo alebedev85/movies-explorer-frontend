@@ -1,12 +1,15 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
 
+  const location = useLocation();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className='footer'>
+    <footer className={`footer
+    ${location.pathname === "/profile" && 'footer_hidden'}`}>
       <p className='footer__title'>
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
