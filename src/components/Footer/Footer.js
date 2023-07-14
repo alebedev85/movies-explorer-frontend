@@ -8,7 +8,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return location.pathname !== "/register"
-    || !location.pathname !== "/profile" ?
+    & location.pathname !== "/profile" ?
     (
       <footer className='footer'>
         <p className='footer__title'>
