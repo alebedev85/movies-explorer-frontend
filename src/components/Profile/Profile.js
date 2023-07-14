@@ -4,7 +4,7 @@ import './Profile.css';
 
 // import useForm from '../hooks/useForm'
 
-function Profile({ }) {
+function Profile() {
 
   const [initChange, setInitChange] = useState(false);
 
@@ -21,11 +21,11 @@ function Profile({ }) {
   return (
     <section className='profile'>
       <div className='profile__container'>
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h1 className='profile__title'>Привет, Виталий!</h1>
         <form className='profile__form' name='edit' onSubmit={handleSubmit}>
           <fieldset className='profile__fieldset'>
-            <div className='profile__field'>
-            <label className='profile__field-label'>Имя</label>
+            <div className='profile__input-container'>
+            <label className='profile__input-label'>Имя</label>
               <input
                 id='name-input'
                 className='profile__input profile__input_passward'
@@ -39,8 +39,8 @@ function Profile({ }) {
                 // onChange={handleChange}
                 required />
             </div>
-            <div className='profile__field'>
-            <label className='profile__field-label'>E-mail</label>
+            <div className='profile__input-container'>
+            <label className='profile__input-label'>E-mail</label>
               <input
                 id='email-input'
                 className='profile__input profile__input_email'

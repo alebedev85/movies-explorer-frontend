@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
 
 
 function App() {
@@ -46,8 +47,12 @@ function App() {
         />
         <Route path="/profile"
           element={
-            <Profile
-            />
+            <Profile />
+          }
+        />
+        <Route path="/register"
+          element={
+            <Register />
           }
         />
       </Routes>
