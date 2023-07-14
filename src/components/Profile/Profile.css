@@ -93,7 +93,15 @@
   background-color: initial;
 }
 
-.profile__button_submit {}
+.profile__button_submit {
+  border: none;
+  border-radius: 3px;
+  background: #4285f4;
+  text-align: center;
+  font-weight: 500;
+  width: 410px;
+  padding: 13px 0;
+}
 
 .profile__button_edit {}
 
