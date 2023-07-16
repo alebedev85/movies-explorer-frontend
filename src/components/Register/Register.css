@@ -19,7 +19,7 @@
 .auth__title {
   margin: 0;
   padding: 0;
-  padding-top: 36px;
+  padding-top: 37px;
   font-size: 24px;
   font-weight: 500;
   line-height: normal;
@@ -28,7 +28,7 @@
 .auth__form {
   margin: 0;
   padding: 0;
-  padding-top: 21px;
+  padding-top: 20px;
   background-color: initial;
 }
 
@@ -79,7 +79,7 @@
   margin: 0;
   padding: 0;
   padding-top: 10px;
-  padding-bottom: 70px;
+  padding-bottom: 69px;
   display: block;
   max-height: 30px;
   max-width: 396px;
@@ -95,14 +95,16 @@
   padding: 14px 0;
   color: #FFFFFF;
   border: none;
-  max-width: 396px;
+  /* max-width: 396px; */
   border-radius: 3px;
   background: #4285f4;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
-  width: 410px;
+  /* max-width: 410px; */
+  display: block;
+  width: 100%;
 }
 
 
@@ -125,11 +127,45 @@
   line-height: normal;
 }
 
-.auth__question-link {
+.auth__question_link {
   color: #4285F4;
-  text-align: center;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .auth__container {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 549px) {
+  .auth__container {
+    padding-top: 56px;
+    padding-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+  }
+
+  .auth__title {
+    padding-top: 50px;
+  }
+
+  .auth__form {
+    padding-top: 60px;
+    width: 260px;
+  }
+
+  .auth__error {
+    padding-bottom: 157px;
+  }
+
+  .auth__button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 12px;
+  }
+
+  .auth__question {
+    font-size: 12px;
+  }
 }

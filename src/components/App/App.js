@@ -23,7 +23,7 @@ function App() {
         loggedIn={isLoggedIn}
       />
       <Routes>
-        <Route path="*" element={true ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
+        <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
         <Route path="/"
           element={
             <Main
