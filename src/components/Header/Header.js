@@ -9,7 +9,7 @@ function Header({ loggedIn }) {
 
   const location = useLocation();
 
-  return location.pathname !== "/register" ?
+  return location.pathname !== "/register" & location.pathname !== "/login"?
     (
       <header className={`header ${!loggedIn && 'header__color'}`}>
         <img src={logo} className='header__logo' alt='Логотип сайта' />

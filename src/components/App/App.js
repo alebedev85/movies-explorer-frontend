@@ -8,7 +8,7 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
-
+import Login from '../Login/Login';
 
 function App() {
 
@@ -23,6 +23,16 @@ function App() {
         loggedIn={isLoggedIn}
       />
       <Routes>
+      <Route path="/register"
+          element={
+            <Register />
+          }
+        />
+        <Route path="/login"
+          element={
+            <Login />
+          }
+        />
         <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
         <Route path="/"
           element={
@@ -50,13 +60,7 @@ function App() {
             <Profile />
           }
         />
-        <Route path="/register"
-          element={
-            <Register />
-          }
-        />
       </Routes>
-
       <Footer />
     </body>
   );

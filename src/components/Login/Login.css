@@ -1,0 +1,9 @@
+.auth__error_login {
+  padding-bottom: 157px;
+}
+
+@media screen and (max-width: 549px) {
+  .auth__error_login {
+    padding-bottom: 245px;
+  }
+}
