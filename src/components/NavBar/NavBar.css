@@ -145,7 +145,7 @@
 
 @media screen and (max-width: 768px) {
   .sidebar__burger-button {
-    position:relative;
+    position: relative;
     padding: 0;
     margin: 0;
     border: none;
@@ -160,6 +160,8 @@
 
   .navbar_hidden {
     visibility: hidden;
+    font-size: 0;
+    width: 0;
   }
 
 }
@@ -180,5 +182,15 @@
     font-style: normal;
     font-weight: 500;
     line-height: 16px;
+  }
+
+  .sidebar__burger-button {
+    width: 30px;
+    height: 43px;
+  }
+
+  .navbar_sidebar {
+    padding-right: 9px;
+    gap: 0;
   }
 }

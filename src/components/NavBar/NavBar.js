@@ -24,7 +24,7 @@ function NavBar({ loggedIn, onClick }) {
       <button type="button" className="navbar__button button" onClick={onClick}>Войти</button>
     </nav>
   ) : (
-    <nav className="navbar navbar__gap_48">
+    <nav className="navbar navbar__gap_48 navbar_sidebar">
       <ul className='navbar-links navbar_hidden'>
         <li>
           <NavLink
@@ -58,8 +58,6 @@ function NavBar({ loggedIn, onClick }) {
           src={accountIcon}
           alt='Иконка входа в аккаунт' />
       </NavLink>
-
-
 
       {/* Выпадающее меню */}
       <aside className={`sidebar ${isSidebarOpen && 'sidebar_opened'}`}>
