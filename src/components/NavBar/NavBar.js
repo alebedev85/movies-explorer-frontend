@@ -25,7 +25,7 @@ function NavBar({ loggedIn, onClick }) {
     </nav>
   ) : (
     <nav className="navbar navbar__gap_48">
-      <ul className='navbar-links'>
+      <ul className='navbar-links navbar_hidden'>
         <li>
           <NavLink
             to="/movies"
@@ -49,7 +49,7 @@ function NavBar({ loggedIn, onClick }) {
           </NavLink>
         </li>
       </ul>
-      <NavLink to="/#" className="navbar__account-button link">
+      <NavLink to="/#" className="navbar__account-button navbar_hidden link">
         <p className='navbar__link navbar__link__size_14'>
           Аккаунт
         </p>
@@ -59,8 +59,10 @@ function NavBar({ loggedIn, onClick }) {
           alt='Иконка входа в аккаунт' />
       </NavLink>
 
+
+
       {/* Выпадающее меню */}
-      <aside className='sidebar sidebar_opened'>
+      <aside className={`sidebar ${isSidebarOpen && 'sidebar_opened'}`}>
         <div className='sidebar__container'>
           <button
             className='sidebar__close-button'
@@ -112,7 +114,11 @@ function NavBar({ loggedIn, onClick }) {
           </NavLink>
         </div>
       </aside>
-
+      <button
+        className='sidebar__burger-button'
+        type='button'
+        onClick={openSidebar}
+      />
     </nav>
   );
 }
