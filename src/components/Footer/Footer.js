@@ -9,7 +9,8 @@ function Footer() {
 
   return location.pathname !== "/register"
     & location.pathname !== "/profile"
-    & location.pathname !== "/login" ?
+    & location.pathname !== "/login"
+    & location.pathname !== "/notfound" ?
     (
       <footer className='footer'>
         <p className='footer__title'>

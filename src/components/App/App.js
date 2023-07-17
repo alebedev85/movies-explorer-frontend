@@ -9,6 +9,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import NotFound from '../NotFound/NotFound'
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
         loggedIn={isLoggedIn}
       />
       <Routes>
-      <Route path="/register"
+        <Route path="/register"
           element={
             <Register />
           }
@@ -33,7 +34,7 @@ function App() {
             <Login />
           }
         />
-        <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
+        {/* <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} /> */}
         <Route path="/"
           element={
             <Main
@@ -60,8 +61,12 @@ function App() {
             <Profile />
           }
         />
+        <Route path="/notfound"
+          element={<NotFound />}
+        />
       </Routes>
       <Footer />
+
     </body>
   );
 }
