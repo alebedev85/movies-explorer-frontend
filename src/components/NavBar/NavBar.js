@@ -61,12 +61,12 @@ function NavBar({ loggedIn, onClick }) {
 
       {/* Выпадающее меню */}
       <aside className='sidebar sidebar_opened'>
-        <button
-          className='sidebar__close-button'
-          type='button'
-          onClick={closeSidebar}
-        />
         <div className='sidebar__container'>
+          <button
+            className='sidebar__close-button'
+            type='button'
+            onClick={closeSidebar}
+          />
           <ul className='navbar-links navbar-links_sidebar'>
             <li>
               <NavLink
