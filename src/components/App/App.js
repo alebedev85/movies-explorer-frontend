@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -13,10 +13,15 @@ import NotFound from '../NotFound/NotFound'
 
 function App() {
 
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const location = useLocation();
+
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const cards = Array(8).fill(null)
-  const saveCards = [];
+
+  useEffect(() => {
+    location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
+  })
 
   return (
     <body className="page">
@@ -61,7 +66,7 @@ function App() {
             <Profile />
           }
         />
-        <Route path="/notfound"
+        <Route path="/*"
           element={<NotFound />}
         />
       </Routes>

@@ -7,10 +7,9 @@ function Footer() {
   const location = useLocation();
   const currentYear = new Date().getFullYear();
 
-  return location.pathname !== "/register"
-    & location.pathname !== "/profile"
-    & location.pathname !== "/login"
-    & location.pathname !== "/notfound" ?
+  return location.pathname === '/'
+    || location.pathname === '/movies'
+    || location.pathname === '/saved-movies' ?
     (
       <footer className='footer'>
         <p className='footer__title'>

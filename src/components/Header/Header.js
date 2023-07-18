@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import './Header.css';
 
 import NavBar from '../NavBar/NavBar';
@@ -10,11 +10,13 @@ function Header({ loggedIn }) {
   const location = useLocation();
 
   return location.pathname !== "/register"
-  & location.pathname !== "/login"
-  & location.pathname !== "/notfound" ?
+    & location.pathname !== "/login"
+    & location.pathname !== "/notfound" ?
     (
       <header className={`header ${!loggedIn && 'header__color'}`}>
-        <img src={logo} className='header__logo' alt='Логотип сайта' />
+        <Link to="/" className="link">
+          <img src={logo} className='header__logo' alt='Логотип сайта' />
+        </Link>
         <NavBar loggedIn={loggedIn} />
       </header>
     )
