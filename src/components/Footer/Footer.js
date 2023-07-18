@@ -9,7 +9,7 @@ function Footer() {
 
   return location.pathname === '/'
     || location.pathname === '/movies'
-    || location.pathname === '/saved-movies' ?
+    || location.pathname === '/profile' ?
     (
       <footer className='footer'>
         <p className='footer__title'>

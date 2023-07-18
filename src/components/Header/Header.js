@@ -9,13 +9,14 @@ function Header({ loggedIn }) {
 
   const location = useLocation();
 
-  return location.pathname !== "/register"
-    & location.pathname !== "/login"
-    & location.pathname !== "/notfound" ?
+  return location.pathname === '/'
+  || location.pathname === '/movies'
+  || location.pathname === '/saved-movies'
+  || location.pathname === '/saved-movies' ?
     (
       <header className={`header ${!loggedIn && 'header__color'}`}>
         <Link to="/" className="link">
-          <img src={logo} className='header__logo' alt='Логотип сайта' />
+          <img src={logo} className='logo' alt='Логотип сайта' />
         </Link>
         <NavBar loggedIn={loggedIn} />
       </header>

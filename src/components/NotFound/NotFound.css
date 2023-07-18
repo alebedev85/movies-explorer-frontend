@@ -1,15 +1,14 @@
 .notfound {
-  width: 100%;
-  display: flex;
-  padding: 0;
   margin: 0 auto;
+  padding-top: 245px;
+  padding-bottom: 60px;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .notfound__title {
   margin: 0;
-  padding-top: 245px;
   padding-bottom: 5px;
   font-size: 140px;
   font-weight: 400;
@@ -26,7 +25,6 @@
 .notfound__link {
   margin: 0;
   padding-top: 184px;
-  padding-bottom: 60px;
   color: #4285f4;
   text-align: center;
   font-size: 14px;
@@ -35,18 +33,20 @@
 }
 
 @media screen and (max-width: 800px) {
-  .notfound__title {
+  .notfound {
     padding-top: 407px;
-  }
-
-  .notfound__link {
     padding-bottom: 222px;
   }
 }
 
 @media screen and (max-width: 549px) {
-  .notfound__title {
+.notfound {
     padding-top: 329px;
+    padding-bottom: 30px;
+  }
+
+  .notfound__title {
+
     padding-bottom: 10px;
     font-size: 80px;
   }
@@ -57,7 +57,6 @@
 
   .notfound__link {
     padding-top: 285px;
-    padding-bottom: 30px;
     font-size: 12px;
   }
 }

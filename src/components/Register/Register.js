@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../images/logo_header.svg';
+import logo from '../../images/logo_header.svg';
 import { Link } from 'react-router-dom';
 import './Register.css';
 
@@ -9,7 +9,9 @@ function Register() {
   return (
     <section className='auth'>
       <div className='auth__container'>
-        <img src={Logo} className='header__logo' alt='Логотип сайта' />
+      <Link to="/" className="link">
+          <img src={logo} className='logo' alt='Логотип сайта' />
+        </Link>
         <h1 className='auth__title'>Добро пожаловать!</h1>
         <form className='auth__form' name='register'>
           <fieldset className='auth__fieldset'>
