@@ -17,7 +17,7 @@ function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-  const cards = Array(5).fill(null)
+  const cards = Array(12).fill(null)
 
   useEffect(() => {
     location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
