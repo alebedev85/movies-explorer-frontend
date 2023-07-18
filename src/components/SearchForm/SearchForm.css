@@ -2,7 +2,7 @@
   padding: 70px 70px 0;
 }
 
-.search_container {
+.search__container {
   padding-bottom: 70px;
   height: 100%;
   border-bottom: 1px solid #424242;
@@ -122,7 +122,7 @@
     padding-right: 30px;
   }
 
-  .search_container {
+  .search__container {
     padding-bottom: 109px;
   }
 

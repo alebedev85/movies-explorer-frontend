@@ -17,14 +17,14 @@ function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-  const cards = Array(8).fill(null)
+  const cards = Array(5).fill(null)
 
   useEffect(() => {
     location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
   })
 
   return (
-    <body className="page">
+    <div className="page">
       <Header
         loggedIn={isLoggedIn}
       />
@@ -72,7 +72,7 @@ function App() {
       </Routes>
       <Footer />
 
-    </body>
+    </div>
   );
 }
 

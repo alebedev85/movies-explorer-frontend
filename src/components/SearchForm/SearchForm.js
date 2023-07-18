@@ -6,7 +6,7 @@ import searchIcon from '../../images/search-icon.svg'
 function SearchForm() {
   return (
     <section className='search'>
-      <div className='search_container'>
+      <div className='search__container'>
         <form className='search__form'>
         <div className='search__form__input-container'>
           <img
