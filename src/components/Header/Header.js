@@ -12,7 +12,7 @@ function Header({ loggedIn }) {
   return location.pathname === '/'
   || location.pathname === '/movies'
   || location.pathname === '/saved-movies'
-  || location.pathname === '/saved-movies' ?
+  || location.pathname === '/profile' ?
     (
       <header className={`header ${!loggedIn && 'header__color'}`}>
         <Link to="/" className="link">
