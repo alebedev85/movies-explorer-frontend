@@ -9,7 +9,7 @@ function AboutMe() {
       <h2 className="about-me__title">
         Студент
       </h2>
-      <article className='about-me__biography'>
+      <article className='about-me__biography' aria-label='Информация про автора проекта'>
         <img src={avatar} className='about-me__biography__avatar' alt='Фотография студента' />
         <h3 className='about-me__biography__name'>
           Виталий

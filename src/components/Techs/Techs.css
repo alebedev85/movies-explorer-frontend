@@ -22,7 +22,7 @@
   padding-top: 90px;
 }
 
-.techs__list__subtitle {
+.techs__subtitle {
   margin: 0;
   padding: 0;
   margin-bottom: 26px;
@@ -34,7 +34,7 @@
   text-align: center;
 }
 
-.techs__list__paragraph {
+.techs__paragraph {
   margin: 0;
   padding: 0;
   max-width: 460px;
@@ -46,7 +46,7 @@
   letter-spacing: -0.56px;
 }
 
-.techs__list__items {
+.techs__items {
   margin: 0;
   padding: 0;
   padding-top: 100px;
@@ -56,7 +56,7 @@
   gap: 10px;
 }
 
-.techs__list__item {
+.techs__item {
   margin: 0;
   padding: 0;
   padding-top: 21px;
@@ -82,11 +82,11 @@
     padding-top: 80px;
   }
 
-  .techs__list__subtitle {
+  .techs__subtitle {
     margin-bottom: 21px;
   }
 
-  .techs__list__paragraph {
+  .techs__paragraph {
     max-width: 460px;
     font-size: 12px;
     font-weight: 400;
@@ -94,11 +94,11 @@
     letter-spacing: -0.48px;
   }
 
-  .techs__list__items {
+  .techs__items {
     padding-top: 84px;
   }
 
-  .techs__list__item {
+  .techs__item {
     padding-top: 21px;
     padding-bottom: 21px;
     font-size: 12px;
@@ -134,27 +134,27 @@
     padding-top: 59px;
   }
 
-  .techs__list__subtitle {
+  .techs__subtitle {
     margin-bottom: 24px;
     font-size: 30px;
     line-height: normal;
     letter-spacing: -1.2px;
   }
 
-  .techs__list__paragraph {
+  .techs__paragraph {
     font-size: 11px;
     line-height: 16px;
     letter-spacing: -0.44px;
   }
 
-  .techs__list__items {
+  .techs__items {
     padding-top: 50px;
     padding-left: 52px;
     max-width: 271px;
     gap: 11px;
   }
 
-  .techs__list__item {
+  .techs__item {
     font-size: 12px;
     letter-spacing: -0.48px;
     width: 84px;
