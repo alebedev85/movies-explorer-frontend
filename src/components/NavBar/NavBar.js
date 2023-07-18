@@ -24,13 +24,13 @@ function NavBar({ loggedIn, onClick }) {
       <button type='button' className='navbar__button button' onClick={onClick}>Войти</button>
     </nav>
   ) : (
-    <nav className='navbar navbar__gap_48 navbar_sidebar'>
+    <nav className='navbar navbar_gap_48 navbar_sidebar'>
       <ul className='navbar-links navbar_hidden'>
         <li>
           <NavLink
             to='/movies'
             className={`navbar__link
-          navbar__link__size_14
+          navbar__link_size_14
           link
           ${location.pathname === '/movies' && 'navbar__link_active'}`
             }>
@@ -41,7 +41,7 @@ function NavBar({ loggedIn, onClick }) {
           <NavLink
             to='/saved-movies'
             className={`navbar__link
-          navbar__link__size_14
+          navbar__link_size_14
           link
           ${location.pathname === '/saved-movies' && 'navbar__link_active'}`
             }>
@@ -50,7 +50,7 @@ function NavBar({ loggedIn, onClick }) {
         </li>
       </ul>
       <NavLink to='/profile' className='navbar__account-button navbar_hidden link'>
-        <p className='navbar__link navbar__link__size_14'>
+        <p className='navbar__link navbar__link_size_14'>
           Аккаунт
         </p>
         <img
@@ -102,7 +102,7 @@ function NavBar({ loggedIn, onClick }) {
             </li>
           </ul>
           <NavLink to='/profile' className='navbar__account-button link'>
-            <p className='navbar__link navbar__link__size_14'>
+            <p className='navbar__link navbar__link_size_14'>
               Аккаунт
             </p>
             <img

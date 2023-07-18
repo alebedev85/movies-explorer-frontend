@@ -33,7 +33,7 @@
   line-height: 16px;
 }
 
-.navbar__link__size_14 {
+.navbar__link_size_14 {
   font-size: 14px;
   line-height: 18px;
 }
@@ -46,7 +46,7 @@
   gap: 20px;
 }
 
-.navbar__gap_48 {
+.navbar_gap_48 {
   gap: 48px;
   line-height: 19px;
 }
@@ -138,7 +138,7 @@
   gap: 31px;
 }
 
-.navbar__link__size_18 {
+.navbar__link_size_18 {
   font-size: 18px;
   padding-bottom: 4px;
 }
