@@ -15,7 +15,7 @@ function Header({ loggedIn }) {
   || location.pathname === '/profile' ?
     (
       <header className={`header ${!loggedIn && 'header__color'}`}>
-        <Link to="/" className="link">
+        <Link to="/movies" className="link">
           <img src={logo} className='logo' alt='Логотип сайта' />
         </Link>
         <NavBar loggedIn={loggedIn} />
