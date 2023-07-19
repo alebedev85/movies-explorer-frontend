@@ -15,14 +15,14 @@ function Footer() {
         <p className='footer__title'>
           Учебный проект Яндекс.Практикум х BeatFilm.
         </p>
-        <div className='footer__navigation'>
-          <p className='footer__links__text footer__links__text_gray'>
+        <div className='navigation'>
+          <p className='navigation__text navigation__text_gray'>
             &copy; {currentYear}
           </p>
-          <ul className='footer__links'>
+          <ul className='navigation__list'>
             <li>
               <a href='https://practicum.yandex.ru'
-                className='footer__links__text link'
+                className='navigation__text link'
                 rel='noreferrer'
                 target='_blank'>
                 Яндекс.Практикум
@@ -30,7 +30,7 @@ function Footer() {
             </li>
             <li>
               <a href='https://github.com/alebedev85/movies-explorer-frontend'
-                className='footer__links__text link'
+                className='navigation__text link'
                 rel='noreferrer'
                 target='_blank'>
                 Github

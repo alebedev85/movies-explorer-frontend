@@ -27,7 +27,7 @@
   border-bottom: 1px solid #424242;
 }
 
-.portfolio__link__text {
+.portfolio__text {
   margin: 0;
   padding: 0;
   font-size: 30px;
@@ -37,7 +37,7 @@
   letter-spacing: -1.2px;
 }
 
-.portfolio__link__pic {
+.portfolio__arrow {
   margin: 0;
   padding: 0;
   font-size: 30px;
@@ -55,7 +55,7 @@
     padding-bottom: 90px;
   }
 
-  .portfolio__link__text {
+  .portfolio__text {
     font-size: 28px;
     letter-spacing: -1.12px;
   }
@@ -79,13 +79,13 @@
     padding-bottom: 19px;
   }
 
-  .portfolio__link__text {
+  .portfolio__text {
     font-size: 18px;
     line-height: 28px;
     letter-spacing: -0.72px;
   }
 
-  .portfolio__link__pic {
+  .portfolio__arrow {
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 0.8px;

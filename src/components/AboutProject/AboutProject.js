@@ -23,11 +23,11 @@ function AboutProject() {
           </p>
         </article>
       </div>
-      <div className='about-project__deadline'>
-        <p className='about-project__deadline__stage_1'>1 неделя</p>
-        <p className='about-project__deadline__stage_2'>4 недели</p>
-        <p className='about-project__deadline__paragraph'>Back-end</p>
-        <p className='about-project__deadline__paragraph'>Front-end</p>
+      <div className='deadline'>
+        <p className='deadline__first-stage'>1 неделя</p>
+        <p className='deadline__second-stage'>4 недели</p>
+        <p className='deadline__paragraph'>Back-end</p>
+        <p className='deadline__paragraph'>Front-end</p>
       </div>
 
     </section>

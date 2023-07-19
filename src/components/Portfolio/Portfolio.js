@@ -13,8 +13,8 @@ function Portfolio() {
             href="https://github.com/alebedev85/how-to-learn"
             rel="noreferrer"
             target="_blank">
-            <p className='portfolio__link__text'>Статичный сайт</p>
-            <p className='portfolio__link__pic' >↗</p>
+            <p className='portfolio__text'>Статичный сайт</p>
+            <p className='portfolio__arrow' >↗</p>
           </a>
         </li>
         <li>
@@ -22,8 +22,8 @@ function Portfolio() {
             href="https://github.com/alebedev85/russian-travel"
             rel="noreferrer"
             target="_blank">
-            <p className='portfolio__link__text'>Адаптивный сайт</p>
-            <p className='portfolio__link__pic' >↗</p>
+            <p className='portfolio__text'>Адаптивный сайт</p>
+            <p className='portfolio__arrow' >↗</p>
           </a>
         </li>
         <li>
@@ -31,8 +31,8 @@ function Portfolio() {
             href="https://github.com/alebedev85/react-mesto-auth"
             rel="noreferrer"
             target="_blank">
-            <p className='portfolio__link__text'>Одностраничное приложение</p>
-            <p className='portfolio__link__pic' >↗</p>
+            <p className='portfolio__text'>Одностраничное приложение</p>
+            <p className='portfolio__arrow' >↗</p>
           </a>
         </li>
       </ul>
