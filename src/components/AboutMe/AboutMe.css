@@ -1,8 +1,8 @@
-.about-me {
+.aboutme {
   padding: 115px 70px 0;
 }
 
-.about-me__title {
+.aboutme__title {
   margin: 0;
   padding: 0;
   padding-bottom: 23px;
@@ -14,7 +14,7 @@
   border-bottom: 1px solid #DADADA;
 }
 
-.about-me__biography {
+.aboutme__biography {
   margin: 0;
   padding: 0;
   padding-top: 66px;
@@ -30,7 +30,7 @@
   column-gap: 50px;
 }
 
-.about-me__biography__name {
+.aboutme__biography__name {
   grid-area: name;
   margin: 0;
   padding: 0;
@@ -41,7 +41,7 @@
   letter-spacing: -2px;
 }
 
-.about-me__biography__info {
+.aboutme__biography__info {
   grid-area: info;
   margin: 0;
   padding: 0;
@@ -52,7 +52,7 @@
   line-height: 20px;
 }
 
-.about-me__biography__bio {
+.aboutme__biography__bio {
   grid-area: bio;
   margin: 0;
   padding: 0;
@@ -65,7 +65,7 @@
   max-width: 600px;
 }
 
-.about-me__biography__link {
+.aboutme__biography__link {
   grid-area: github;
   font-size: 14px;
   font-style: normal;
@@ -74,7 +74,7 @@
   text-decoration: none;
 }
 
-.about-me__biography__avatar {
+.aboutme__biography__avatar {
   grid-area: avatar;
   width: 270px;
   height: 327px;
@@ -83,25 +83,25 @@
 }
 
 @media screen and (max-width: 768px) {
-  .about-me {
+  .aboutme {
     padding-top: 93px;
     padding-left: 50px;
     padding-right: 50px;
   }
 
-  .about-me__biography__name {
+  .aboutme__biography__name {
     font-size: 40px;
     line-height: 40px;
     letter-spacing: -1.6px;
   }
 
-  .about-me__biography__info {
+  .aboutme__biography__info {
     padding-top: 16px;
     font-size: 12px;
     line-height: 18px;
   }
 
-  .about-me__biography__bio {
+  .aboutme__biography__bio {
     padding-top: 20px;
     padding-bottom: 87px;
     font-size: 12px;
@@ -109,12 +109,12 @@
     max-width: 364px;
   }
 
-  .about-me__biography_link {
+  .aboutme__biography_link {
     font-size: 14px;
     font-weight: 500;
   }
 
-  .about-me__biography__avatar {
+  .aboutme__biography__avatar {
     width: 255px;
     height: 307px;
   }
@@ -123,46 +123,46 @@
 
 
 @media screen and (max-width: 549px) {
-  .about-me {
+  .aboutme {
     padding-top: 71px;
     padding-left: 14px;
     padding-right: 14px;
   }
 
-  .about-me__title {
+  .aboutme__title {
     font-size: 18px;
     line-height: normal;
     letter-spacing: -0.72px;
     padding-bottom: 28px;
   }
 
-  .about-me__biography {
+  .aboutme__biography {
     padding-top: 60px;
     display: flex;
     flex-direction: column;
   }
 
-  .about-me__biography__name {
+  .aboutme__biography__name {
     padding-top: 40px;
     font-size: 30px;
     line-height: normal;
     letter-spacing: -1.2px;
   }
 
-  .about-me__biography__info {
+  .aboutme__biography__info {
     padding-top: 19px;
     font-size: 11px;
     line-height: 16px;
   }
 
-  .about-me__biography__bio {
+  .aboutme__biography__bio {
     padding-top: 20px;
     padding-bottom: 40px;
     font-size: 11px;
     line-height: 16px;
   }
 
-  .about-me__biography__avatar {
+  .aboutme__biography__avatar {
     margin-left: auto;
     margin-right: auto;
     width: 292px;
