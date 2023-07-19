@@ -51,14 +51,14 @@
   line-height: 19px;
 }
 
-.navbar__account-button {
+.account-button {
   display: flex;
   align-items: center;
   min-width: 100px;
   justify-content: space-between;
 }
 
-.navbar__account-button__icon {
+.account-button__icon {
   padding: 8px 7.5px;
   width: 11.5px;
   height: 14px;
@@ -158,7 +158,7 @@
     background-image: url(../../images/Burger-Button.svg);
   }
 
-  .navbar_hidden {
+  .hidden {
     visibility: hidden;
     font-size: 0;
     width: 0;

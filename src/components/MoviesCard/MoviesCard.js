@@ -8,7 +8,7 @@ function MoviesCard({ card, isSaved }) {
 
   return (
     <li className="card" >
-      <div className='card_info'>
+      <div className='card__info'>
         <h2 className='card__name'>
           {card.nameRU}
         </h2>

@@ -8,18 +8,18 @@ function SearchForm() {
     <section className='search'>
       <div className='search__container'>
         <form className='search__form'>
-        <div className='search__form__input-container'>
+        <div className='search__input-container'>
           <img
             src={searchIcon}
-            className='search__form__input-container__icon'
+            className='search__input-container__icon'
             alt='Иконка поиска'
           />
           <input
-            className='search__form__input-container__input'
+            className='search__input-container__input'
             placeholder='Фильм'
             required />
           <button
-            className='search__form__input-container__button button'
+            className='search__input-container__button button'
             type='submit' />
         </div>
         <div className='search__form__checkbox-conteiner'>
