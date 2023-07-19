@@ -21,7 +21,7 @@ function NavBar({ loggedIn, onClick }) {
   return !loggedIn ? (
     <nav className='navbar'>
       <NavLink to='/register' className='navbar__link link'>Регистрация</NavLink>
-      <button type='button' className='navbar__button button' onClick={onClick}>Войти</button>
+      <NavLink to='/login' className='navbar__button link'>Войти</NavLink>
     </nav>
   ) : (
     <nav className='navbar navbar_gap_48 navbar_sidebar'>

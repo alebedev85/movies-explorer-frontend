@@ -22,15 +22,15 @@
 }
 
 .navbar__button {
-  background: #3DDC84;
-  width: 76px;
-  height: 32px;
-  padding: 0;
-  color: #000000;
+  margin: 0;
+  padding: 8px 20px;
+  color: #000;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+  border-radius: 3px;
+  background: #3DDC84;
 }
 
 .navbar__link_size_14 {
