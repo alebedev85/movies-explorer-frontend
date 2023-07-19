@@ -11,25 +11,25 @@ function SearchForm() {
         <div className='search__input-container'>
           <img
             src={searchIcon}
-            className='search__input-container__icon'
+            className='search__icon'
             alt='Иконка поиска'
           />
           <input
-            className='search__input-container__input'
+            className='search__input'
             placeholder='Фильм'
             required />
           <button
-            className='search__input-container__button button'
+            className='search__button button'
             type='submit' />
         </div>
-        <div className='search__form__checkbox-conteiner'>
+        <div className='search__checkbox-conteiner'>
           <input type='checkbox'
-            className='search__form__checkbox'
-            id='search__form__checkbox'
+            className='search__checkbox'
+            id='search__checkbox'
             value='yes' />
           <label
-            className='search__form__label'
-            htmlFor='search__form__checkbox'>
+            className='search__label'
+            htmlFor='search__checkbox'>
             Короткометражки
           </label>
         </div>

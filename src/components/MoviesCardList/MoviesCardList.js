@@ -22,7 +22,7 @@ function MoviesCardList({ cards }) {
   }
   return (
     <section className="card-list" aria-label="Картачки c фильмами">
-      <ul className='cerd-list__container'>
+      <ul className='card-list__container'>
         {cards.map((card, index) => (
           <MoviesCard
           key={index}
@@ -32,7 +32,7 @@ function MoviesCardList({ cards }) {
         ))}
       </ul>
       {true && (
-          <button className='caerd-list__next-button button'>
+          <button className='card-list__next-button button'>
             Еще
           </button>
         )}

@@ -25,7 +25,7 @@ function NavBar({ loggedIn, onClick }) {
     </nav>
   ) : (
     <nav className='navbar navbar_gap_48 navbar_sidebar'>
-      <ul className='navbar-links hidden'>
+      <ul className='navbar__links hidden'>
         <li>
           <NavLink
             to='/movies'
@@ -67,12 +67,12 @@ function NavBar({ loggedIn, onClick }) {
             type='button'
             onClick={closeSidebar}
           />
-          <ul className='navbar-links navbar-links_sidebar'>
+          <ul className='navbar__links navbar__links_sidebar'>
             <li>
               <NavLink
                 to='/'
                 className={`navbar__link
-                    navbar__link__size_18
+                    navbar__link_size_18
                     link`
                 }>
                 Главная
@@ -82,7 +82,7 @@ function NavBar({ loggedIn, onClick }) {
               <NavLink
                 to='/movies'
                 className={`navbar__link
-                    navbar__link__size_18
+                    navbar__link_size_18
                     link
                     ${location.pathname === '/movies' && 'navbar__link_active'}`
                 }>
@@ -93,7 +93,7 @@ function NavBar({ loggedIn, onClick }) {
               <NavLink
                 to='/saved-movies'
                 className={`navbar__link
-                    navbar__link__size_18
+                    navbar__link_size_18
                     link
                     ${location.pathname === '/saved-movies' && 'navbar__link_active'}`
                 }>
@@ -113,7 +113,7 @@ function NavBar({ loggedIn, onClick }) {
         </div>
       </aside>
       <button
-        className='sidebar__burger-button'
+        className='navbar__burger-button'
         type='button'
         onClick={openSidebar}
       />

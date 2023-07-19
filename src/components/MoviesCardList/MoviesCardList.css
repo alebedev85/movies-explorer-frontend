@@ -5,7 +5,7 @@
   align-items: center
 }
 
-.cerd-list__container {
+.card-list__container {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -18,7 +18,7 @@
   justify-content: center;
 }
 
-.caerd-list__next-button {
+.card-list__next-button {
   background: initial;
   width: 320px;
   height: 36px;
@@ -40,7 +40,7 @@
     padding-bottom: 98px;
   }
 
-  .cerd-list__container {
+  .card-list__container {
     grid-template-columns: repeat(auto-fill, 339px);
     column-gap: 30px;
     row-gap: 36px;
@@ -56,7 +56,7 @@
     padding-right: 10px;
   }
 
-  .cerd-list__container {
+  .card-list__container {
     grid-template-columns: repeat(auto-fill, 300px);
     padding-bottom: 75px;
     gap: 10px;

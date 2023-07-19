@@ -39,7 +39,7 @@
   top: -3px
 }
 
-.search__input-container__input {
+.search__input {
   padding: 0;
   margin-left: 8px;
   color: #8B8B8B;
@@ -53,18 +53,18 @@
   width: 86%;
 }
 
-.search__input-container__input:focus {
+.search__input:focus {
   outline: none;
   opacity: 0.4;
 }
 
-.search__input-container__icon {
+.search__icon {
   width: 34px;
   height: 34px;
   object-fit: contain;
 }
 
-.search__input-container__button {
+.search__button {
   border-radius: 48px;
   background-color: #2BE080;
   background-image: url("../../images/search-button.svg");
@@ -76,14 +76,14 @@
   cursor: pointer;
 }
 
-.search__form__checkbox-conteiner {
+.search__checkbox-conteiner {
   position: relative;
   display: flex;
   padding-right: 11px;
   margin-left: 70px;
 }
 
-.search__form__checkbox {
+.search__checkbox {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -91,7 +91,7 @@
   clip: rect(0 0 0 0);
 }
 
-.search__form__label {
+.search__label {
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -100,7 +100,7 @@
   ;
 }
 
-.search__form__checkbox+.search__form__label::before {
+.search__checkbox+.search__label::before {
   content: "";
   display: inline-block;
   width: 49px;
@@ -116,7 +116,7 @@
   top: 0.5px;
 }
 
-.search__form__checkbox:checked+.search__form__label::before {
+.search__checkbox:checked+.search__label::before {
   background-image: url("../../images/checkbox-checked.svg");
 }
 
@@ -131,11 +131,11 @@
     padding-bottom: 109px;
   }
 
-  .search__input-container__input {
+  .search__input {
     width: 73%;
   }
 
-  .search__form__checkbox-conteiner {
+  .search__checkbox-conteiner {
     padding-right: 2px;
     margin-left: 70px;
   }
@@ -155,13 +155,13 @@
     padding-right: 0px;
     width: 100%;
   }
-  .search__input-container__input {
+  .search__input {
     margin-left: 0;
     width: 68%;
     font-size: 14px;
   }
 
-  .search__input-container__icon {
+  .search__icon {
     visibility: hidden;
     width: 0;
   }
@@ -175,12 +175,12 @@
     top: -0px
   }
 
-  .search__form__checkbox-conteiner {
+  .search__checkbox-conteiner {
     padding-top: 65px;
     padding-right: 0px;
     margin-left: 50px;
   }
-  .search__form__label {
+  .search__label {
     font-size: 11px;
   }
 }
