@@ -53,6 +53,11 @@
   width: 86%;
 }
 
+.search__form__input-container__input:focus {
+  outline: none;
+  opacity: 0.4;
+}
+
 .search__form__input-container__icon {
   width: 34px;
   height: 34px;
