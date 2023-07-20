@@ -32,7 +32,7 @@ function NavBar({ loggedIn, onClick }) {
             className={`navbar__link
           navbar__link_size_14
           link
-          ${location.pathname === '/movies' && 'navbar__link_active'}`
+          ${location.pathname === '/movies' ? 'navbar__link_active' : ''}`
             }>
             Фильмы
           </NavLink>
@@ -43,7 +43,7 @@ function NavBar({ loggedIn, onClick }) {
             className={`navbar__link
           navbar__link_size_14
           link
-          ${location.pathname === '/saved-movies' && 'navbar__link_active'}`
+          ${location.pathname === '/saved-movies' ? 'navbar__link_active' : ''}`
             }>
             Сохранённые фильмы
           </NavLink>
@@ -60,7 +60,7 @@ function NavBar({ loggedIn, onClick }) {
       </NavLink>
 
       {/* Выпадающее меню */}
-      <aside className={`sidebar ${isSidebarOpen && 'sidebar_opened'}`}>
+      <aside className={`sidebar ${isSidebarOpen ? 'sidebar_opened' : ''}`}>
         <div className='sidebar__container'>
           <button
             className='sidebar__close-button'
@@ -69,12 +69,7 @@ function NavBar({ loggedIn, onClick }) {
           />
           <ul className='navbar__links navbar__links_display_flex'>
             <li>
-              <NavLink
-                to='/'
-                className={`navbar__link
-                    navbar__link_size_18
-                    link`
-                }>
+              <NavLink to='/' className='navbar__link navbar__link_size_18 link'>
                 Главная
               </NavLink>
             </li>
@@ -84,7 +79,7 @@ function NavBar({ loggedIn, onClick }) {
                 className={`navbar__link
                     navbar__link_size_18
                     link
-                    ${location.pathname === '/movies' && 'navbar__link_active'}`
+                    ${location.pathname === '/movies' ? 'navbar__link_active' : ''}`
                 }>
                 Фильмы
               </NavLink>
@@ -95,7 +90,7 @@ function NavBar({ loggedIn, onClick }) {
                 className={`navbar__link
                     navbar__link_size_18
                     link
-                    ${location.pathname === '/saved-movies' && 'navbar__link_active'}`
+                    ${location.pathname === '/saved-movies' ? 'navbar__link_active' : ''}`
                 }>
                 Сохранённые фильмы
               </NavLink>

@@ -14,7 +14,7 @@ function Header({ loggedIn }) {
   || location.pathname === '/saved-movies'
   || location.pathname === '/profile' ?
     (
-      <header className={`header ${!loggedIn && 'header_color_blue'}`}>
+      <header className={`header ${!loggedIn ? 'header_color_blue' : ''}`}>
         <Link to="/movies" className="link">
           <img src={logo} className='logo' alt='Логотип сайта' />
         </Link>
