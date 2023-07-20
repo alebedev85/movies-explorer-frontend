@@ -3,12 +3,6 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1280px) {
-  .movies {
-    width: 100vw;
-  }
-}
-
 @media screen and (max-width: 320px) {
   .movies{
     width: 100%;

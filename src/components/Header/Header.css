@@ -19,12 +19,6 @@
   width: 38px;
 }
 
-@media screen and (max-width: 1280px) {
-  .header {
-    width: 100vw;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .header{
     padding-left: 30px;
