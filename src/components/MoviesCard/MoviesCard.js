@@ -24,7 +24,7 @@ function MoviesCard({ card, isSaved }) {
             type='button' />
         }
         {location.pathname === "/saved-movies" &&
-          <button className='card__button button card__button__delete'
+          <button className='card__button button card__button_delete'
             type='button' />
         }
       </div>

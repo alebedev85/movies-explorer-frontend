@@ -61,7 +61,7 @@
   background: url(../../images/save-button_active.svg) transparent no-repeat center;
 }
 
-.card__button__delete {
+.card__button_delete {
   background: url(../../images/delete-button.svg) transparent no-repeat center;
 }
 

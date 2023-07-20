@@ -24,7 +24,7 @@ function NavBar({ loggedIn, onClick }) {
       <NavLink to='/login' className='navbar__button link'>Войти</NavLink>
     </nav>
   ) : (
-    <nav className='navbar navbar_gap_48 navbar_sidebar'>
+    <nav className='navbar navbar_gap_48 navbar_padding-right_9'>
       <ul className='navbar__links hidden'>
         <li>
           <NavLink
@@ -67,7 +67,7 @@ function NavBar({ loggedIn, onClick }) {
             type='button'
             onClick={closeSidebar}
           />
-          <ul className='navbar__links navbar__links_sidebar'>
+          <ul className='navbar__links navbar__links_display_flex'>
             <li>
               <NavLink
                 to='/'
