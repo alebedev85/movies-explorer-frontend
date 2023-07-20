@@ -12,6 +12,7 @@
   background-color: #202020;
   color: #FFFFFF;
   min-width: 320px;
+  min-height: 100vh;
 }
 
 .link {
