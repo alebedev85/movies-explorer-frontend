@@ -1,4 +1,4 @@
-import { BASE_URL } from '../utils/constants';
+import { beatfilm_URL } from './constants';
 
 class Api {
   constructor(url) {
@@ -154,6 +154,6 @@ class Api {
   }
 }
 
-export const api = new Api(BASE_URL);
+export const api = new Api(beatfilm_URL);
 
 // export const api = new Api('https://mesto.nomoreparties.co/v1/cohort-61', '3e070c18-b10f-4e80-b715-68fa3cc00268');
