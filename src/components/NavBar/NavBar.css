@@ -175,9 +175,17 @@
     font-size: 10px;
   }
 
+  .navbar__link_size_18 {
+    font-size: 18px;
+    padding-bottom: 7px;
+  }
+
+  .navbar__link_sidebar {
+    font-size: 14px;
+  }
+
   .navbar__button {
-    width: 54px;
-    height: 26px;
+    padding: 5px 12px;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -192,5 +200,22 @@
   .navbar_padding-right_9 {
     padding-right: 9px;
     gap: 0;
+  }
+
+  .navbar__links_display_flex {
+    gap: 27px;
+  }
+
+  .sidebar__container {
+    padding-top: 146px;
+    padding-bottom: 40px;
+    width: 100%;
+  }
+
+  .sidebar__close-button {
+    right: 13.4px;
+    top: 13.4px;
+    width: 31px;
+    height: 31px;
   }
 }

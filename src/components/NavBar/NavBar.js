@@ -97,7 +97,7 @@ function NavBar({ loggedIn, onClick }) {
             </li>
           </ul>
           <NavLink to='/profile' className='account-button link'>
-            <p className='navbar__link navbar__link_size_14'>
+            <p className='navbar__link navbar__link_size_14 navbar__link_sidebar'>
               Аккаунт
             </p>
             <img
