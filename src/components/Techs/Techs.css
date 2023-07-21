@@ -1,0 +1,163 @@
+.techs {
+  background: #272727;
+  padding: 96px 70px;
+}
+
+.techs__title {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 23px;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid #DADADA;
+}
+
+.techs__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 90px;
+}
+
+.techs__subtitle {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 26px;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  text-align: center;
+}
+
+.techs__paragraph {
+  margin: 0;
+  padding: 0;
+  max-width: 460px;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+}
+
+.techs__items {
+  margin: 0;
+  padding: 0;
+  padding-top: 100px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.techs__item {
+  margin: 0;
+  padding: 0;
+  padding-top: 21px;
+  padding-bottom: 22px;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.56px;
+  width: 90px;
+  border-radius: 10px;
+  background: #303030;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 87px 50px 89px;
+  }
+
+  .techs__list {
+    padding-top: 80px;
+  }
+
+  .techs__subtitle {
+    margin-bottom: 21px;
+  }
+
+  .techs__paragraph {
+    max-width: 460px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__items {
+    padding-top: 84px;
+  }
+
+  .techs__item {
+    padding-top: 21px;
+    padding-bottom: 21px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    width: 84px;
+    border-radius: 10px;
+    background: #303030;
+  }
+
+}
+
+
+@media screen and (max-width: 549px) {
+  .techs {
+    padding: 59px 18px 69px;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .techs__title {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 28px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .techs__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 59px;
+  }
+
+  .techs__subtitle {
+    margin-bottom: 24px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__paragraph {
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  .techs__items {
+    padding-top: 50px;
+    padding-left: 52px;
+    max-width: 271px;
+    gap: 11px;
+  }
+
+  .techs__item {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    width: 84px;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,38 @@
+@import url(./vender/normalize.css);
+@import url(./vender/fonts/inter.css);
+
+.page {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  background-color: #202020;
+  color: #FFFFFF;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #FFF;
+}
+
+.link:hover {
+  opacity: 0.70;
+  cursor: pointer;
+}
+
+.button {
+  border: none;
+  border-radius: 3px;
+}
+
+.button:hover {
+  opacity: 0.80;
+  cursor: pointer;
+}

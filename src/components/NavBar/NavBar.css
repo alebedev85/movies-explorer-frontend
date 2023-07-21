@@ -1,0 +1,221 @@
+.navbar {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  height: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.navbar__link {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.navbar__link_active {
+  border-bottom: 2px solid #FFFFFF;
+}
+
+.navbar__button {
+  margin: 0;
+  padding: 8px 20px;
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  border-radius: 3px;
+  background: #3DDC84;
+}
+
+.navbar__link_size_14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.navbar__links {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar_gap_48 {
+  gap: 48px;
+  line-height: 19px;
+}
+
+.account-button {
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  justify-content: space-between;
+}
+
+.account-button__icon {
+  padding: 8px 7.5px;
+  width: 11.5px;
+  height: 14px;
+  border-radius: 4px;
+  background: #313131;
+}
+
+.navbar__burger-button {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  visibility: hidden;
+  width: 0px;
+  height: 44px;
+  background-image: url(../../images/Burger-Button.svg);
+}
+
+.sidebar {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: end;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease 0s;
+}
+
+.sidebar_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sidebar__container {
+  background-color: #202020;
+  width: 520px;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 161px;
+  padding-bottom: 83px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between
+}
+
+.sidebar__close-button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  background-image: url(../../images/Close-Button.svg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 23px;
+  top: 23px;
+}
+
+.navbar__links_display_flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 31px;
+}
+
+.navbar__link_size_18 {
+  font-size: 18px;
+  padding-bottom: 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__burger-button {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    visibility: visible;
+    width: 44px;
+    height: 44px;
+    background-image: url(../../images/Burger-Button.svg);
+  }
+
+  .hidden {
+    visibility: hidden;
+    font-size: 0;
+    width: 0;
+  }
+
+}
+
+@media screen and (max-width: 549px) {
+  .navbar {
+    gap: 14px;
+  }
+
+  .navbar__link {
+    font-size: 10px;
+  }
+
+  .navbar__link_size_18 {
+    font-size: 18px;
+    padding-bottom: 7px;
+  }
+
+  .navbar__link_sidebar {
+    font-size: 14px;
+  }
+
+  .navbar__button {
+    padding: 5px 12px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  .navbar__burger-button {
+    width: 30px;
+    height: 43px;
+  }
+
+  .navbar_padding-right_9 {
+    padding-right: 9px;
+    gap: 0;
+  }
+
+  .navbar__links_display_flex {
+    gap: 27px;
+  }
+
+  .sidebar__container {
+    padding-top: 146px;
+    padding-bottom: 40px;
+    width: 100%;
+  }
+
+  .sidebar__close-button {
+    right: 13.4px;
+    top: 13.4px;
+    width: 31px;
+    height: 31px;
+  }
+}
