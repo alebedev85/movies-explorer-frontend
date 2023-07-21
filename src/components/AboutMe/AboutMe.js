@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './AboutMe.css'
-import avatar from '../../images/avatar.png'
+import avatar from '../../images/RTKXSlUp1Tg_копия.jpg'
 
 function AboutMe() {
   return (
@@ -12,14 +12,15 @@ function AboutMe() {
       <article className='biography' aria-label='Информация про автора проекта'>
         <img src={avatar} className='biography__avatar' alt='Фотография студента' />
         <h3 className='biography__name'>
-          Виталий
+          Андрей
         </h3>
         <h4 className='biography__info'>
-          Фронтенд-разработчик, 30 лет
+          Фронтенд-разработчик, 38 лет
         </h4>
         <p className='biography__bio'>
-          Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
-          и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
+          Я родился и живу в Москве. Закончил курс Веб-разработчик Яндекс Практикума. Хочу развиваться в этой сфере,
+          в веб-разработке меня привлекает сочетание работы над интерфейсом и функциональностью.
+          В свободное время занимаюсь музыкой, играю на гитаре, люблю путешествовать и открывать новые места.
         </p>
         <a className='biography__link link'
           href="https://github.com/alebedev85"
