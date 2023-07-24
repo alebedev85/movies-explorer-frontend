@@ -29,7 +29,7 @@ function MoviesCard({ card, isSaved }) {
         }
       </div>
       <a href={card.trailerLink} className='card__link link' target="_blank" rel="noreferrer">
-        <img className='card__poster' src={card.image} alt='Постер к фильму' />
+        <img className='card__poster' src={`https://api.nomoreparties.co/${card.image.url}`} alt={`Постер ${card.nameRU}`} />
       </a>
 
     </li>

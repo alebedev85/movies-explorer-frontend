@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
     moviesApi.getCards().then((res) => {
-      setCards(res);
+      setCards(res.slice(0, 9));
       console.log(cards)
     });
   }, [])
