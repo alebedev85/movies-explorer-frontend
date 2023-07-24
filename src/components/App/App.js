@@ -11,37 +11,15 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound'
 
-import { moviesApi } from '../../utils/MoviesApi'
-
 function App() {
 
   const location = useLocation();
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-  const [cards, setCards] = React.useState([]);
-
   useEffect(() => {
     location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
   }, [])
-
-  // localStorage.setItem('cards', JSON.stringify(cards));
-  // array = JSON.parse(localStorage.getItem('cards'));
-
-  useEffect(() => {
-    setCards(JSON.parse(localStorage.getItem('cards')));
-    console.log(cards)
-    if (!cards) {
-      moviesApi.getCards()
-      .then((res) => {
-        setCards(res.slice(0, 9));
-        localStorage.setItem('cards', JSON.stringify(res))
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-    }
-  }, [])
-
 
   return (
     <div className="page">
@@ -69,16 +47,12 @@ function App() {
         />
         <Route path="/movies"
           element={
-            <Movies
-              cards={cards}
-            />
+            <Movies/>
           }
         />
         <Route path="/saved-movies"
           element={
-            <SavedMovies
-              cards={cards}
-            />
+            <SavedMovies />
           }
         />
         <Route path="/profile"
