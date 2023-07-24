@@ -23,13 +23,24 @@ function App() {
 
   useEffect(() => {
     location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
-    moviesApi.getCards().then((res) => {
-      setCards(res.slice(0, 9));
-      console.log(cards)
-    });
   }, [])
 
-  //
+  // localStorage.setItem('cards', JSON.stringify(cards));
+  // array = JSON.parse(localStorage.getItem('cards'));
+
+  useEffect(() => {
+    setCards(JSON.parse(localStorage.getItem('cards')));
+    console.log(cards)
+    if (!cards) {
+      moviesApi.getCards()
+      .then((res) => {
+        setCards(res.slice(0, 9));
+        localStorage.setItem('cards', JSON.stringify(res))
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+    }
+  }, [])
 
 
   return (

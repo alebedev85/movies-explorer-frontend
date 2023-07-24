@@ -8,7 +8,7 @@ function Movies({cards}) {
   return (
     <main className="main">
       <SearchForm />
-      <MoviesCardList cards={cards}/>
+      {cards? <MoviesCardList cards={cards}/> : <Preloader />}
     </main>
   );
 }
