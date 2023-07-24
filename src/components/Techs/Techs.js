@@ -15,14 +15,14 @@ function Techs() {
         <p className="techs__paragraph">
           На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
         </p>
-        <ul class="techs__items">
-          <li class="techs__item">HTML</li>
-          <li class="techs__item">CSS</li>
-          <li class="techs__item">JS</li>
-          <li class="techs__item">React</li>
-          <li class="techs__item">Git</li>
-          <li class="techs__item">Express.js</li>
-          <li class="techs__item">mongoDB</li>
+        <ul className="techs__items">
+          <li className="techs__item">HTML</li>
+          <li className="techs__item">CSS</li>
+          <li className="techs__item">JS</li>
+          <li className="techs__item">React</li>
+          <li className="techs__item">Git</li>
+          <li className="techs__item">Express.js</li>
+          <li className="techs__item">mongoDB</li>
         </ul>
       </div>
     </section>

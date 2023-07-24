@@ -11,17 +11,24 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound'
 
+import { moviesApi } from '../../utils/MoviesApi'
+
 function App() {
 
   const location = useLocation();
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-  const cards = Array(12).fill(null)
+  const [cards, setCards] = React.useState([]);
 
   useEffect(() => {
     location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
-  })
+    moviesApi.getCards().then((res) => {
+      setCards(res);
+      console.log(cards)
+    });
+  }, [])
+
 
   return (
     <div className="page">
