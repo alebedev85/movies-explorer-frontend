@@ -15,7 +15,6 @@ function Movies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize();
 
-
   const [cardsNumber, setCardsNumber] = useState({
     first: 12,
     next: 3,
