@@ -13,7 +13,7 @@ function Movies() {
   };
 
   const [cards, setCards] = useState([]);
-  const [displayedCards, setDisplayedCards] = useState([]);
+  const [displayedCards, setDisplayedCards] = useState(numberDisplayCards.first);
 
   useEffect(() => {
     setCards(JSON.parse(localStorage.getItem('cards')));
@@ -25,13 +25,21 @@ function Movies() {
         })
         .catch((err) => console.log(err));
     };
-    setDisplayedCards(cards.slice(0, displayedCards.first))
   }, [])
-  
+
+  function handleAddNewCards() {
+    setDisplayedCards(displayedCards + numberDisplayCards.next)
+  };
+
   return (
     <main className="main">
       <SearchForm />
-      {cards ? <MoviesCardList cards={cards.slice(0, 9)} /> : <Preloader />}
+      {cards ? <MoviesCardList
+        cards={cards.slice(0, displayedCards)}
+        onClick={handleAddNewCards}
+      />
+      :
+      <Preloader />}
     </main>
   );
 }

@@ -3,7 +3,7 @@ import './MoviesCardList.css';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ cards }) {
+function MoviesCardList({ cards, onClick }) {
   // const testCard = {
   //   country: "Россия",
   //   director: "AAAAA",
@@ -31,7 +31,7 @@ function MoviesCardList({ cards }) {
         ))}
       </ul>
       {true && (
-          <button className='card-list__next-button button'>
+          <button className='card-list__next-button button' onClick={onClick}>
             Еще
           </button>
         )}
