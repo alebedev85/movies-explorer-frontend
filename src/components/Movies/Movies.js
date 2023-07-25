@@ -7,7 +7,13 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { moviesApi } from '../../utils/MoviesApi'
 
 function Movies() {
-  const [cards, setCards] = React.useState([]);
+  const numberDisplayCards = {
+    first: 12,
+    next: 3,
+  };
+
+  const [cards, setCards] = useState([]);
+  const [displayedCards, setDisplayedCards] = useState([]);
 
   useEffect(() => {
     setCards(JSON.parse(localStorage.getItem('cards')));
@@ -15,12 +21,13 @@ function Movies() {
       moviesApi.getCards()
         .then((res) => {
           setCards(res);
-          localStorage.setItem('cards', JSON.stringify(res))
-          console.log(res);
+          localStorage.setItem('cards', JSON.stringify(res));
         })
         .catch((err) => console.log(err));
-    }
+    };
+    setDisplayedCards(cards.slice(0, displayedCards.first))
   }, [])
+  
   return (
     <main className="main">
       <SearchForm />
