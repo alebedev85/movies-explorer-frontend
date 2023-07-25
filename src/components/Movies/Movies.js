@@ -11,10 +11,7 @@ function Movies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
 
-  const [cardsNumber, setCardsNumber] = useState({
-    first: 12,
-    next: 3,
-  }); //стейт для колличества карточек на экране
+  const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
   const [cards, setCards] = useState([]); //стейт для всех карточек
   const [displayedCards, setDisplayedCards] = useState(cardsNumber.first); //стейт для показываемых карточек
@@ -60,16 +57,30 @@ function Movies() {
   }, [cardsNumber])
 
   //обработчик нажатия кнопки ещё
-  function handleAddNewCards() {
+  function handleNextCards() {
     setDisplayedCards(displayedCards + cardsNumber.next)
+  };
+
+  function func(text) {
+    cards.forEach(item => console.log(Object.values(item)
+    .some(value => typeof value === "string" ? value.includes(text) : value === text)))
+    // return cards.filter(item => Object.values(item).includes(text))
+  }
+
+  //обработчик поиска фильмов
+  function handleSearchMovie(text) {
+    // console.log(cards.filter(movie => Object.values(movie[0]).includes(text)));
+    console.log(cards.filter(card => Object.values(card)
+    .some(value => typeof value === "string" ? value.includes(text) : value === text)))
+    // func(text)
   };
 
   return (
     <main className="main">
-      <SearchForm />
+      <SearchForm onSearchMovie={handleSearchMovie} />
       {cards ? <MoviesCardList
         cards={cards.slice(0, displayedCards)}
-        onClick={handleAddNewCards}
+        onClick={handleNextCards}
         buttonVisibility={cards.length > displayedCards}
       />
         :
