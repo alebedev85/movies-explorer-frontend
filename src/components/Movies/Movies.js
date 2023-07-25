@@ -8,21 +8,18 @@ import { moviesApi } from '../../utils/MoviesApi';
 import { useResize } from '../hooks/useResize';
 
 function Movies() {
-  // const numberDisplayCards = {
-  //   first: 12,
-  //   next: 3,
-  // };
 
-  const { width, isScreenS, isScreenM, isScreenL } = useResize();
+  const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
 
   const [cardsNumber, setCardsNumber] = useState({
     first: 12,
     next: 3,
-  });
-  const [isPreloader, setIsPreloader] = useState(false);
-  const [cards, setCards] = useState([]);
-  const [displayedCards, setDisplayedCards] = useState(cardsNumber.first);
+  }); //стейт для колличества карточек на экране
+  const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
+  const [cards, setCards] = useState([]); //стейт для всех карточек
+  const [displayedCards, setDisplayedCards] = useState(cardsNumber.first); //стейт для показываемых карточек
 
+  //проверка localStorage и получение карточек
   useEffect(() => {
     setCards(JSON.parse(localStorage.getItem('cards')));
     if (!cards.length) {
@@ -37,6 +34,7 @@ function Movies() {
     };
   }, [])
 
+  //зависимость колличества отображаемых карточек от размера экрана
   useEffect(() => {
     if (isScreenS) {
       setCardsNumber({
@@ -56,10 +54,12 @@ function Movies() {
     }
   }, [width])
 
+  //определение колличества показываемых карточек
   useEffect(() => {
     setDisplayedCards(cardsNumber.first)
   }, [cardsNumber])
 
+  //обработчик нажатия кнопки ещё
   function handleAddNewCards() {
     setDisplayedCards(displayedCards + cardsNumber.next)
   };

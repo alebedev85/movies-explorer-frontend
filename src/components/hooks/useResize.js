@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
-  SCREEN_S, SCREEN_M, SCREEN_L,
+  SCREEN_S, SCREEN_M,
 } from '../../utils/constants';
 
 export const useResize = () => {
