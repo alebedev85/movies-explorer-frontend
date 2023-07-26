@@ -17,7 +17,8 @@ function SearchForm({ onSearchMovie, text }) {
 
   function handleAddPlaceSubmit(e) {
     e.preventDefault();
-    onSearchMovie(searchText);
+    const checkboxStatus = document.getElementById('search__checkbox').checked
+    onSearchMovie(searchText, checkboxStatus);
   }
 
   return (
