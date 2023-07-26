@@ -3,10 +3,10 @@ import './SearchForm.css';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ onSearchMovie, text, status }) {
+function SearchForm({ onSearchMovie, text, statusCheckbox }) {
 
   const [searchText, setSearchText] = React.useState(text || '');
-  const [checkboxStatus, setCheckboxStatus] = React.useState(status || false);
+  const [checkboxStatus, setCheckboxStatus] = React.useState(statusCheckbox || false);
 
   function handleSearchText(e) {
     setSearchText(e.target.value);
@@ -23,7 +23,6 @@ function SearchForm({ onSearchMovie, text, status }) {
 
   function handleAddPlaceSubmit(e) {
     e.preventDefault();
-    console.log(checkboxStatus);
     onSearchMovie(searchText, checkboxStatus);
   }
 

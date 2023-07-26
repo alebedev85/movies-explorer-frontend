@@ -64,21 +64,27 @@ function Movies() {
     setShownCardsNumber(shownCardsNumber + cardsNumber.next)
   };
 
+  function isShort(status, movies) {
+    return status ? movies.filter(movie => movie.duration <= 40) : movies
+  }
+
   //обработчик поиска фильмов
-  function handleSearchMovie(text) {
-    const searchResalt = beatfilmMmovies.filter(card => Object.values(card)
+  function handleSearchMovie(text, statusCheckbox) {
+    const searchResalt = isShort(statusCheckbox, beatfilmMmovies).filter(movie => Object.values(movie)
       .some(value => typeof value === "string" ? value.includes(text) : value === text))
     // console.log(searchResalt)
     setCardsResalt(searchResalt);
     localStorage.setItem('cardsResalt', JSON.stringify(searchResalt));
     localStorage.setItem('searchText', text);
+    localStorage.setItem('statusCheckbox', statusCheckbox);
   };
 
   return (
     <main className="main">
       <SearchForm
         onSearchMovie={handleSearchMovie}
-        text = {localStorage.getItem('searchText')}
+        text={localStorage.getItem('searchText')}
+        statusCheckbox={localStorage.getItem('statusCheckbox') === 'true' ? true : false}
       />
       {cardsResalt ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
