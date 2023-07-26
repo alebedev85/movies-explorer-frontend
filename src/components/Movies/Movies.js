@@ -71,11 +71,15 @@ function Movies() {
     // console.log(searchResalt)
     setCardsResalt(searchResalt);
     localStorage.setItem('cardsResalt', JSON.stringify(searchResalt));
+    localStorage.setItem('searchText', text);
   };
 
   return (
     <main className="main">
-      <SearchForm onSearchMovie={handleSearchMovie} />
+      <SearchForm
+        onSearchMovie={handleSearchMovie}
+        text = {localStorage.getItem('searchText')}
+      />
       {cardsResalt ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
         onClick={handleNextCards}

@@ -3,9 +3,9 @@ import './SearchForm.css';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ onSearchMovie }) {
+function SearchForm({ onSearchMovie, text }) {
 
-  const [searchText, setSearchText] = React.useState('');
+  const [searchText, setSearchText] = React.useState(text);
 
   function handleSearchText(e) {
     setSearchText(e.target.value);
