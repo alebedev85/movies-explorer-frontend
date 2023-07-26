@@ -13,14 +13,13 @@ function Movies() {
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
-  const [beatfilmMmovies, setBeatfilmMmovies] = useState([]); //стейт для всех карточек
+  const [beatfilmMmovies, setBeatfilmMmovies] = useState(JSON.parse(localStorage.getItem('beatfilmMmovies'))); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
-  const [cardsResalt, setCardsResalt] = useState([]); //стейт для окончательного списка карт
+  const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem('cardsResalt'))); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
-    setBeatfilmMmovies(JSON.parse(localStorage.getItem('beatfilmMmovies')));
-    if (!beatfilmMmovies.length) {
+    if (!beatfilmMmovies) {
       setIsPreloader(true);
       moviesApi.getCards()
         .then((res) => {
