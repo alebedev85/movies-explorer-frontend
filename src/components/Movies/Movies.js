@@ -64,6 +64,7 @@ function Movies() {
     setShownCardsNumber(shownCardsNumber + cardsNumber.next)
   };
 
+  //проверка на короткометражку
   function isShort(status, movies) {
     return status ? movies.filter(movie => movie.duration <= 40) : movies
   }
@@ -71,8 +72,7 @@ function Movies() {
   //обработчик поиска фильмов
   function handleSearchMovie(text, statusCheckbox) {
     const searchResalt = isShort(statusCheckbox, beatfilmMmovies).filter(movie => Object.values(movie)
-      .some(value => typeof value === "string" ? value.includes(text) : value === text))
-    // console.log(searchResalt)
+      .some(value => typeof value === "string" ? value.includes(text) : value === text));
     setCardsResalt(searchResalt);
     localStorage.setItem('cardsResalt', JSON.stringify(searchResalt));
     localStorage.setItem('searchText', text);

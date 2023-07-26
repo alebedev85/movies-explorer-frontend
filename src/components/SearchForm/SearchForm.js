@@ -8,6 +8,7 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
   const [searchText, setSearchText] = React.useState(text || '');
   const [checkboxStatus, setCheckboxStatus] = React.useState(statusCheckbox || false);
 
+  //контроллер текста
   function handleSearchText(e) {
     setSearchText(e.target.value);
     // setErrors({
@@ -16,12 +17,13 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
     // })
   }
 
+  //контроллер чекбокса
   const handleCheckbox = (e) => {
-    const { checked } = e.target;
-    setCheckboxStatus(checked);
+    setCheckboxStatus(e.target.checked);
   }
 
-  function handleAddPlaceSubmit(e) {
+  //хендлер сабмита формы поиска фильмов
+  function handleSearchMovieSubmit(e) {
     e.preventDefault();
     onSearchMovie(searchText, checkboxStatus);
   }
@@ -29,7 +31,7 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
   return (
     <section className='search'>
       <div className='search__container'>
-        <form className='search__form' name='searchForm' onSubmit={handleAddPlaceSubmit}>
+        <form className='search__form' name='searchForm' onSubmit={handleSearchMovieSubmit}>
           <div className='search__input-container'>
             <img
               src={searchIcon}
