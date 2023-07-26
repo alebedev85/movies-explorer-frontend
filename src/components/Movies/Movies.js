@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './Movies.css';
+
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -13,9 +15,9 @@ function Movies() {
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
-  const [beatfilmMmovies, setBeatfilmMmovies] = useState(JSON.parse(localStorage.getItem('beatfilmMmovies'))); //стейт для всех карточек
+  const [beatfilmMmovies, setBeatfilmMmovies] = useState(JSON.parse(localStorage.getItem('beatfilmMmovies')) || {}); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
-  const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem('cardsResalt'))); //стейт для окончательного списка карточек
+  const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem('cardsResalt')) || {}); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
@@ -80,19 +82,19 @@ function Movies() {
   };
 
   return (
-    <main className="main">
+    <main className="movies">
       <SearchForm
         onSearchMovie={handleSearchMovie}
         text={localStorage.getItem('searchText')}
         statusCheckbox={localStorage.getItem('statusCheckbox') === 'true' ? true : false}
       />
-      {cardsResalt ? <MoviesCardList
+      {cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
         onClick={handleNextCards}
         buttonVisibility={cardsResalt.length > shownCardsNumber}
       />
         :
-        <Preloader />}
+        isPreloader? <Preloader /> : <>gdfgdgdgdf</>}
     </main>
   );
 }
