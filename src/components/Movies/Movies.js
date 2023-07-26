@@ -14,7 +14,8 @@ function Movies() {
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
   const [beatfilmMmovies, setBeatfilmMmovies] = useState([]); //стейт для всех карточек
-  const [displayedCards, setDisplayedCards] = useState(cardsNumber.first); //стейт для показываемых карточек
+  const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
+  const [cardsResalt, setCardsResalt] = useState([]); //стейт для окончательного списка карт
 
   //проверка localStorage и получение карточек
   useEffect(() => {
@@ -53,12 +54,12 @@ function Movies() {
 
   //определение колличества показываемых карточек
   useEffect(() => {
-    setDisplayedCards(cardsNumber.first)
+    setShownCardsNumber(cardsNumber.first)
   }, [cardsNumber])
 
   //обработчик нажатия кнопки ещё
   function handleNextCards() {
-    setDisplayedCards(displayedCards + cardsNumber.next)
+    setShownCardsNumber(shownCardsNumber + cardsNumber.next)
   };
 
   //обработчик поиска фильмов
@@ -73,9 +74,9 @@ function Movies() {
     <main className="main">
       <SearchForm onSearchMovie={handleSearchMovie} />
       {beatfilmMmovies ? <MoviesCardList
-        cards={beatfilmMmovies.slice(0, displayedCards)}
+        cards={beatfilmMmovies.slice(0, shownCardsNumber)}
         onClick={handleNextCards}
-        buttonVisibility={beatfilmMmovies.length > displayedCards}
+        buttonVisibility={beatfilmMmovies.length > shownCardsNumber}
       />
         :
         <Preloader />}
