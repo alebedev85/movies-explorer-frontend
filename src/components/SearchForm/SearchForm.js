@@ -3,9 +3,10 @@ import './SearchForm.css';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ onSearchMovie, text }) {
+function SearchForm({ onSearchMovie, text, status }) {
 
-  const [searchText, setSearchText] = React.useState(text);
+  const [searchText, setSearchText] = React.useState(text || '');
+  const [checkboxStatus, setCheckboxStatus] = React.useState(status || false);
 
   function handleSearchText(e) {
     setSearchText(e.target.value);
@@ -15,9 +16,14 @@ function SearchForm({ onSearchMovie, text }) {
     // })
   }
 
+  const handleCheckbox = (e) => {
+    const { checked } = e.target;
+    setCheckboxStatus(checked);
+  }
+
   function handleAddPlaceSubmit(e) {
     e.preventDefault();
-    const checkboxStatus = document.getElementById('search__checkbox').checked
+    console.log(checkboxStatus);
     onSearchMovie(searchText, checkboxStatus);
   }
 
@@ -45,10 +51,13 @@ function SearchForm({ onSearchMovie, text }) {
               type='submit' />
           </div>
           <div className='search__checkbox-conteiner'>
-            <input type='checkbox'
+            <input
+              type='checkbox'
               className='search__checkbox'
               id='search__checkbox'
-              value='yes' />
+              value='yes'
+              onChange={handleCheckbox}
+              checked={checkboxStatus}/>
             <label
               className='search__label'
               htmlFor='search__checkbox'>
