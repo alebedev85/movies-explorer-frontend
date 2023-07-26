@@ -5,6 +5,7 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 
 import { moviesApi } from '../../utils/MoviesApi';
 import { useResize } from '../hooks/useResize';
@@ -94,7 +95,7 @@ function Movies() {
         buttonVisibility={cardsResalt.length > shownCardsNumber}
       />
         :
-        isPreloader? <Preloader /> : <>gdfgdgdgdf</>}
+        isPreloader? <Preloader /> : <NotFoundSearch />}
     </main>
   );
 }
