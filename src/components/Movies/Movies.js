@@ -29,6 +29,9 @@ function Movies() {
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
     };
+    if (!cardsResalt) {
+      setCardsResalt(beatfilmMmovies);
+    }
   }, [])
 
   //зависимость колличества отображаемых карточек от размера экрана
@@ -65,17 +68,18 @@ function Movies() {
   function handleSearchMovie(text) {
     const searchResalt = beatfilmMmovies.filter(card => Object.values(card)
       .some(value => typeof value === "string" ? value.includes(text) : value === text))
-    console.log(searchResalt)
-
+    // console.log(searchResalt)
+    setCardsResalt(searchResalt);
+    localStorage.setItem('cardsResalt', JSON.stringify(searchResalt));
   };
 
   return (
     <main className="main">
       <SearchForm onSearchMovie={handleSearchMovie} />
-      {beatfilmMmovies ? <MoviesCardList
-        cards={beatfilmMmovies.slice(0, shownCardsNumber)}
+      {cardsResalt ? <MoviesCardList
+        cards={cardsResalt.slice(0, shownCardsNumber)}
         onClick={handleNextCards}
-        buttonVisibility={beatfilmMmovies.length > shownCardsNumber}
+        buttonVisibility={cardsResalt.length > shownCardsNumber}
       />
         :
         <Preloader />}
