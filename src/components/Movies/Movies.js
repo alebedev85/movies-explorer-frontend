@@ -10,30 +10,32 @@ import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 import { moviesApi } from '../../utils/MoviesApi';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
+import {moviesLocalStorageNames} from '../../utils/constants';
 
 function Movies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
+  const {localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
-  const [beatfilmMmovies, setBeatfilmMmovies] = useState(JSON.parse(localStorage.getItem('beatfilmMmovies')) || {}); //стейт для всех карточек
+  const [beatfilmMmovies, setBeatfilmMmovies] = useState(JSON.parse(localStorage.getItem(localMovies)) || {}); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
-  const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem('cardsResalt')) || {}); //стейт для окончательного списка карточек
+  const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem(moviesResalt)) || {}); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
-    if (!beatfilmMmovies) {
+    if (!beatfilmMmovies.length) {
       setIsPreloader(true);
       moviesApi.getCards()
         .then((res) => {
           setBeatfilmMmovies(res);
-          localStorage.setItem('beatfilmMmovies', JSON.stringify(res));
+          localStorage.setItem(localMovies, JSON.stringify(res));
         })
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
     };
-    if (!cardsResalt) {
+    if (!cardsResalt.length) {
       setCardsResalt(beatfilmMmovies);
     }
   }, [])
@@ -74,17 +76,17 @@ function Movies() {
   function handleSearchMovie(text, statusCheckbox) {
     const searchResalt = searchMovies.search(text, statusCheckbox)
     setCardsResalt(searchResalt);
-    localStorage.setItem('cardsResalt', JSON.stringify(searchResalt));
-    localStorage.setItem('searchText', text);
-    localStorage.setItem('statusCheckbox', statusCheckbox);
+    localStorage.setItem(moviesResalt, JSON.stringify(searchResalt));
+    localStorage.setItem(moviesSearchText, text);
+    localStorage.setItem(moviesStatusCheckbox, statusCheckbox);
   };
 
   return (
     <main className="movies">
       <SearchForm
         onSearchMovie={handleSearchMovie}
-        text={localStorage.getItem('searchText')}
-        statusCheckbox={localStorage.getItem('statusCheckbox') === 'true' ? true : false}
+        text={localStorage.getItem(moviesSearchText)}
+        statusCheckbox={localStorage.getItem(moviesStatusCheckbox) === 'true' ? true : false}
       />
       {cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
