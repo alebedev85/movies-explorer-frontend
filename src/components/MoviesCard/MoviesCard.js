@@ -11,7 +11,7 @@ function MoviesCard({ movie, isSaved, onSaveClick }) {
   const card = {
     nameRU: movie.nameRU,
     duration: movie.duration,
-    image: `https://api.nomoreparties.co/${movie.image.url}`
+    image: movie.image.url? `https://api.nomoreparties.co/${movie.image.url}` : movie.image
   };
 
   // console.log(card)

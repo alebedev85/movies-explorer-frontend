@@ -10,7 +10,7 @@ function MoviesCardList({ cards, onClick, buttonVisibility, onSaveClick }) {
       <ul className='card-list__container'>
         {cards.map((movie, index) => (
           <MoviesCard
-          key={movie.id}
+          key={movie._id || movie.id}
           movie={movie}
           onSaveClick={onSaveClick}
           isSaved = {false}
