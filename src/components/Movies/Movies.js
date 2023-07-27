@@ -15,7 +15,7 @@ import {moviesLocalStorageNames} from '../../utils/constants';
 function Movies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
-  const {localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames
+  const {localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames //имена записей в localStorage
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
