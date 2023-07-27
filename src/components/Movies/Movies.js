@@ -9,6 +9,7 @@ import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 
 import { moviesApi } from '../../utils/MoviesApi';
 import { useResize } from '../hooks/useResize';
+import Search from '../../utils/Search';
 
 function Movies() {
 
@@ -67,15 +68,11 @@ function Movies() {
     setShownCardsNumber(shownCardsNumber + cardsNumber.next)
   };
 
-  //проверка на короткометражку
-  function isShort(status, movies) {
-    return status ? movies.filter(movie => movie.duration <= 40) : movies
-  }
+  const searchMovies = new Search(beatfilmMmovies)
 
   //обработчик поиска фильмов
   function handleSearchMovie(text, statusCheckbox) {
-    const searchResalt = isShort(statusCheckbox, beatfilmMmovies).filter(movie => Object.values(movie)
-      .some(value => typeof value === "string" ? value.toLowerCase().includes(text.toLowerCase()) : value === text));
+    const searchResalt = searchMovies.search(text, statusCheckbox)
     setCardsResalt(searchResalt);
     localStorage.setItem('cardsResalt', JSON.stringify(searchResalt));
     localStorage.setItem('searchText', text);
