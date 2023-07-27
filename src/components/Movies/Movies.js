@@ -36,10 +36,13 @@ function Movies() {
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
     };
+  }, [])
+
+  useEffect(() => {
     if (!cardsResalt.length) {
       setCardsResalt(beatfilmMovies);
     }
-  }, [])
+  }, [beatfilmMovies])
 
   //зависимость колличества отображаемых карточек от размера экрана
   useEffect(() => {
