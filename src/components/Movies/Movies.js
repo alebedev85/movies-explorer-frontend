@@ -8,6 +8,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 
 import { moviesApi } from '../../utils/MoviesApi';
+import * as MainApi  from '../../utils/MainApi';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
 import {moviesLocalStorageNames} from '../../utils/constants';
@@ -81,6 +82,12 @@ function Movies() {
     localStorage.setItem(moviesStatusCheckbox, statusCheckbox);
   };
 
+  function handlerSaveMovie(movie) {
+    MainApi.saveMovie(movie)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+  }
+
   return (
     <main className="movies">
       <SearchForm
@@ -91,7 +98,9 @@ function Movies() {
       {cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
         onClick={handleNextCards}
+        onSaveClick={handlerSaveMovie}
         buttonVisibility={cardsResalt.length > shownCardsNumber}
+
       />
         :
         isPreloader? <Preloader /> : <NotFoundSearch />}

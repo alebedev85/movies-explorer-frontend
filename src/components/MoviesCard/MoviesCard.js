@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 
-function MoviesCard({ card, isSaved }) {
+function MoviesCard({ card, isSaved, onSaveClick }) {
 
   const location = useLocation();
 
@@ -21,7 +21,7 @@ function MoviesCard({ card, isSaved }) {
                 button
                 ${isSaved ? 'card__button_save-active' : 'card__button_save'}`
           }
-            type='button' />
+            type='button' onClick={()=>{console.log('clock')}}/>
         }
         {location.pathname === "/saved-movies" &&
           <button className='card__button button card__button_delete'

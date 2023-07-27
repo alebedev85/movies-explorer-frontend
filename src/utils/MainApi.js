@@ -58,3 +58,40 @@ export const register = (email, password) => {
 export const getUserData = (token) => {
   return makeRequest('users/me', 'GET', null, token)
 }
+
+/**
+ * Сохранить фильм
+ * @param {json} item - данные нового фильма.
+ * @returns json со новым списком фильмов.
+ */
+export const saveMovie = (item) => {
+  const movies = {
+      country: item.country,
+      director: item.director,
+      duration: item.duration,
+      year: item.year,
+      description: item.description,
+      image: `https://api.nomoreparties.co/${item.image.url}`,
+      trailerLink: item.trailerLink,
+      thumbnail: `https://api.nomoreparties.co/${item.image.formats.thumbnail.url}`,
+      movieId: item.id,
+      nameRU: item.nameRU,
+      nameEN: item.nameEN
+    }
+
+  return this._request(`${this._url}/movies`, {
+    method: 'POST',
+    headers: this._getHeaders(),
+    body: JSON.stringify(movies)
+  });
+}
+
+/**
+   * Получить список всех сохраненных фильмов
+   * @returns json сохраненных фильмов
+   */
+export const getCards = () => {
+  return this._request(`${this._url}/cards`, {
+    headers: this._getHeaders()
+  });
+}

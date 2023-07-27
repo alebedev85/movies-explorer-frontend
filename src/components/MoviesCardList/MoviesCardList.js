@@ -3,21 +3,7 @@ import './MoviesCardList.css';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ cards, onClick, buttonVisibility }) {
-  // const testCard = {
-  //   country: "Россия",
-  //   director: "AAAAA",
-  //   duration: 107,
-  //   year: "2001",
-  //   description: "Кино про дизайн",
-  //   image: '',
-  //   trailerLink: "https://www.youtube.com/watch?v=5ovzC93EneA",
-  //   thumbnail: '',
-  //   movieId: 111111,
-  //   nameRU: "33 слова о дизайне",
-  //   nameEN: "33 words about design"
-
-  // }
+function MoviesCardList({ cards, onClick, buttonVisibility, onSaveClick }) {
 
   return (
     <section className="card-list" aria-label="Картачки c фильмами">
@@ -26,7 +12,8 @@ function MoviesCardList({ cards, onClick, buttonVisibility }) {
           <MoviesCard
           key={card.id}
           card={card}
-          isSaved = {index % 2 === 0}
+          onSaveClick={onSaveClick}
+          isSaved = {false}
           />
         ))}
       </ul>
