@@ -20,24 +20,24 @@ function Movies() {
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
-  const [beatfilmMmovies, setBeatfilmMmovies] = useState(JSON.parse(localStorage.getItem(localMovies)) || {}); //стейт для всех карточек
+  const [beatfilmMovies, setBeatfilmMovies] = useState(JSON.parse(localStorage.getItem(localMovies)) || {}); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
   const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem(moviesResalt)) || {}); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
-    if (!beatfilmMmovies.length) {
+    if (!beatfilmMovies.length) {
       setIsPreloader(true);
       moviesApi.getCards()
         .then((res) => {
-          setBeatfilmMmovies(res);
+          setBeatfilmMovies(res);
           localStorage.setItem(localMovies, JSON.stringify(res));
         })
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
     };
     if (!cardsResalt.length) {
-      setCardsResalt(beatfilmMmovies);
+      setCardsResalt(beatfilmMovies);
     }
   }, [])
 
@@ -71,7 +71,7 @@ function Movies() {
     setShownCardsNumber(shownCardsNumber + cardsNumber.next)
   };
 
-  const searchMovies = new Search(beatfilmMmovies)
+  const searchMovies = new Search(beatfilmMovies)
 
   //обработчик поиска фильмов
   function handleSearchMovie(text, statusCheckbox) {
@@ -84,6 +84,7 @@ function Movies() {
 
   function handlerSaveMovie(movie) {
     MainApi.saveMovie(movie)
+    // .then((res) => console.log(res))
     .catch((err) => console.log(err))
   }
 

@@ -24,6 +24,7 @@ const makeRequest = (url, method, body, token) => {
   return fetch(`${BASE_URL}/${url}`, options)
     .then((res) => {
       if (!res.ok) {
+        console.log(res)
         throw new Error('Error occurred!')
       }
       return res.json()
@@ -66,6 +67,7 @@ export const getUserData = (token) => {
  */
 export const saveMovie = (item) => {
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
+
   const movie = {
     country: item.country,
     director: item.director,
@@ -79,6 +81,7 @@ export const saveMovie = (item) => {
     nameRU: item.nameRU,
     nameEN: item.nameEN
   }
+
   return makeRequest('movies', 'POST', movie, token);
 
   // return this._request(`${this._url}/movies`, {

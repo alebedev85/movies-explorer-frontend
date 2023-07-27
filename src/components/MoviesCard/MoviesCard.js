@@ -14,10 +14,10 @@ function MoviesCard({ movie, isSaved, onSaveClick }) {
     image: `https://api.nomoreparties.co/${movie.image.url}`
   };
 
-  console.log(card)
+  // console.log(card)
 
   function handlerSaveButton() {
-    onSaveClick(card)
+    onSaveClick(movie)
   }
 
   return (
