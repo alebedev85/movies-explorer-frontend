@@ -84,7 +84,6 @@ function Movies() {
 
   function handlerSaveMovie(movie) {
     MainApi.saveMovie(movie)
-    .then((res) => console.log(res))
     .catch((err) => console.log(err))
   }
 

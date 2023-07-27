@@ -65,25 +65,27 @@ export const getUserData = (token) => {
  * @returns json со новым списком фильмов.
  */
 export const saveMovie = (item) => {
-  const movies = {
-      country: item.country,
-      director: item.director,
-      duration: item.duration,
-      year: item.year,
-      description: item.description,
-      image: `https://api.nomoreparties.co/${item.image.url}`,
-      trailerLink: item.trailerLink,
-      thumbnail: `https://api.nomoreparties.co/${item.image.formats.thumbnail.url}`,
-      movieId: item.id,
-      nameRU: item.nameRU,
-      nameEN: item.nameEN
-    }
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
+  const movie = {
+    country: item.country,
+    director: item.director,
+    duration: item.duration,
+    year: item.year,
+    description: item.description,
+    image: `https://api.nomoreparties.co/${item.image.url}`,
+    trailerLink: item.trailerLink,
+    thumbnail: `https://api.nomoreparties.co/${item.image.formats.thumbnail.url}`,
+    movieId: item.id,
+    nameRU: item.nameRU,
+    nameEN: item.nameEN
+  }
+  return makeRequest('movies', 'POST', movie, token);
 
-  return this._request(`${this._url}/movies`, {
-    method: 'POST',
-    headers: this._getHeaders(),
-    body: JSON.stringify(movies)
-  });
+  // return this._request(`${this._url}/movies`, {
+  //   method: 'POST',
+  //   headers: this._getHeaders(),
+  //   body: JSON.stringify(movies)
+  // });
 }
 
 /**
@@ -91,7 +93,11 @@ export const saveMovie = (item) => {
    * @returns json сохраненных фильмов
    */
 export const getCards = () => {
-  return this._request(`${this._url}/cards`, {
-    headers: this._getHeaders()
-  });
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
+
+  return makeRequest('movies', 'GET', null, token);
+  // return this._request(`${this._url}/cards`, {
+  //   headers: this._getHeaders()
+  // });
 }
+

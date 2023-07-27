@@ -2,9 +2,23 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 
-function MoviesCard({ card, isSaved, onSaveClick }) {
+function MoviesCard({ movie, isSaved, onSaveClick }) {
+
+  // console.log(movie)
 
   const location = useLocation();
+
+  const card = {
+    nameRU: movie.nameRU,
+    duration: movie.duration,
+    image: `https://api.nomoreparties.co/${movie.image.url}`
+  };
+
+  console.log(card)
+
+  function handlerSaveButton() {
+    onSaveClick(card)
+  }
 
   return (
     <li className="card" >
@@ -21,7 +35,7 @@ function MoviesCard({ card, isSaved, onSaveClick }) {
                 button
                 ${isSaved ? 'card__button_save-active' : 'card__button_save'}`
           }
-            type='button' onClick={()=>{console.log('clock')}}/>
+            type='button' onClick={handlerSaveButton} />
         }
         {location.pathname === "/saved-movies" &&
           <button className='card__button button card__button_delete'
@@ -29,7 +43,7 @@ function MoviesCard({ card, isSaved, onSaveClick }) {
         }
       </div>
       <a href={card.trailerLink} className='card__link link' target="_blank" rel="noreferrer">
-        <img className='card__poster' src={`https://api.nomoreparties.co/${card.image.url}`} alt={`Постер ${card.nameRU}`} />
+        <img className='card__poster' src={card.image} alt={`Постер ${card.nameRU}`} />
       </a>
 
     </li>
