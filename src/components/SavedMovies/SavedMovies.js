@@ -5,7 +5,6 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 
-import { moviesApi } from '../../utils/MoviesApi';
 import * as MainApi from '../../utils/MainApi';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
@@ -80,6 +79,17 @@ function Movies() {
     localStorage.setItem(moviesStatusCheckbox, statusCheckbox);
   };
 
+  //обработтчик удаления сохраненных фильмов
+  function handlerDeleteMovie(movie) {
+    MainApi.deleteCard(movie._id)
+      .then(() => {
+        const filtedList = savedMovies.filter((elm) => elm._id !== movie._id)
+        setSavedMovies(filtedList);
+        setCardsResalt(filtedList);
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <main className="movies">
       <SearchForm
@@ -89,6 +99,7 @@ function Movies() {
       />
       {cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
+        onDeleteClick={handlerDeleteMovie}
         onClick={handleNextCards}
         buttonVisibility={cardsResalt.length > shownCardsNumber}
       />

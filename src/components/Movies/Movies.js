@@ -92,6 +92,7 @@ function Movies() {
     localStorage.setItem(moviesStatusCheckbox, statusCheckbox);
   };
 
+  //обработтчик сохранения фильмов
   function handlerSaveMovie(movie) {
     MainApi.saveMovie(movie)
       .then((res) => {
@@ -100,18 +101,19 @@ function Movies() {
       .catch((err) => console.log(err))
   }
 
+  //обработтчик проверки сохраненных фильмов
   function handlerCheckSaveMovie(movie) {
     return savedMovies.some((elm) => elm.movieId === movie.id)
   }
 
+  //обработтчик удаления сохраненных фильмов
   function handlerDeleteMovie(movie) {
-    const id = savedMovies.find((elm) => elm.movieId === movie.id)._id
-    // console.log(id)
+    const id = savedMovies.find((elm) => elm.movieId === movie.id)._id;
     MainApi.deleteCard(id)
-      .then((res) => {
+      .then(() => {
         setSavedMovies(savedMovies.filter((elm) => elm._id !== id))
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
   return (

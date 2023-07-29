@@ -43,7 +43,7 @@ function MoviesCard({ movie, isSaved, onSaveClick, onDeleteClick }) {
         }
         {location.pathname === "/saved-movies" &&
           <button className='card__button button card__button_delete'
-            type='button' />
+            type='button' onClick={handlerDeleteButton}/>
         }
       </div>
       <a href={card.trailerLink} className='card__link link' target="_blank" rel="noreferrer">
