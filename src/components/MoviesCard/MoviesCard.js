@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 
-function MoviesCard({ movie, isSaved, onSaveClick }) {
+function MoviesCard({ movie, isSaved, onSaveClick, onDeleteClick }) {
 
   // console.log(movie)
 
@@ -11,13 +11,17 @@ function MoviesCard({ movie, isSaved, onSaveClick }) {
   const card = {
     nameRU: movie.nameRU,
     duration: movie.duration,
-    image: movie.image.url? `https://api.nomoreparties.co/${movie.image.url}` : movie.image
+    image: movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image
   };
 
   // console.log(card)
 
   function handlerSaveButton() {
     onSaveClick(movie)
+  }
+
+  function handlerDeleteButton() {
+    onDeleteClick(movie)
   }
 
   return (
@@ -30,11 +34,11 @@ function MoviesCard({ movie, isSaved, onSaveClick }) {
           {Math.floor(card.duration / 60)}ч {card.duration - 60 * Math.floor(card.duration / 60)}м
         </p>
         {location.pathname === "/movies" &&
-          <button className={
-            `card__button
-                button
-                ${isSaved(movie) ? 'card__button_save-active' : 'card__button_save'}`
-          }
+          isSaved(movie) ?
+          <button className={'card__button button card__button_save card__button_save-active'}
+            type='button' onClick={handlerDeleteButton} />
+          :
+          <button className={'card__button button card__button_save'}
             type='button' onClick={handlerSaveButton} />
         }
         {location.pathname === "/saved-movies" &&

@@ -101,7 +101,17 @@ function Movies() {
   }
 
   function handlerCheckSaveMovie(movie) {
-    return savedMovies.some((elm) =>  elm.movieId === movie.id)
+    return savedMovies.some((elm) => elm.movieId === movie.id)
+  }
+
+  function handlerDeleteMovie(movie) {
+    const id = savedMovies.find((elm) => elm.movieId === movie.id)._id
+    // console.log(id)
+    MainApi.deleteCard(id)
+      .then((res) => {
+        setSavedMovies(savedMovies.filter((elm) => elm._id !== id))
+      })
+      .catch((err) => console.log(err))
   }
 
   return (
@@ -114,10 +124,10 @@ function Movies() {
       {cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
         onClick={handleNextCards}
-        onSaveClick={handlerSaveMovie}
-        buttonVisibility={cardsResalt.length > shownCardsNumber}
         checkSaveMivie={handlerCheckSaveMovie}
-
+        onSaveClick={handlerSaveMovie}
+        onDeleteClick={handlerDeleteMovie}
+        buttonVisibility={cardsResalt.length > shownCardsNumber}
       />
         :
         isPreloader ? <Preloader /> : <NotFoundSearch />}
