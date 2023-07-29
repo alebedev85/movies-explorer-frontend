@@ -46,7 +46,7 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
               name='searchInput'
               value={searchText}
               onChange={handleSearchText}
-              required />
+              />
             <button
               className='search__button button'
               type='submit' />
