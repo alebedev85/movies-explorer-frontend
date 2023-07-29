@@ -35,7 +35,6 @@ function Movies() {
 
   useEffect(() => {
     if (!cardsResalt.length) {
-      console.log(savedMovies)
       setCardsResalt(savedMovies);
     }
   }, [savedMovies])

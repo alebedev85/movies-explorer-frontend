@@ -8,24 +8,31 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 
 import { moviesApi } from '../../utils/MoviesApi';
-import * as MainApi  from '../../utils/MainApi';
+import * as MainApi from '../../utils/MainApi';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
-import {moviesLocalStorageNames} from '../../utils/constants';
+import { moviesLocalStorageNames } from '../../utils/constants';
 
 function Movies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
-  const {localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames //имена записей в localStorage
+  const { localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames //имена записей в localStorage
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
   const [beatfilmMovies, setBeatfilmMovies] = useState(JSON.parse(localStorage.getItem(localMovies)) || {}); //стейт для всех карточек
+  const [savedMovies, setSavedMovies] = useState([]); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
   const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem(moviesResalt)) || {}); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
+    MainApi.getCards()
+      .then((res) => {
+        setSavedMovies(res);
+      })
+      .catch((err) => console.log(err));
+
     if (!beatfilmMovies.length) {
       setIsPreloader(true);
       moviesApi.getCards()
@@ -87,8 +94,14 @@ function Movies() {
 
   function handlerSaveMovie(movie) {
     MainApi.saveMovie(movie)
-    // .then((res) => console.log(res))
-    .catch((err) => console.log(err))
+      .then((res) => {
+        setSavedMovies([res, ...savedMovies])
+      })
+      .catch((err) => console.log(err))
+  }
+
+  function handlerCheckSaveMovie(movie) {
+    return savedMovies.some((elm) =>  elm.movieId === movie.id)
   }
 
   return (
@@ -103,10 +116,11 @@ function Movies() {
         onClick={handleNextCards}
         onSaveClick={handlerSaveMovie}
         buttonVisibility={cardsResalt.length > shownCardsNumber}
+        checkSaveMivie={handlerCheckSaveMovie}
 
       />
         :
-        isPreloader? <Preloader /> : <NotFoundSearch />}
+        isPreloader ? <Preloader /> : <NotFoundSearch />}
     </main>
   );
 }

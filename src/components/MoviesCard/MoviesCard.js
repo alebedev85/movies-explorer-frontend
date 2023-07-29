@@ -33,7 +33,7 @@ function MoviesCard({ movie, isSaved, onSaveClick }) {
           <button className={
             `card__button
                 button
-                ${isSaved ? 'card__button_save-active' : 'card__button_save'}`
+                ${isSaved(movie) ? 'card__button_save-active' : 'card__button_save'}`
           }
             type='button' onClick={handlerSaveButton} />
         }

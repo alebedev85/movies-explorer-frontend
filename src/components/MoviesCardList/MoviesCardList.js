@@ -3,7 +3,7 @@ import './MoviesCardList.css';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({ cards, onClick, buttonVisibility, onSaveClick }) {
+function MoviesCardList({ cards, onClick, buttonVisibility, onSaveClick, checkSaveMivie }) {
 
   return (
     <section className="card-list" aria-label="Картачки c фильмами">
@@ -13,7 +13,7 @@ function MoviesCardList({ cards, onClick, buttonVisibility, onSaveClick }) {
           key={movie._id || movie.id}
           movie={movie}
           onSaveClick={onSaveClick}
-          isSaved = {false}
+          isSaved = {checkSaveMivie}
           />
         ))}
       </ul>
