@@ -43,12 +43,13 @@ export const authorize = (email, password) => {
 
 /**
  * Registration request
+ * @param {string} name
  * @param {string} email
  * @param {string} password
  * @returns user email and id in json format
  */
-export const register = (email, password) => {
-  return makeRequest('signup', 'POST', { email, password })
+export const register = (name, email, password) => {
+  return makeRequest('signup', 'POST', { name, email, password })
 }
 
 /**
@@ -66,7 +67,6 @@ export const getUserData = (token) => {
  * @returns json со новым списком фильмов.
  */
 export const saveMovie = (item) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
 
   const movie = {
     country: item.country,
@@ -96,7 +96,7 @@ export const saveMovie = (item) => {
    * @returns json сохраненных фильмов
    */
 export const getCards = () => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
+
 
   return makeRequest('movies', 'GET', null, token);
   // return this._request(`${this._url}/cards`, {
@@ -105,7 +105,7 @@ export const getCards = () => {
 }
 
 export const deleteCard = (id) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
+
   return makeRequest(`movies/${id}`, 'DELETE', null, token);
 
   // return this._request(`${this._url}/cards/${id}`, {
@@ -113,4 +113,6 @@ export const deleteCard = (id) => {
   //   headers: this._getHeaders()
   // });
 }
+
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
 
