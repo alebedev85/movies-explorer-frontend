@@ -96,7 +96,7 @@ function App() {
   useEffect(() => {
 
     if (token) {
-      api.getUserData(token)
+      api.getCurrentUser()
         .then((res) => {
           const data = res;
           setUserData({ email: data.email, _id: data._id });

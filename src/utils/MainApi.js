@@ -7,8 +7,8 @@ class Api {
   }
 
   /**
-   * Assembling header for fetch request
-   * @returns header object
+   * Создаем заголовки для запроса
+   * @returns объект с заголовками
    */
   _getHeaders() {
     return {
@@ -18,7 +18,7 @@ class Api {
   }
 
   /**
-   * Get json form fetch
+   * Распарсинг ответа сервера
    * @returns json
    */
   _getJson(res) {
@@ -29,9 +29,9 @@ class Api {
 
 
   /**
-   * Fetch request
-   * @param {string} url - url for request.
-   * @param {object} options - object with method, headers, body for request.
+   * Fetch запрос
+   * @param {string} url - url для запроса.
+   * @param {object} options - объект с  method, headers, body.
    * @returns json
    */
   _request(url, options) {
@@ -40,7 +40,7 @@ class Api {
 
 
   /**
-   * Aototrization request
+   * Запрос авторизации
    * @param {string} email
    * @param {string} password
    * @returns token
@@ -57,12 +57,12 @@ class Api {
   }
 
   /**
- * Registration request
- * @param {string} name
- * @param {string} email
- * @param {string} password
- * @returns user email and id in json format
- */
+   * Запрос регистрации
+   * @param {string} name
+   * @param {string} email
+   * @param {string} password
+   * @returns user email and id in json format
+  */
   register(name, email, password) {
     // return makeRequest('signup', 'POST', { name, email, password });
     return this._request(`${this._url}/signup`, {
@@ -77,8 +77,8 @@ class Api {
   }
 
   /**
-   * Get user info
-   * @returns json with user info
+   * Получение информации о текущем пользователе
+   * @returns json с данными текущего пользователя
    */
   getCurrentUser() {
     return this._request(`${this._url}/users/me`, {
@@ -86,20 +86,21 @@ class Api {
     });
   }
 
-  /**
- * Get user info
- * @param {token} email
- * @returns user email and id in json format
- */
-  getUserData() {
-    return this._request(`${this._url}/users/me`, {
-      headers: this._getHeaders()
-    });
-  }
+  // /**
+  //  * Получение информации о текущем пользователе
+  //  * @returns json с данными текущего пользователя
+  //  */
+  // getUserData() {
+  //   return this._request(`${this._url}/users/me`, {
+  //     headers: this._getHeaders()
+  //   });
+  // }
 
   /**
-   * Set user info
-   * @returns json with user info
+   * Редактирование профиля
+   * @param {string} новый name
+   * @param {string} новый email
+   * @returns json с новой информация пользователя
    */
   setUserInfo(name, about) {
     return this._request(`${this._url}/users/me`, {
