@@ -27,10 +27,6 @@ function App() {
   const [userData, setUserData] = React.useState({ email: '', _id: '' });//State for user regiztration data
   const [isLoading, setIsLoading] = React.useState(false); //State for standart button text
 
-  // useEffect(() => {
-  //   location.pathname === '/' ? setLoggedIn(false) : setLoggedIn(true)
-  // }, [])
-
   /**
    * Handler to user registration
    * @param {object} - email and password.
@@ -61,9 +57,8 @@ function App() {
     setIsLoading(true);
     MainApi.authorize(email, password)
       .then(({ token }) => {
-        console.log(token)
-        // localStorage.setItem('jwt', token);
-        // setToken(token);
+        localStorage.setItem('jwt', token);
+        setToken(token);
       })
       .catch(err => {
         console.log(err)
@@ -71,6 +66,50 @@ function App() {
       })
       .finally(() => setIsLoading(false))
   }
+
+  /**
+   * logOut function
+   */
+  function logOut() {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    setUserData({ email: '', _id: '' });
+    MainApi.setToken('');
+    navigate('/register', { replace: true });
+  }
+
+  React.useEffect(() => {
+    // Check token
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      setToken(jwt);
+      MainApi.setToken(jwt);
+      //Get user info
+      MainApi.getUserData()
+        .then((res) => {
+          setCurrentUser(res); //Set currentUser
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (token) {
+      MainApi.getUserData(token)
+        .then((res) => {
+          const data = res;
+          setUserData({ email: data.email, _id: data._id });
+          setCurrentUser(res)
+          setLoggedIn(true);
+          navigate('/', { replace: true });
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }, [token]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

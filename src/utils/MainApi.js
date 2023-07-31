@@ -1,5 +1,7 @@
 import { BASE_URL } from './constants';
 
+let token = ''
+
 /**
    * Common request funstion
    * @param {string} url - end point of requets.
@@ -114,5 +116,13 @@ export const deleteCard = (id) => {
   // });
 }
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyMmFhYzA1MjcyODk5Mjk3ZWI4N2EiLCJpYXQiOjE2OTA0NDY1MTksImV4cCI6MTY5MTA1MTMxOX0.zRr7LvP5U5B0Zt8JW6Wlb03xR3vmhTPDNQ0zhx29ok0'
+/**
+     * Set token in api headers
+     * @param {string} token - new token.
+     */
+export const setToken = (newToken) => {
+  token = `Bearer ${newToken}`;
+}
+
+
 
