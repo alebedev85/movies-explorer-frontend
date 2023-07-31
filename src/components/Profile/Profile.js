@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 
 import './Profile.css';
 
-// import useForm from '../hooks/useForm'
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
+import useForm from '../hooks/useForm'
 
-function Profile() {
+function Profile({logOut}) {
 
+  const { currentUser } = React.useContext(CurrentUserContext);
   const [initChange, setInitChange] = useState(false);
+
+  const { form, handleChange, errors } = useForm({
+    name: currentUser.name,
+    email: currentUser.email,
+  })
 
   function handleClickEditButton(event) {
     event.preventDefault();
@@ -25,7 +32,7 @@ function Profile() {
         <form className='profile__form' name='edit' onSubmit={handleSubmit}>
           <fieldset className='profile__fieldset'>
             <div className='profile__input-container'>
-            <label className='profile__input-label'>Имя</label>
+              <label className='profile__input-label'>Имя</label>
               <input
                 id='name-input'
                 className='profile__input profile__input_passward'
@@ -34,13 +41,12 @@ function Profile() {
                 name='name'
                 minLength='2'
                 maxLength='200'
-                value='Виталий'
-                // value={form.name}
-                // onChange={handleChange}
+                value={form.name}
+                onChange={handleChange}
                 required />
             </div>
             <div className='profile__input-container'>
-            <label className='profile__input-label'>E-mail</label>
+              <label className='profile__input-label'>E-mail</label>
               <input
                 id='email-input'
                 className='profile__input profile__input_email'
@@ -49,9 +55,8 @@ function Profile() {
                 name='email'
                 minLength='2'
                 maxLength='40'
-                value='pochta@yandex.ru'
-                // value={form.email}
-                // onChange={handleChange}
+                value={form.email}
+                onChange={handleChange}
                 required />
             </div>
             <div className='profile__buttons'>

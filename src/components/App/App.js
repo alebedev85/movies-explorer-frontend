@@ -147,7 +147,7 @@ function App() {
           />
           <Route path="/profile"
             element={
-              <Profile />
+              <Profile logOut={logOut}/>
             }
           />
           <Route path="/*"
