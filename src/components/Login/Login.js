@@ -56,7 +56,7 @@ function Login({ onLogin, buttonText }) {
             </div>
           </fieldset>
           <span className='auth__error auth__error_login'>Что-то пошло не так...</span>
-          <button className='auth__button button' type='submit'>Войти</button>
+          <button className='auth__button button' type='submit'>{buttonText}</button>
           <div className='auth__question-container'>
             <p className='auth__question'>Ещё не зарегистрированы?</p>
             <Link className='auth__question auth__question_link link' to='/register'>Регистрация</Link>

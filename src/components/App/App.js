@@ -13,7 +13,7 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound'
 
 import * as MainApi from '../../utils/MainApi';
-import {CurrentUserContext} from '../contexts/CurrentUserContext.js'
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
 function App() {
 
@@ -53,6 +53,25 @@ function App() {
       });
   }
 
+  /**
+  * Handler to user authorizetion
+  * @param {object} - email and password.
+  */
+  function handlerLogIn({ email, password }) {
+    setIsLoading(true);
+    MainApi.authorize(email, password)
+      .then(({ token }) => {
+        console.log(token)
+        // localStorage.setItem('jwt', token);
+        // setToken(token);
+      })
+      .catch(err => {
+        console.log(err)
+        setSucces(false);
+      })
+      .finally(() => setIsLoading(false))
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -67,10 +86,10 @@ function App() {
                 buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />} />
           <Route path="/login"
             element={
-              <Login />
-            }
-          />
-          {/* <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} /> */}
+              <Login
+                onLogin={handlerLogIn}
+                buttonText={isLoading ? 'Войти...' : 'Войти'} />} />
+          <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
           <Route path="/"
             element={
               <Main
