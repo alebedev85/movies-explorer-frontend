@@ -6,33 +6,30 @@ import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
-
 import { moviesApi } from '../../utils/MoviesApi';
-import * as MainApi from '../../utils/MainApi';
+import { api } from '../../utils/MainApi.js';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
 import { moviesLocalStorageNames } from '../../utils/constants';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
+
 
 function Movies() {
+
+  const { token } = React.useContext(CurrentUserContext);
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
   const { localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames //имена записей в localStorage
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
-  const [beatfilmMovies, setBeatfilmMovies] = useState(JSON.parse(localStorage.getItem(localMovies)) || {}); //стейт для всех карточек
+  const [beatfilmMovies, setBeatfilmMovies] = useState(JSON.parse(localStorage.getItem(localMovies)) || []); //стейт для всех карточек
   const [savedMovies, setSavedMovies] = useState([]); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
   const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem(moviesResalt)) || {}); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
-    MainApi.getCards()
-      .then((res) => {
-        setSavedMovies(res);
-      })
-      .catch((err) => console.log(err));
-
     if (!beatfilmMovies.length) {
       setIsPreloader(true);
       moviesApi.getCards()
@@ -44,6 +41,16 @@ function Movies() {
         .finally(setIsPreloader(false));
     };
   }, [])
+
+  useEffect(() => {
+    if (token) {
+      api.getCards()
+        .then((res) => {
+          setSavedMovies(res);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [token])
 
   useEffect(() => {
     if (!cardsResalt.length) {
@@ -94,7 +101,7 @@ function Movies() {
 
   //обработтчик сохранения фильмов
   function handlerSaveMovie(movie) {
-    MainApi.saveMovie(movie)
+    api.saveMovie(movie)
       .then((res) => {
         setSavedMovies([res, ...savedMovies])
       })
@@ -109,7 +116,7 @@ function Movies() {
   //обработтчик удаления сохраненных фильмов
   function handlerDeleteMovie(movie) {
     const id = savedMovies.find((elm) => elm.movieId === movie.id)._id;
-    MainApi.deleteCard(id)
+    api.deleteCard(id)
       .then(() => {
         setSavedMovies(savedMovies.filter((elm) => elm._id !== id))
       })

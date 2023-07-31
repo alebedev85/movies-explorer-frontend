@@ -5,7 +5,7 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import NotFoundSearch from '../NotFoundSearch/NotFoundSearch'
 
-import * as MainApi from '../../utils/MainApi';
+import { api } from '../../utils/MainApi.js';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
 import { savedMoviesLocalStorageNames } from '../../utils/constants';
@@ -24,7 +24,7 @@ function Movies() {
   //проверка localStorage и получение карточек
   useEffect(() => {
     setIsPreloader(true);
-    MainApi.getCards()
+    api.getCards()
       .then((res) => {
         setSavedMovies(res);
       })
@@ -81,7 +81,7 @@ function Movies() {
 
   //обработтчик удаления сохраненных фильмов
   function handlerDeleteMovie(movie) {
-    MainApi.deleteCard(movie._id)
+    api.deleteCard(movie._id)
       .then(() => {
         const filtedList = savedMovies.filter((elm) => elm._id !== movie._id)
         setSavedMovies(filtedList);

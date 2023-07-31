@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute.js";
 
 import Header from '../Header/Header';
@@ -11,13 +11,11 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound'
-
-import * as MainApi from '../../utils/MainApi';
+import { api } from '../../utils/MainApi.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
 function App() {
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = React.useState({ name: '', about: '' }); //State for current user info
@@ -33,7 +31,7 @@ function App() {
    */
   function handlerRegUser({ name, email, password }) {
     setIsLoading(true);
-    MainApi.register(name, email, password)
+    api.register(name, email, password)
       .then((data) => {
         console.log(data)
         setUserData({ name: data.email, email: data.email, _id: data._id });
@@ -55,7 +53,7 @@ function App() {
   */
   function handlerLogIn({ email, password }) {
     setIsLoading(true);
-    MainApi.authorize(email, password)
+    api.authorize(email, password)
       .then(({ token }) => {
         localStorage.setItem('jwt', token);
         setToken(token);
@@ -74,18 +72,18 @@ function App() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
     setUserData({ email: '', _id: '' });
-    MainApi.setToken('');
+    api.setToken('');
     navigate('/register', { replace: true });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Check token
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       setToken(jwt);
-      MainApi.setToken(jwt);
+      api.setToken(jwt);
       //Get user info
-      MainApi.getUserData()
+      api.getCurrentUser()
         .then((res) => {
           setCurrentUser(res); //Set currentUser
         })
@@ -95,15 +93,16 @@ function App() {
     };
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
+
     if (token) {
-      MainApi.getUserData(token)
+      api.getUserData(token)
         .then((res) => {
           const data = res;
           setUserData({ email: data.email, _id: data._id });
           setCurrentUser(res)
           setLoggedIn(true);
-          navigate('/', { replace: true });
+          navigate('/movies', { replace: true });
         })
         .catch(err => {
           console.log(err)
@@ -112,7 +111,7 @@ function App() {
   }, [token]);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser, token }}>
       <div className="page">
         <Header
           loggedIn={isLoggedIn}
