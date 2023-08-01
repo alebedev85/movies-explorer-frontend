@@ -64,7 +64,6 @@ class Api {
    * @returns user email and id in json format
   */
   register(name, email, password) {
-    // return makeRequest('signup', 'POST', { name, email, password });
     return this._request(`${this._url}/signup`, {
       method: 'POST',
       headers: this._getHeaders(),

@@ -5,13 +5,20 @@ import './Register.css';
 
 import useForm from '../hooks/useForm'
 
-function Register({ onRegister, buttonText, success }) {
+function Register({ onRegister, buttonText, error }) {
+
+  const [buttonStatus, setButtonStatus] = React.useState(true);
 
   const { form, handleChange, errors } = useForm({
     name: '',
     email: '',
     password: '',
   })
+
+  React.useEffect(() => {
+    const err = errors.name === '' && errors.email === '' && errors.password === ''
+    setButtonStatus(!err)
+  }, [errors])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,17 +80,17 @@ function Register({ onRegister, buttonText, success }) {
                 onChange={handleChange}
                 required />
               <span className='auth__error'>{errors.password}</span>
-              {success && <span className='auth__error auth__error_res'>Что-то пошло не так...</span>}
+              <span className='auth__error auth__error_res'>{error}</span>
             </div>
           </fieldset>
           <button className='auth__button button'
             type='submit'
-            disabled={!Object.values(errors).every(err => err === '')}>
+            disabled={buttonStatus}>
             {buttonText}
           </button>
           <div className='auth__question-container'>
             <p className='auth__question'>Уже зарегистрированы?</p>
-            <Link className='auth__question auth__question_link link' to='/signin'>Войти</Link>
+            <Link className='auth__question auth__question_link link' to='/login'>Войти</Link>
           </div>
         </form>
       </div>

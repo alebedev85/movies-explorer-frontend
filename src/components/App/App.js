@@ -18,12 +18,15 @@ function App() {
 
   const navigate = useNavigate();
 
-  const [currentUser, setCurrentUser] = React.useState({ name: '', email: '' }); //State for current user info
-  const [isSuccess, setSucces] = React.useState(false); //State for seccessfull registration or login
-  const [token, setToken] = React.useState(); //State for token
+  const [currentUser, setCurrentUser] = useState({ name: '', email: ''}); //State for current user info
+  const [isSuccess, setSucces] = useState(false); //State for seccessfull registration or login
+  const [token, setToken] = useState(); //State for token
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = React.useState({ email: '', _id: '' });//State for user regiztration data
-  const [isLoading, setIsLoading] = React.useState(false); //State for standart button text
+  const [userData, setUserData] = useState({ email: '', _id: '' });//State for user regiztration data
+  const [isLoading, setIsLoading] = useState(false); //State for standart button text
+  const [fetchError, setFetchError] = useState('');
+
+  // useEffect(() => setFetchError(''))
 
   useEffect(() => {
     // Check token
@@ -63,17 +66,18 @@ function App() {
    * @param {object} - email and password.
    */
   function handlerRegUser({ name, email, password }) {
+    // console.log(name, email, password)
     setIsLoading(true);
     api.register(name, email, password)
       .then((data) => {
         console.log(data)
-        setUserData({ name: data.email, email: data.email, _id: data._id });
+        setUserData({ name: data.name, email: data.email});
         setSucces(true);
         navigate('/login', { replace: true });
       })
       .catch(err => {
         console.log(err);
-        setSucces(false);
+        setFetchError(err.message)
       })
       .finally(() => {
         setIsLoading(false);
@@ -137,12 +141,13 @@ function App() {
             element={
               <Register
                 onRegister={handlerRegUser}
-                success={isSuccess}
+                error={fetchError}
                 buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />} />
           <Route path="/login"
             element={
               <Login
                 onLogin={handlerLogIn}
+                error={fetchError}
                 buttonText={isLoading ? 'Войти...' : 'Войти'} />} />
           {/* <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} /> */}
           <Route path="/"

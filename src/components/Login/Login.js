@@ -5,12 +5,19 @@ import './Login.css';
 
 import useForm from '../hooks/useForm'
 
-function Login({ onLogin, buttonText }) {
+function Login({ onLogin, buttonText, error }) {
+
+  const [buttonStatus, setButtonStatus] = React.useState(true);
 
   const { form, handleChange, errors } = useForm({
     email: '',
     password: ''
   })
+
+  React.useEffect(() => {
+    const err = errors.name === '' && errors.email === '' && errors.password === ''
+    setButtonStatus(!err)
+  }, [errors])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +31,10 @@ function Login({ onLogin, buttonText }) {
           <img src={logo} className='logo' alt='Логотип сайта' />
         </Link>
         <h1 className='auth__title'>Рады видеть!</h1>
-        <form className='auth__form' name='Login' onSubmit={handleSubmit}>
+        <form className='auth__form'
+          name='Login'
+          onSubmit={handleSubmit}
+          noValidate>
           <fieldset className='auth__fieldset'>
             <div className='auth__input-container'>
               <label className='auth__input-label' >E-mail</label>
@@ -39,6 +49,7 @@ function Login({ onLogin, buttonText }) {
                 value={form.email}
                 onChange={handleChange}
                 required />
+              <span className='auth__error'>{errors.email}</span>
             </div>
             <div className='auth__input-container'>
               <label className='auth__input-label' >Пароль</label>
@@ -53,10 +64,16 @@ function Login({ onLogin, buttonText }) {
                 value={form.password}
                 onChange={handleChange}
                 required />
+              <span className='auth__error'>{errors.password}</span>
+              <span className='auth__error auth__error_login auth__error_res'>{error}</span>
             </div>
           </fieldset>
-          <span className='auth__error auth__error_login'>Что-то пошло не так...</span>
-          <button className='auth__button button' type='submit'>{buttonText}</button>
+
+          <button className='auth__button button'
+            type='submit'
+            disabled={buttonStatus}>
+            {buttonText}
+          </button>
           <div className='auth__question-container'>
             <p className='auth__question'>Ещё не зарегистрированы?</p>
             <Link className='auth__question auth__question_link link' to='/register'>Регистрация</Link>
