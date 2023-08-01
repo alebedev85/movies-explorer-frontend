@@ -22,9 +22,10 @@ class Api {
    * @returns json
    */
   _getJson(res) {
-    if (res.ok) {
-      return res.json()
-    } else Promise.reject(`Ошибка: ${res.status}`);
+    if (!res.ok) {
+      throw new Error(`Ошибка ${res.status}`)
+    }
+    return res.json()
   }
 
 
@@ -35,7 +36,7 @@ class Api {
    * @returns json
    */
   _request(url, options) {
-    return fetch(url, options).then(this._getJson);
+    return fetch(url, options).then(this._getJson)
   }
 
 
@@ -81,6 +82,7 @@ class Api {
    */
   getCurrentUser() {
     return this._request(`${this._url}/users/me`, {
+      method: 'GET',
       headers: this._getHeaders()
     });
   }

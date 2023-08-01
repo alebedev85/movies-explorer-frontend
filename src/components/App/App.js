@@ -18,7 +18,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  const [currentUser, setCurrentUser] = useState({ name: '', email: ''}); //State for current user info
+  const [currentUser, setCurrentUser] = useState({ name: '', email: '', _id: '' }); //State for current user info
   const [isSuccess, setSucces] = useState(false); //State for seccessfull registration or login
   const [token, setToken] = useState(); //State for token
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -47,6 +47,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
+      api.setToken(token);
       api.getCurrentUser()
         .then((res) => {
           const data = res;
@@ -71,7 +72,7 @@ function App() {
     api.register(name, email, password)
       .then((data) => {
         console.log(data)
-        setUserData({ name: data.name, email: data.email});
+        setUserData({ name: data.name, email: data.email, _id: data._id });
         setSucces(true);
         navigate('/login', { replace: true });
       })

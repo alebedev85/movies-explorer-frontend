@@ -17,12 +17,12 @@ function Profile({logOut, onEditUser}) {
 
   function handleClickEditButton(event) {
     event.preventDefault();
-    onEditUser(form);
     setInitChange(true);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    onEditUser(form);
     setInitChange(false);
   }
 
@@ -48,7 +48,8 @@ function Profile({logOut, onEditUser}) {
                 maxLength='200'
                 value={form.name}
                 onChange={handleChange}
-                required />
+                required
+                disabled={!initChange}/>
             </div>
             <div className='profile__input-container'>
               <label className='profile__input-label'>E-mail</label>
@@ -62,7 +63,8 @@ function Profile({logOut, onEditUser}) {
                 maxLength='40'
                 value={form.email}
                 onChange={handleChange}
-                required />
+                required
+                disabled={!initChange}/>
             </div>
             <div className='profile__buttons'>
               {initChange ?
@@ -83,7 +85,7 @@ function Profile({logOut, onEditUser}) {
                   <button
                     className='profile__button profile__button_exit button'
                     type='button'
-                    onClick={logOut}>
+                    onClick={handleLogOut}>
                     Выйти из аккаунта
                   </button>
                 </>

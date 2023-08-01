@@ -15,7 +15,7 @@ function Login({ onLogin, buttonText, error }) {
   })
 
   React.useEffect(() => {
-    const err = errors.name === '' && errors.email === '' && errors.password === ''
+    const err = errors.email === '' && errors.password === ''
     setButtonStatus(!err)
   }, [errors])
 
