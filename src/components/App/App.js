@@ -54,7 +54,6 @@ function App() {
           setUserData({ email: data.email, _id: data._id });
           setCurrentUser(res)
           setLoggedIn(true);
-          navigate('/movies', { replace: true });
         })
         .catch(err => {
           console.log(err)
@@ -123,6 +122,7 @@ function App() {
     setIsLoading(true);
     api.setUserInfo(name, email)
       .then((updateUser) => {
+        console.log(updateUser)
         setCurrentUser(updateUser);
       })
       .catch(err => {
@@ -172,7 +172,8 @@ function App() {
             element={
               <Profile
                 logOut={logOut}
-                onEditUser={handleEditUser} />
+                onEditUser={handleEditUser}
+                buttonText={isLoading ? 'Сохранить...' : 'Сохранить'}/>
             }
           />
           <Route path="/*"

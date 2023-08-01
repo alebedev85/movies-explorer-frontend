@@ -5,15 +5,21 @@ import './Profile.css';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 import useForm from '../hooks/useForm'
 
-function Profile({logOut, onEditUser}) {
+function Profile({ logOut, onEditUser, error, buttonText }) {
 
   const { currentUser } = React.useContext(CurrentUserContext);
   const [initChange, setInitChange] = useState(false);
+  const [buttonStatus, setButtonStatus] = React.useState(true);
 
   const { form, handleChange, errors } = useForm({
     name: currentUser.name,
     email: currentUser.email,
   })
+
+  React.useEffect(() => {
+    const err = errors.name === '' && errors.email === ''
+    setButtonStatus(!err)
+  }, [errors])
 
   function handleClickEditButton(event) {
     event.preventDefault();
@@ -49,7 +55,8 @@ function Profile({logOut, onEditUser}) {
                 value={form.name}
                 onChange={handleChange}
                 required
-                disabled={!initChange}/>
+                disabled={!initChange} />
+              <span className='profile__error'>{errors.name}</span>
             </div>
             <div className='profile__input-container'>
               <label className='profile__input-label'>E-mail</label>
@@ -64,15 +71,18 @@ function Profile({logOut, onEditUser}) {
                 value={form.email}
                 onChange={handleChange}
                 required
-                disabled={!initChange}/>
+                disabled={!initChange} />
+              <span className='profile__error'>{errors.email}</span>
+              <span className='profile__error profile__error_res'>{error}</span>
             </div>
             <div className='profile__buttons'>
               {initChange ?
                 <button
                   className='profile__button profile__button_submit button'
                   type='submit'
-                  onClick={handleSubmit}>
-                  Сохранить
+                  onClick={handleSubmit}
+                  disabled={buttonStatus}>
+                  {buttonText}
                 </button>
                 :
                 <>

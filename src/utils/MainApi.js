@@ -103,13 +103,13 @@ class Api {
    * @param {string} новый email
    * @returns json с новой информация пользователя
    */
-  setUserInfo(name, about) {
+  setUserInfo(name, email) {
     return this._request(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._getHeaders(),
       body: JSON.stringify({
         name: name,
-        about: about
+        email: email
       })
     });
   }
