@@ -18,12 +18,45 @@ function App() {
 
   const navigate = useNavigate();
 
-  const [currentUser, setCurrentUser] = React.useState({ name: '', about: '' }); //State for current user info
+  const [currentUser, setCurrentUser] = React.useState({ name: '', email: '' }); //State for current user info
   const [isSuccess, setSucces] = React.useState(false); //State for seccessfull registration or login
   const [token, setToken] = React.useState(); //State for token
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = React.useState({ email: '', _id: '' });//State for user regiztration data
   const [isLoading, setIsLoading] = React.useState(false); //State for standart button text
+
+  useEffect(() => {
+    // Check token
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      setToken(jwt);
+      api.setToken(jwt);
+      //Get user info
+      api.getCurrentUser()
+        .then((res) => {
+          setCurrentUser(res); //Set currentUser
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      api.getCurrentUser()
+        .then((res) => {
+          const data = res;
+          setUserData({ email: data.email, _id: data._id });
+          setCurrentUser(res)
+          setLoggedIn(true);
+          navigate('/movies', { replace: true });
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }, [token]);
 
   /**
    * Handler to user registration
@@ -76,39 +109,22 @@ function App() {
     navigate('/register', { replace: true });
   }
 
-  useEffect(() => {
-    // Check token
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      setToken(jwt);
-      api.setToken(jwt);
-      //Get user info
-      api.getCurrentUser()
-        .then((res) => {
-          setCurrentUser(res); //Set currentUser
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    };
-  }, []);
-
-  useEffect(() => {
-
-    if (token) {
-      api.getCurrentUser()
-        .then((res) => {
-          const data = res;
-          setUserData({ email: data.email, _id: data._id });
-          setCurrentUser(res)
-          setLoggedIn(true);
-          navigate('/movies', { replace: true });
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
-  }, [token]);
+  /**
+     * Handler to update user
+     * @param {string} name - new name.
+     * @param {string} email - new description.
+     */
+  function handleEditUser({ name, email }) {
+    setIsLoading(true);
+    api.setUserInfo(name, email)
+      .then((updateUser) => {
+        setCurrentUser(updateUser);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      .finally(() => setIsLoading(false));
+  }
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, token }}>
@@ -121,13 +137,14 @@ function App() {
             element={
               <Register
                 onRegister={handlerRegUser}
+                success={isSuccess}
                 buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />} />
           <Route path="/login"
             element={
               <Login
                 onLogin={handlerLogIn}
                 buttonText={isLoading ? 'Войти...' : 'Войти'} />} />
-          <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} />
+          {/* <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} /> */}
           <Route path="/"
             element={
               <Main
@@ -147,7 +164,9 @@ function App() {
           />
           <Route path="/profile"
             element={
-              <Profile logOut={logOut}/>
+              <Profile
+                logOut={logOut}
+                onEditUser={handleEditUser} />
             }
           />
           <Route path="/*"

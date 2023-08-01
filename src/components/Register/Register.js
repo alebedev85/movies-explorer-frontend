@@ -5,7 +5,7 @@ import './Register.css';
 
 import useForm from '../hooks/useForm'
 
-function Register({ onRegister, buttonText }) {
+function Register({ onRegister, buttonText, success }) {
 
   const { form, handleChange, errors } = useForm({
     name: '',
@@ -24,7 +24,10 @@ function Register({ onRegister, buttonText }) {
           <img src={logo} className='logo' alt='Логотип сайта' />
         </Link>
         <h1 className='auth__title'>Добро пожаловать!</h1>
-        <form className='auth__form' name='Register' onSubmit={handleSubmit}>
+        <form className='auth__form'
+          name='Register'
+          onSubmit={handleSubmit}
+          noValidate >
           <fieldset className='auth__fieldset'>
             <div className='auth__input-container'>
               <label className='auth__input-label' >Имя</label>
@@ -39,6 +42,7 @@ function Register({ onRegister, buttonText }) {
                 value={form.name}
                 onChange={handleChange}
                 required />
+              <span className='auth__error'>{errors.name}</span>
             </div>
             <div className='auth__input-container'>
               <label className='auth__input-label' >E-mail</label>
@@ -53,6 +57,7 @@ function Register({ onRegister, buttonText }) {
                 value={form.email}
                 onChange={handleChange}
                 required />
+              <span className='auth__error'>{errors.email}</span>
             </div>
             <div className='auth__input-container'>
               <label className='auth__input-label' >Пароль</label>
@@ -67,10 +72,15 @@ function Register({ onRegister, buttonText }) {
                 value={form.password}
                 onChange={handleChange}
                 required />
+              <span className='auth__error'>{errors.password}</span>
+              {success && <span className='auth__error auth__error_res'>Что-то пошло не так...</span>}
             </div>
           </fieldset>
-          <span className='auth__error'>Что-то пошло не так...</span>
-          <button className='auth__button button' type='submit'>{buttonText}</button>
+          <button className='auth__button button'
+            type='submit'
+            disabled={!Object.values(errors).every(err => err === '')}>
+            {buttonText}
+          </button>
           <div className='auth__question-container'>
             <p className='auth__question'>Уже зарегистрированы?</p>
             <Link className='auth__question auth__question_link link' to='/signin'>Войти</Link>

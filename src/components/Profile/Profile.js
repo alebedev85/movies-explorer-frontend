@@ -5,7 +5,7 @@ import './Profile.css';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 import useForm from '../hooks/useForm'
 
-function Profile({logOut}) {
+function Profile({logOut, onEditUser}) {
 
   const { currentUser } = React.useContext(CurrentUserContext);
   const [initChange, setInitChange] = useState(false);
@@ -17,12 +17,17 @@ function Profile({logOut}) {
 
   function handleClickEditButton(event) {
     event.preventDefault();
+    onEditUser(form);
     setInitChange(true);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     setInitChange(false);
+  }
+
+  function handleLogOut() {
+    logOut()
   }
 
   return (
@@ -71,12 +76,14 @@ function Profile({logOut}) {
                 <>
                   <button
                     className='profile__button profile__button_edit button'
-                    type='button' onClick={handleClickEditButton}>
+                    type='button'
+                    onClick={handleClickEditButton}>
                     Редактировать
                   </button>
                   <button
                     className='profile__button profile__button_exit button'
-                    type='button'>
+                    type='button'
+                    onClick={logOut}>
                     Выйти из аккаунта
                   </button>
                 </>
