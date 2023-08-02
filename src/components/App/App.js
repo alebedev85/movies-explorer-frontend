@@ -151,7 +151,7 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, token }}>
+    <CurrentUserContext.Provider value={{ currentUser }}>
       <div className="page">
         <Header
           loggedIn={isLoggedIn}
@@ -194,7 +194,7 @@ function App() {
                 onEditUser={handleEditUser}
                 buttonText={isLoading ? 'Сохранить...' : 'Сохранить'}
                 requestErr={profileErr}
-                requestRes={editUserRes}/>
+                requestRes={editUserRes} />
             }
           />
           <Route path="/*"

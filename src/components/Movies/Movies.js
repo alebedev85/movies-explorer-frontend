@@ -16,8 +16,6 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
 function Movies() {
 
-  const { token } = React.useContext(CurrentUserContext);
-
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
   const { localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames //имена записей в localStorage
 
@@ -41,16 +39,6 @@ function Movies() {
         .finally(setIsPreloader(false));
     };
   }, [])
-
-  useEffect(() => {
-    if (token) {
-      api.getCards()
-        .then((res) => {
-          setSavedMovies(res);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [token])
 
   useEffect(() => {
     if (!cardsResalt.length) {
