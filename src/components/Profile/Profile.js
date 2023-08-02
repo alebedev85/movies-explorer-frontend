@@ -8,30 +8,34 @@ import useForm from '../hooks/useForm'
 function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes }) {
 
   const { currentUser } = React.useContext(CurrentUserContext);
-  const [initChange, setInitChange] = useState(false);
-  const [buttonStatus, setButtonStatus] = React.useState(true);
+  const [initChange, setInitChange] = useState(false); //статус начала редактирования профиля
+  const [buttonStatus, setButtonStatus] = React.useState(true); //статус кнопки сабмита
 
   const { form, handleChange, errors } = useForm({
     name: currentUser.name,
     email: currentUser.email,
   })
 
+  //проверка полной валидации формы
   React.useEffect(() => {
     const err = errors.name === '' && errors.email === ''
     setButtonStatus(!err)
   }, [errors])
 
+  //обработчик кнопки Редактировать
   function handleClickEditButton(event) {
     event.preventDefault();
     setInitChange(true);
   }
 
+  //обработчик кнопки сабмита формы
   function handleSubmit(event) {
     event.preventDefault();
     onEditUser(form);
     setInitChange(false);
   }
 
+  //обработчик кнопки выхода из аккаунта
   function handleLogOut() {
     logOut()
   }

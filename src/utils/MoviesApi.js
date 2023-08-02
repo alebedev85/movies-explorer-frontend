@@ -1,13 +1,13 @@
 import { beatfilm_URL } from './constants';
 
-class Api {
+class MoviesApi {
   constructor(url) {
     this._url = url;
   }
 
   /**
-   * Assembling header for fetch request
-   * @returns header object
+   * Создаем заголовки для запроса
+   * @returns объект с заголовками
    */
   _getHeaders() {
     return {
@@ -16,7 +16,7 @@ class Api {
   }
 
   /**
-   * Get json form fetch
+   * Распарсинг ответа сервера
    * @returns json
    */
   _getJson(res) {
@@ -27,18 +27,18 @@ class Api {
 
 
   /**
-   * Fetch request
-   * @param {string} url - url for request.
-   * @param {object} options - object with method, headers, body for request.
-   * @returns json
-   */
+    * Fetch запрос
+    * @param {string} url - url для запроса.
+    * @param {object} options - объект с  method, headers, body.
+    * @returns json
+    */
   _request(url, options) {
     return fetch(url, options).then(this._getJson);
   }
 
   /**
-   * Get Cards
-   * @returns json with list of cards
+   * Получение карточек с фильмами
+   * @returns json со списком фильмов
    */
   getCards() {
     return this._request(this._url, {
@@ -47,4 +47,4 @@ class Api {
   }
 }
 
-export const moviesApi = new Api(beatfilm_URL);
+export const moviesApi = new MoviesApi(beatfilm_URL);

@@ -18,7 +18,7 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
     setCheckboxStatus(e.target.checked);
   }
 
-  //хендлер сабмита формы поиска фильмов
+  //обработтчик сабмита формы поиска фильмов
   function handleSearchMovieSubmit(e) {
     e.preventDefault();
     onSearchMovie(searchText, checkboxStatus);

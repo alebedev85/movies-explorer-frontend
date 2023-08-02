@@ -7,18 +7,20 @@ import useForm from '../hooks/useForm'
 
 function Login({ onLogin, buttonText, error }) {
 
-  const [buttonStatus, setButtonStatus] = React.useState(true);
+  const [buttonStatus, setButtonStatus] = React.useState(true); //статус кнопки сабмита
 
   const { form, handleChange, errors } = useForm({
     email: '',
     password: ''
   })
 
+  //проверка полной валидации формы
   React.useEffect(() => {
     const err = errors.email === '' && errors.password === ''
     setButtonStatus(!err)
   }, [errors])
 
+  //обработчик кнопки сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin(form)

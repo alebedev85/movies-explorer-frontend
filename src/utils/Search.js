@@ -8,7 +8,11 @@ class Search {
     return status ? movies.filter(movie => movie.duration <= 40) : movies
   }
 
-  //обработчик поиска фильмов
+  /**
+     * Обработчик поиска фильмов
+     * @param {string} text - тектс поиска.
+     * @param {string} statusCheckbox - состояние чекбокса.
+     */
   search(text, statusCheckbox) {
     return this._isShort(statusCheckbox, this._itemsList).filter(movie => Object.values(movie)
       .some(value => typeof value === "string" ? value.toLowerCase().includes(text.toLowerCase()) : value === text));

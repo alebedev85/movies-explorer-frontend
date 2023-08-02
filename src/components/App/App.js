@@ -103,7 +103,7 @@ function App() {
   }
 
   /**
-   * функция выхода из аккаунта
+   * //функция выхода из аккаунта
    */
   function logOut() {
     localStorage.clear();

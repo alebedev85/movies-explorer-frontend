@@ -87,16 +87,6 @@ class Api {
     });
   }
 
-  // /**
-  //  * Получение информации о текущем пользователе
-  //  * @returns json с данными текущего пользователя
-  //  */
-  // getUserData() {
-  //   return this._request(`${this._url}/users/me`, {
-  //     headers: this._getHeaders()
-  //   });
-  // }
-
   /**
    * Редактирование профиля
    * @param {string} новый name
@@ -154,8 +144,8 @@ class Api {
   }
 
   /**
-   * Delete card
-   * @param {string} id - card id.
+   * Удаление карточки
+   * @param {string} id - id удаляемой карточки.
    * @returns message: "Пост удалён"
    */
   deleteCard(id) {
@@ -166,8 +156,8 @@ class Api {
   }
 
   /**
-     * Set token in api headers
-     * @param {string} token - new token.
+     * Установка токена
+     * @param {string} token - новый токен.
      */
   setToken(token) {
     this._token = `Bearer ${token}`;
@@ -176,4 +166,3 @@ class Api {
 
 export const api = new Api(BASE_URL);
 
-// export const api = new Api('https://mesto.nomoreparties.co/v1/cohort-61', '3e070c18-b10f-4e80-b715-68fa3cc00268');
