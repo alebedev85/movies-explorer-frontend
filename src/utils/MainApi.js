@@ -23,7 +23,7 @@ class Api {
    */
   _getJson(res) {
     if (!res.ok) {
-      throw new Error(`Ошибка ${res.status}`)
+      throw new Error(`Ошибка: ${res.status}`)
     }
     return res.json()
   }

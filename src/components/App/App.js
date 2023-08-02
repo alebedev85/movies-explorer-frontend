@@ -19,16 +19,19 @@ function App() {
   const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = useState({ name: '', email: '', _id: '' }); //State for current user info
-  const [isSuccess, setSucces] = useState(false); //State for seccessfull registration or login
+  // const [isSuccess, setSucces] = useState(false); //State for seccessfull registration or login
   const [token, setToken] = useState(); //State for token
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({ email: '', _id: '' });//State for user regiztration data
+  // const [userData, setUserData] = useState({ email: '', _id: '' });//State for user regiztration data
   const [isLoading, setIsLoading] = useState(false); //State for standart button text
   const [fetchError, setFetchError] = useState('');
+  const [editUserRes, setEditUserRes] = useState('');
+  const [profileErr, setProfileErr] = useState('');
 
   // useEffect(() => setFetchError(''))
 
   useEffect(() => {
+    setEditUserRes('');
     // Check token
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -51,7 +54,7 @@ function App() {
       api.getCurrentUser()
         .then((res) => {
           const data = res;
-          setUserData({ email: data.email, _id: data._id });
+          // setUserData({ email: data.email, _id: data._id });
           setCurrentUser(res)
           setLoggedIn(true);
         })
@@ -71,8 +74,8 @@ function App() {
     api.register(name, email, password)
       .then((data) => {
         console.log(data)
-        setUserData({ name: data.name, email: data.email, _id: data._id });
-        setSucces(true);
+        // setUserData({ name: data.name, email: data.email, _id: data._id });
+        // setSucces(true);
         navigate('/login', { replace: true });
       })
       .catch(err => {
@@ -97,7 +100,7 @@ function App() {
       })
       .catch(err => {
         console.log(err)
-        setSucces(false);
+        // setSucces(false);
       })
       .finally(() => setIsLoading(false))
   }
@@ -108,7 +111,7 @@ function App() {
   function logOut() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    setUserData({ email: '', _id: '' });
+    // setUserData({ email: '', _id: '' });
     api.setToken('');
     navigate('/register', { replace: true });
   }
@@ -126,9 +129,16 @@ function App() {
         setCurrentUser(updateUser);
       })
       .catch(err => {
-        console.log(err)
+        if (err === 'Ошибка: 409') {
+          setProfileErr('Пользователь с таким email уже существует');
+        } else {
+          setProfileErr('При обновлении профиля произошла ошибка');
+        }
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false)
+        setEditUserRes('Информация о пользователе обновлена');
+      });
   }
 
   return (
@@ -173,7 +183,9 @@ function App() {
               <Profile
                 logOut={logOut}
                 onEditUser={handleEditUser}
-                buttonText={isLoading ? 'Сохранить...' : 'Сохранить'}/>
+                buttonText={isLoading ? 'Сохранить...' : 'Сохранить'}
+                requestErr={profileErr}
+                requestRes={editUserRes}/>
             }
           />
           <Route path="/*"

@@ -93,6 +93,9 @@
 .profile__error_res {
   top: 58px
 }
+.profile_res {
+  color: #4285f4;
+}
 
 .profile__buttons {
   padding-top: 205px;

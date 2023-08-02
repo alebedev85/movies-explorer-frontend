@@ -5,7 +5,7 @@ import './Profile.css';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 import useForm from '../hooks/useForm'
 
-function Profile({ logOut, onEditUser, error, buttonText }) {
+function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes }) {
 
   const { currentUser } = React.useContext(CurrentUserContext);
   const [initChange, setInitChange] = useState(false);
@@ -73,7 +73,8 @@ function Profile({ logOut, onEditUser, error, buttonText }) {
                 required
                 disabled={!initChange} />
               <span className='profile__error'>{errors.email}</span>
-              <span className='profile__error profile__error_res'>{error}</span>
+              <span className='profile__error profile__error_res'>{requestErr}</span>
+              <span className='profile__error profile__error_res profile_res'>{requestRes}</span>
             </div>
             <div className='profile__buttons'>
               {initChange ?
