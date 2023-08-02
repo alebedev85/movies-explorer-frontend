@@ -11,7 +11,6 @@ import { api } from '../../utils/MainApi.js';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
 import { moviesLocalStorageNames } from '../../utils/constants';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
 
 function Movies() {
@@ -20,7 +19,7 @@ function Movies() {
   const { localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames //имена записей в localStorage
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
-  const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
+  const [isPreloader, setIsPreloader] = useState(true); //стейт состояния прелоудора
   const [beatfilmMovies, setBeatfilmMovies] = useState(JSON.parse(localStorage.getItem(localMovies)) || []); //стейт для всех карточек
   const [savedMovies, setSavedMovies] = useState([]); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
@@ -29,7 +28,6 @@ function Movies() {
   //проверка localStorage и получение карточек
   useEffect(() => {
     if (!beatfilmMovies.length) {
-      setIsPreloader(true);
       moviesApi.getCards()
         .then((res) => {
           setBeatfilmMovies(res);
@@ -37,7 +35,7 @@ function Movies() {
         })
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
-    };
+    } else {setIsPreloader(false)};
   }, [])
 
   useEffect(() => {
@@ -118,7 +116,7 @@ function Movies() {
         text={localStorage.getItem(moviesSearchText)}
         statusCheckbox={localStorage.getItem(moviesStatusCheckbox) === 'true' ? true : false}
       />
-      {cardsResalt.length ? <MoviesCardList
+      {isPreloader ? <Preloader /> :cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
         onClick={handleNextCards}
         checkSaveMivie={handlerCheckSaveMovie}
@@ -127,7 +125,7 @@ function Movies() {
         buttonVisibility={cardsResalt.length > shownCardsNumber}
       />
         :
-        isPreloader ? <Preloader /> : <NotFoundSearch />}
+        <NotFoundSearch />}
     </main>
   );
 }

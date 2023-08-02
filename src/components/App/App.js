@@ -10,7 +10,8 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
-import NotFound from '../NotFound/NotFound'
+import NotFound from '../NotFound/NotFound';
+import Preloader from '../Preloader/Preloader';
 import { api } from '../../utils/MainApi.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
@@ -21,7 +22,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({ name: '', email: '', _id: '' }); //State for current user info
   // const [isSuccess, setSucces] = useState(false); //State for seccessfull registration or login
   const [token, setToken] = useState(); //State for token
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(null);
   // const [userData, setUserData] = useState({ email: '', _id: '' });//State for user regiztration data
   const [isLoading, setIsLoading] = useState(false); //State for standart button text
   // const [fetchError, setFetchError] = useState('');
@@ -48,7 +49,7 @@ function App() {
         .catch(err => {
           console.log(err);
         });
-    };
+    } else setLoggedIn(false);
   }, []);
 
   useEffect(() => {
@@ -71,7 +72,6 @@ function App() {
    * @param {object} - email and password.
    */
   function handlerRegUser({ name, email, password }) {
-    // console.log(name, email, password)
     setIsLoading(true);
     api.register(name, email, password)
       .then((data) => {
@@ -101,6 +101,7 @@ function App() {
       .then(({ token }) => {
         localStorage.setItem('jwt', token);
         setToken(token);
+        setLoggedIn(true);
         navigate('/movies', { replace: true });
       })
       .catch(err => {
@@ -118,11 +119,11 @@ function App() {
    * logOut function
    */
   function logOut() {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     setLoggedIn(false);
     // setUserData({ email: '', _id: '' });
     api.setToken('');
-    navigate('/register', { replace: true });
+    navigate('/', { replace: true });
   }
 
   /**
@@ -134,7 +135,6 @@ function App() {
     setIsLoading(true);
     api.setUserInfo(name, email)
       .then((updateUser) => {
-        console.log(updateUser)
         setCurrentUser(updateUser);
       })
       .catch(err => {
@@ -151,60 +151,55 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser }}>
-      <div className="page">
-        <Header
-          loggedIn={isLoggedIn}
-        />
-        <Routes>
-          <Route path="/register"
-            element={
-              <Register
-                onRegister={handlerRegUser}
-                error={registerError}
-                buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />} />
-          <Route path="/login"
-            element={
-              <Login
-                onLogin={handlerLogIn}
-                error={loginError}
-                buttonText={isLoading ? 'Войти...' : 'Войти'} />} />
-          {/* <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} /> */}
-          <Route path="/"
-            element={
-              <Main
+    isLoggedIn === null ? <Preloader /> :
+      <CurrentUserContext.Provider value={{ currentUser }}>
+        <div className="page">
+          <Header
+            loggedIn={isLoggedIn}
+          />
+          <Routes>
+            <Route path="/"
+              element={
+                <Main
+                  loggedIn={isLoggedIn} />
+              }
+            />
+            <Route path="/register"
+              element={
+                <Register
+                  onRegister={handlerRegUser}
+                  error={registerError}
+                  buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />} />
+            <Route path="/login"
+              element={
+                <Login
+                  onLogin={handlerLogIn}
+                  error={loginError}
+                  buttonText={isLoading ? 'Войти...' : 'Войти'} />} />
+            <Route path="/movies"
+              element={<ProtectedRouteElement element={Movies} loggedIn={isLoggedIn} />}
+            />
+            <Route path="/saved-movies"
+              element={<ProtectedRouteElement element={SavedMovies} loggedIn={isLoggedIn} />}
+            />
+            <Route path="/profile"
+              element={<ProtectedRouteElement
+                element={Profile}
                 loggedIn={isLoggedIn}
-              />
-            }
-          />
-          <Route path="/movies"
-            element={
-              <Movies />
-            }
-          />
-          <Route path="/saved-movies"
-            element={
-              <SavedMovies />
-            }
-          />
-          <Route path="/profile"
-            element={
-              <Profile
                 logOut={logOut}
                 onEditUser={handleEditUser}
                 buttonText={isLoading ? 'Сохранить...' : 'Сохранить'}
                 requestErr={profileErr}
-                requestRes={editUserRes} />
-            }
-          />
-          <Route path="/*"
-            element={<NotFound />}
-          />
-        </Routes>
-        <Footer />
+                requestRes={editUserRes} />}
+            />
+            <Route path="/*"
+              element={<NotFound />}
+            />
+          </Routes>
+          <Footer />
 
-      </div>
-    </CurrentUserContext.Provider>
+        </div>
+      </CurrentUserContext.Provider>
   );
 }
 

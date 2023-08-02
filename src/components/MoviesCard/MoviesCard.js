@@ -4,8 +4,6 @@ import './MoviesCard.css';
 
 function MoviesCard({ movie, isSaved, onSaveClick, onDeleteClick }) {
 
-  // console.log(movie)
-
   const location = useLocation();
 
   const card = {
@@ -13,8 +11,6 @@ function MoviesCard({ movie, isSaved, onSaveClick, onDeleteClick }) {
     duration: movie.duration,
     image: movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image
   };
-
-  // console.log(card)
 
   function handlerSaveButton() {
     onSaveClick(movie)

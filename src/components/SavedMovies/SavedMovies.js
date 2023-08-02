@@ -16,14 +16,13 @@ function Movies() {
   const { moviesResalt, moviesSearchText, moviesStatusCheckbox } = savedMoviesLocalStorageNames //имена записей в localStorage
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
-  const [isPreloader, setIsPreloader] = useState(false); //стейт состояния прелоудора
+  const [isPreloader, setIsPreloader] = useState(true); //стейт состояния прелоудора
   const [savedMovies, setSavedMovies] = useState([]); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
   const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem(moviesResalt)) || []); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
-    setIsPreloader(true);
     api.getCards()
       .then((res) => {
         setSavedMovies(res);
@@ -97,14 +96,14 @@ function Movies() {
         text={localStorage.getItem(moviesSearchText)}
         statusCheckbox={localStorage.getItem(moviesStatusCheckbox) === 'true' ? true : false}
       />
-      {cardsResalt.length ? <MoviesCardList
+      {isPreloader ? <Preloader /> : cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
         onDeleteClick={handlerDeleteMovie}
         onClick={handleNextCards}
         buttonVisibility={cardsResalt.length > shownCardsNumber}
       />
         :
-        isPreloader ? <Preloader /> : <NotFoundSearch />}
+        <NotFoundSearch />}
     </main>
   );
 }
