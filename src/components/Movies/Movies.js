@@ -36,6 +36,11 @@ function Movies() {
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
     } else {setIsPreloader(false)};
+    api.getCards()
+    .then((res) => {
+      setSavedMovies(res);
+    })
+    .catch((err) => console.log(err))
   }, [])
 
   useEffect(() => {

@@ -19,45 +19,33 @@ function App() {
 
   const navigate = useNavigate();
 
-  const [currentUser, setCurrentUser] = useState({ name: '', email: '', _id: '' }); //State for current user info
-  // const [isSuccess, setSucces] = useState(false); //State for seccessfull registration or login
-  const [token, setToken] = useState(); //State for token
-  const [isLoggedIn, setLoggedIn] = useState(null);
-  // const [userData, setUserData] = useState({ email: '', _id: '' });//State for user regiztration data
-  const [isLoading, setIsLoading] = useState(false); //State for standart button text
-  // const [fetchError, setFetchError] = useState('');
-  const [editUserRes, setEditUserRes] = useState('');
-  const [registerError, setRegisterError] = useState(true);
-  const [loginError, setLoginError] = useState(true);
-  const [profileErr, setProfileErr] = useState('');
+  const [currentUser, setCurrentUser] = useState({ name: '', email: '', _id: '' }); //стейт для тикущего пользователя
+  const [token, setToken] = useState(); //стейт для токена
+  const [isLoggedIn, setLoggedIn] = useState(null); //стейт для статуса авторизации
+  const [isLoading, setIsLoading] = useState(false); //стейт для статуса загруски данных при запросах
+  const [editUserRes, setEditUserRes] = useState(''); //положительное состояние ответа при редактирование профиля
+  const [registerError, setRegisterError] = useState(''); //сообщение об ошибке при регистрации
+  const [loginError, setLoginError] = useState(''); //сообщение об ошибки при логирование
+  const [profileErr, setProfileErr] = useState(''); //сообщение об ошибки при редактирование профиля
 
+  //сброс всех сообщений об ошибках, проверки токена
   useEffect(() => {
     setEditUserRes('');
     setRegisterError('');
     setLoginError('');
     setProfileErr('');
-    // Check token
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       setToken(jwt);
-      api.setToken(jwt);
-      //Get user info
-      api.getCurrentUser()
-        .then((res) => {
-          setCurrentUser(res); //Set currentUser
-        })
-        .catch(err => {
-          console.log(err);
-        });
     } else setLoggedIn(false);
   }, []);
 
+  //получение данных пользователя при обновление токена
   useEffect(() => {
     if (token) {
       api.setToken(token);
       api.getCurrentUser()
         .then((res) => {
-          // setUserData({ email: data.email, _id: data._id });
           setCurrentUser({ name: res.name, email: res.email, _id: res._id })
           setLoggedIn(true);
         })
@@ -68,15 +56,14 @@ function App() {
   }, [token]);
 
   /**
-   * Handler to user registration
-   * @param {object} - email and password.
+   * Обработчик регистрации пользователя
+   * @param {object} - обект с name, email, password.
    */
   function handlerRegUser({ name, email, password }) {
     setIsLoading(true);
     api.register(name, email, password)
       .then((data) => {
-        // setUserData({ name: data.name, email: data.email, _id: data._id });
-        navigate('/login', { replace: true });
+        handlerLogIn({ email, password })
       })
       .catch(err => {
         if (err.message === 'Ошибка: 409') {
@@ -92,8 +79,8 @@ function App() {
   }
 
   /**
-  * Handler to user authorizetion
-  * @param {object} - email and password.
+  * Обработчик авторизации пользователя
+  * @param {object} - объект с email и password.
   */
   function handlerLogIn({ email, password }) {
     setIsLoading(true);
@@ -116,20 +103,18 @@ function App() {
   }
 
   /**
-   * logOut function
+   * функция выхода из аккаунта
    */
   function logOut() {
     localStorage.clear();
     setLoggedIn(false);
-    // setUserData({ email: '', _id: '' });
     api.setToken('');
     navigate('/', { replace: true });
   }
 
   /**
-     * Handler to update user
-     * @param {string} name - new name.
-     * @param {string} email - new description.
+     * Обработтчик выхода из аккаунта
+     * @param {object} - объект с ноавыми name и email.
      */
   function handleEditUser({ name, email }) {
     setIsLoading(true);
