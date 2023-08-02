@@ -13,13 +13,13 @@ import { savedMoviesLocalStorageNames } from '../../utils/constants';
 function SavedMovies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
-  const { moviesResalt, moviesSearchText, moviesStatusCheckbox } = savedMoviesLocalStorageNames //имена записей в localStorage
+  const { moviesSearchText, moviesStatusCheckbox } = savedMoviesLocalStorageNames //имена записей в localStorage
 
   const [cardsNumber, setCardsNumber] = useState({ first: 12, next: 3, }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(true); //стейт состояния прелоудора
   const [savedMovies, setSavedMovies] = useState([]); //стейт для всех карточек
   const [shownCardsNumber, setShownCardsNumber] = useState(cardsNumber.first); //стейт сколько картачек сейчас на экране
-  const [cardsResalt, setCardsResalt] = useState(JSON.parse(localStorage.getItem(moviesResalt)) || []); //стейт для окончательного списка карточек
+  const [cardsResalt, setCardsResalt] = useState([]); //стейт для окончательного списка карточек
 
   //проверка localStorage и получение карточек
   useEffect(() => {
@@ -78,7 +78,6 @@ function SavedMovies() {
   function handleSearchMovie(text, statusCheckbox) {
     const searchResalt = searchMovies.search(text, statusCheckbox)
     setCardsResalt(searchResalt);
-    localStorage.setItem(moviesResalt, JSON.stringify(searchResalt));
     localStorage.setItem(moviesSearchText, text);
     localStorage.setItem(moviesStatusCheckbox, statusCheckbox);
   };
