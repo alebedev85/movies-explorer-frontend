@@ -10,7 +10,7 @@ import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
 import { savedMoviesLocalStorageNames } from '../../utils/constants';
 
-function Movies() {
+function SavedMovies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
   const { moviesResalt, moviesSearchText, moviesStatusCheckbox } = savedMoviesLocalStorageNames //имена записей в localStorage
@@ -31,6 +31,7 @@ function Movies() {
       .finally(setIsPreloader(false));
   }, [])
 
+  //выгрузка всех карточек если поиск пустой
   useEffect(() => {
     if (!cardsResalt.length) {
       setCardsResalt(savedMovies);
@@ -67,9 +68,13 @@ function Movies() {
     setShownCardsNumber(shownCardsNumber + cardsNumber.next)
   };
 
-  const searchMovies = new Search(savedMovies)
+  const searchMovies = new Search(savedMovies) //экземпляр класса для поиска
 
-  //обработчик поиска фильмов
+  /**
+     * Обработтчик выхода из аккаунта
+     * @param {string} - текст поиска.
+     * @param {string} - статус чекбокса.
+     */
   function handleSearchMovie(text, statusCheckbox) {
     const searchResalt = searchMovies.search(text, statusCheckbox)
     setCardsResalt(searchResalt);
@@ -78,7 +83,10 @@ function Movies() {
     localStorage.setItem(moviesStatusCheckbox, statusCheckbox);
   };
 
-  //обработтчик удаления сохраненных фильмов
+  /**
+     * Обработтчик удаления сохранённого фильма
+     * @param {object} - объект с удаляемым фильмом.
+     */
   function handlerDeleteMovie(movie) {
     api.deleteCard(movie._id)
       .then(() => {
@@ -108,4 +116,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default SavedMovies;

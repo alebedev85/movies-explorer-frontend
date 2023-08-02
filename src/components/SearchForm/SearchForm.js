@@ -11,10 +11,6 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
   //контроллер текста
   function handleSearchText(e) {
     setSearchText(e.target.value);
-    // setErrors({
-    //   ...errors,
-    //   [e.target.name]: e.target.validationMessage
-    // })
   }
 
   //контроллер чекбокса

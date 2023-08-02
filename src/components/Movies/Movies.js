@@ -35,12 +35,12 @@ function Movies() {
         })
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
-    } else {setIsPreloader(false)};
+    } else { setIsPreloader(false) };
     api.getCards()
-    .then((res) => {
-      setSavedMovies(res);
-    })
-    .catch((err) => console.log(err))
+      .then((res) => {
+        setSavedMovies(res);
+      })
+      .catch((err) => console.log(err))
   }, [])
 
   useEffect(() => {
@@ -79,7 +79,7 @@ function Movies() {
     setShownCardsNumber(shownCardsNumber + cardsNumber.next)
   };
 
-  const searchMovies = new Search(beatfilmMovies)
+  const searchMovies = new Search(beatfilmMovies) //экземпляр класса для поиска
 
   //обработчик поиска фильмов
   function handleSearchMovie(text, statusCheckbox) {
@@ -121,7 +121,7 @@ function Movies() {
         text={localStorage.getItem(moviesSearchText)}
         statusCheckbox={localStorage.getItem(moviesStatusCheckbox) === 'true' ? true : false}
       />
-      {isPreloader ? <Preloader /> :cardsResalt.length ? <MoviesCardList
+      {isPreloader ? <Preloader /> : cardsResalt.length ? <MoviesCardList
         cards={cardsResalt.slice(0, shownCardsNumber)}
         onClick={handleNextCards}
         checkSaveMivie={handlerCheckSaveMovie}
