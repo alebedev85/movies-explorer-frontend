@@ -24,14 +24,17 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   // const [userData, setUserData] = useState({ email: '', _id: '' });//State for user regiztration data
   const [isLoading, setIsLoading] = useState(false); //State for standart button text
-  const [fetchError, setFetchError] = useState('');
+  // const [fetchError, setFetchError] = useState('');
   const [editUserRes, setEditUserRes] = useState('');
+  const [registerError, setRegisterError] = useState(true);
+  const [loginError, setLoginError] = useState(true);
   const [profileErr, setProfileErr] = useState('');
-
-  // useEffect(() => setFetchError(''))
 
   useEffect(() => {
     setEditUserRes('');
+    setRegisterError('');
+    setLoginError('');
+    setProfileErr('');
     // Check token
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -53,9 +56,8 @@ function App() {
       api.setToken(token);
       api.getCurrentUser()
         .then((res) => {
-          const data = res;
           // setUserData({ email: data.email, _id: data._id });
-          setCurrentUser(res)
+          setCurrentUser({ name: res.name, email: res.email, _id: res._id })
           setLoggedIn(true);
         })
         .catch(err => {
@@ -73,14 +75,16 @@ function App() {
     setIsLoading(true);
     api.register(name, email, password)
       .then((data) => {
-        console.log(data)
         // setUserData({ name: data.name, email: data.email, _id: data._id });
-        // setSucces(true);
         navigate('/login', { replace: true });
       })
       .catch(err => {
-        console.log(err);
-        setFetchError(err.message)
+        if (err.message === 'Ошибка: 409') {
+          setRegisterError('Пользователь с таким email уже существует');
+        }
+        if (err.message === 'Ошибка: 500') {
+          setRegisterError('На сервере произошла ошибка');
+        }
       })
       .finally(() => {
         setIsLoading(false);
@@ -97,10 +101,15 @@ function App() {
       .then(({ token }) => {
         localStorage.setItem('jwt', token);
         setToken(token);
+        navigate('/movies', { replace: true });
       })
       .catch(err => {
-        console.log(err)
-        // setSucces(false);
+        if (err.message === 'Ошибка: 401') {
+          setLoginError('Вы ввели неправильный логин или пароль');
+        }
+        if (err.message === 'Ошибка: 500') {
+          setLoginError('На сервере произошла ошибка');
+        }
       })
       .finally(() => setIsLoading(false))
   }
@@ -152,13 +161,13 @@ function App() {
             element={
               <Register
                 onRegister={handlerRegUser}
-                error={fetchError}
+                error={registerError}
                 buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />} />
           <Route path="/login"
             element={
               <Login
                 onLogin={handlerLogIn}
-                error={fetchError}
+                error={loginError}
                 buttonText={isLoading ? 'Войти...' : 'Войти'} />} />
           {/* <Route path="*" element={isLoggedIn ? <Navigate to="/movies" replace /> : <Navigate to="/" replace />} /> */}
           <Route path="/"
