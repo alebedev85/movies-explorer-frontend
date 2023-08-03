@@ -1,5 +1,5 @@
 export const beatfilm_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-export const BASE_URL = 'http://api.andrey.movies.nomoreparties.sbs';
+export const BASE_URL = 'https://api.andrey.movies.nomoreparties.sbs';
 
 
 export const SCREEN_S = 320;
