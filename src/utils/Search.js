@@ -1,3 +1,5 @@
+import {DURATION_SHORT} from './constants';
+
 class Search {
   constructor(itemsList) {
     this._itemsList = itemsList;
@@ -5,7 +7,7 @@ class Search {
 
   //проверка на короткометражку
   _isShort(status, movies) {
-    return status ? movies.filter(movie => movie.duration <= 40) : movies
+    return status ? movies.filter(movie => movie.duration <= DURATION_SHORT) : movies
   }
 
   /**
