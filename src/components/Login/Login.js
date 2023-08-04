@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../images/logo_header.svg';
 import { Link } from 'react-router-dom';
+import { regEmail } from '../../utils/constants';
 import './Login.css';
 
 import useForm from '../hooks/useForm'
@@ -50,6 +51,8 @@ function Login({ onLogin, buttonText, error }) {
                 maxLength='30'
                 value={form.email}
                 onChange={handleChange}
+                pattern={regEmail.toString().slice(1,-1)}
+                title="Минимум 6 символов"
                 required />
               <span className='auth__error'>{errors.email}</span>
             </div>

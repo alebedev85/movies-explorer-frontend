@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../images/logo_header.svg';
 import { Link } from 'react-router-dom';
+import { regEmail } from '../../utils/constants';
 import './Register.css';
 
 import useForm from '../hooks/useForm'
@@ -65,6 +66,7 @@ function Register({ onRegister, buttonText, error }) {
                 maxLength='30'
                 value={form.email}
                 onChange={handleChange}
+                pattern={regEmail.toString().slice(1,-1)}
                 required />
               <span className='auth__error'>{errors.email}</span>
             </div>

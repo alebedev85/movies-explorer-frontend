@@ -6,17 +6,18 @@ export const SCREEN_S = 320;
 export const SCREEN_M = 768;
 export const SCREEN_L = 1280;
 
+export const regEmail = /^[\w]+@[a-zA-Z]+\.[a-zA-Z]{2,30}$/
 
 export const moviesLocalStorageNames = {
   localMovies: 'beatfilmMovies',
   moviesResalt: 'moviesResalt',
-  moviesSearchText : 'moviesSearchText',
-  moviesStatusCheckbox : 'moviesStatusCheckbox'
+  moviesSearchText: 'moviesSearchText',
+  moviesStatusCheckbox: 'moviesStatusCheckbox'
 }
 
 export const savedMoviesLocalStorageNames = {
   localMovies: 'savedMovies',
   moviesResalt: 'savedMoviesResalt',
-  moviesSearchText : 'savedMoviesSearchText',
-  moviesStatusCheckbox : 'savedMoviesStatusCheckbox'
+  moviesSearchText: 'savedMoviesSearchText',
+  moviesStatusCheckbox: 'savedMoviesStatusCheckbox'
 }
