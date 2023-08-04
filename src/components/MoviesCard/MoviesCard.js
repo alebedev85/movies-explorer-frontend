@@ -9,7 +9,8 @@ function MoviesCard({ movie, isSaved, onSaveClick, onDeleteClick }) {
   const card = {
     nameRU: movie.nameRU,
     duration: movie.duration,
-    image: movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image
+    image: movie.image.url ? `https://api.nomoreparties.co/${movie.image.url}` : movie.image,
+    trailerLink: movie.trailerLink
   };
 
   function handlerSaveButton() {
