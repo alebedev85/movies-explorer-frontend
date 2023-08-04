@@ -3,7 +3,7 @@ export const BASE_URL = 'https://api.andrey.movies.nomoreparties.sbs';
 
 
 export const SCREEN_S = 320;
-export const SCREEN_M = 768;
+export const SCREEN_M = 1279;
 export const SCREEN_L = 1280;
 
 export const regEmail = /^[\w]+@[a-zA-Z]+\.[a-zA-Z]{2,30}$/
