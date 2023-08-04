@@ -6,7 +6,7 @@ import { regEmail } from '../../utils/constants';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 import useForm from '../hooks/useForm'
 
-function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes }) {
+function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes, cleaner }) {
 
   const { currentUser } = React.useContext(CurrentUserContext);
   const [initChange, setInitChange] = useState(false); //статус начала редактирования профиля
@@ -17,9 +17,14 @@ function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes }) {
     email: currentUser.email,
   })
 
+  //чистка сообщений об ошибках
+  React.useEffect(() => {
+    cleaner();
+  },[])
+
   //проверка полной валидации формы
   React.useEffect(() => {
-    const err = errors.name === '' && errors.email === ''
+    const err = errors.name === '' || errors.email === ''
     setButtonStatus(!err)
   }, [errors])
 
@@ -44,7 +49,7 @@ function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes }) {
   return (
     <section className='profile'>
       <div className='profile__container'>
-        <h1 className='profile__title'>Привет, Виталий!</h1>
+        <h1 className='profile__title'>{`Привет, ${currentUser.name}!`}</h1>
         <form className='profile__form' name='edit' onSubmit={handleSubmit}>
           <fieldset className='profile__fieldset'>
             <div className='profile__input-container'>

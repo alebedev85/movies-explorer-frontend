@@ -30,10 +30,6 @@ function App() {
 
   //сброс всех сообщений об ошибках, проверки токена
   useEffect(() => {
-    setEditUserRes('');
-    setRegisterError('');
-    setLoginError('');
-    setProfileErr('');
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       setToken(jwt);
@@ -54,6 +50,14 @@ function App() {
         })
     }
   }, [token]);
+
+  //функция очистки сообщений об ошибках и результатов запросов
+  function cleanFormMasseges() {
+    setEditUserRes('');
+    setRegisterError('');
+    setLoginError('');
+    setProfileErr('');
+  }
 
   /**
    * Обработчик регистрации пользователя
@@ -121,6 +125,7 @@ function App() {
     api.setUserInfo(name, email)
       .then((updateUser) => {
         setCurrentUser(updateUser);
+        setEditUserRes('Информация о пользователе обновлена');
       })
       .catch(err => {
         if (err === 'Ошибка: 409') {
@@ -131,7 +136,6 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false)
-        setEditUserRes('Информация о пользователе обновлена');
       });
   }
 
@@ -154,13 +158,15 @@ function App() {
                 <Register
                   onRegister={handlerRegUser}
                   error={registerError}
-                  buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />} />
+                  buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />}
+                  cleaner={cleanFormMasseges} />
             <Route path="/login"
               element={
                 <Login
                   onLogin={handlerLogIn}
                   error={loginError}
-                  buttonText={isLoading ? 'Войти...' : 'Войти'} />} />
+                  buttonText={isLoading ? 'Войти...' : 'Войти'} />}
+                  cleaner={cleanFormMasseges} />
             <Route path="/movies"
               element={<ProtectedRouteElement element={Movies} loggedIn={isLoggedIn} />}
             />
@@ -175,7 +181,8 @@ function App() {
                 onEditUser={handleEditUser}
                 buttonText={isLoading ? 'Сохранить...' : 'Сохранить'}
                 requestErr={profileErr}
-                requestRes={editUserRes} />}
+                requestRes={editUserRes}
+                cleaner={cleanFormMasseges} />}
             />
             <Route path="/*"
               element={<NotFound />}

@@ -6,7 +6,7 @@ import './Register.css';
 
 import useForm from '../hooks/useForm'
 
-function Register({ onRegister, buttonText, error }) {
+function Register({ onRegister, buttonText, error, cleaner }) {
 
   const [buttonStatus, setButtonStatus] = React.useState(true); //статус кнопки сабмита
 
@@ -15,6 +15,11 @@ function Register({ onRegister, buttonText, error }) {
     email: '',
     password: '',
   })
+
+  //чистка сообщений об ошибках
+  React.useEffect(() => {
+    cleaner();
+  },[])
 
   //проверка полной валидации формы
   React.useEffect(() => {

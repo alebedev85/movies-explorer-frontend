@@ -6,7 +6,7 @@ import './Login.css';
 
 import useForm from '../hooks/useForm'
 
-function Login({ onLogin, buttonText, error }) {
+function Login({ onLogin, buttonText, error, cleaner }) {
 
   const [buttonStatus, setButtonStatus] = React.useState(true); //статус кнопки сабмита
 
@@ -14,6 +14,11 @@ function Login({ onLogin, buttonText, error }) {
     email: '',
     password: ''
   })
+
+  //чистка сообщений об ошибках
+  React.useEffect(() => {
+    cleaner();
+  },[])
 
   //проверка полной валидации формы
   React.useEffect(() => {
