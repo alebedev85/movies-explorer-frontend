@@ -153,20 +153,22 @@ function App() {
                   loggedIn={isLoggedIn} />
               }
             />
-            <Route path="/register"
+            {!isLoggedIn && <Route path="/register"
               element={
                 <Register
                   onRegister={handlerRegUser}
                   error={registerError}
-                  buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'} />}
-                  cleaner={cleanFormMasseges} />
-            <Route path="/login"
+                  buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'}
+                  cleaner={cleanFormMasseges} />}
+            />}
+            {!isLoggedIn && <Route path="/login"
               element={
                 <Login
                   onLogin={handlerLogIn}
                   error={loginError}
-                  buttonText={isLoading ? 'Войти...' : 'Войти'} />}
-                  cleaner={cleanFormMasseges} />
+                  buttonText={isLoading ? 'Войти...' : 'Войти'}
+                  cleaner={cleanFormMasseges} />}
+            />}
             <Route path="/movies"
               element={<ProtectedRouteElement element={Movies} loggedIn={isLoggedIn} />}
             />
