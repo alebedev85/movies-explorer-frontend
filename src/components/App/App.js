@@ -128,7 +128,7 @@ function App() {
         setEditUserRes('Информация о пользователе обновлена');
       })
       .catch(err => {
-        if (err === 'Ошибка: 409') {
+        if (err.message === 'Ошибка: 409') {
           setProfileErr('Пользователь с таким email уже существует');
         } else {
           setProfileErr('При обновлении профиля произошла ошибка');

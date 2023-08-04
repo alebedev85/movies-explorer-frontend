@@ -45,6 +45,7 @@ function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes, clean
     event.preventDefault();
     onEditUser(form);
     setInitChange(false);
+    cleaner();
   }
 
   //обработчик кнопки выхода из аккаунта
