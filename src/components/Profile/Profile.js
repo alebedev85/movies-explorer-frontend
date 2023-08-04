@@ -28,6 +28,12 @@ function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes, clean
     setButtonStatus(!err)
   }, [errors])
 
+  //проверка на изменение данных
+  React.useEffect(() => {
+    const err = form.name !== currentUser.name || form.email !== currentUser.email
+    setButtonStatus(!err)
+  }, [form])
+
   //обработчик кнопки Редактировать
   function handleClickEditButton(event) {
     event.preventDefault();
