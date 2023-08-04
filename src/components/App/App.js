@@ -141,7 +141,7 @@ function App() {
 
   return (
     isLoggedIn === null ? <Preloader /> :
-      <CurrentUserContext.Provider value={{ currentUser }}>
+      <CurrentUserContext.Provider value={{ currentUser, token }}>
         <div className="page">
           <Header
             loggedIn={isLoggedIn}

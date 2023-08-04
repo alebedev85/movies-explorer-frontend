@@ -11,6 +11,7 @@ import { api } from '../../utils/MainApi.js';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
 import { moviesLocalStorageNames } from '../../utils/constants';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 import { MOVIES_CARDS_L, MOVIES_CARDS_M, MOVIES_CARDS_S } from '../../utils/constants';
 import { ADD_MOVIES_CARD_L, ADD_MOVIES_CARD_M, ADD_MOVIES_CARD_S } from '../../utils/constants';
 
@@ -19,6 +20,7 @@ function Movies() {
 
   const { width, isScreenS, isScreenM, isScreenL } = useResize(); //стейт для размера экрана
   const { localMovies, moviesResalt, moviesSearchText, moviesStatusCheckbox } = moviesLocalStorageNames //имена записей в localStorage
+  const { token } = React.useContext(CurrentUserContext);
 
   const [cardsNumber, setCardsNumber] = useState({ first: '', next: '', }); //стейт для колличества карточек на экране
   const [isPreloader, setIsPreloader] = useState(true); //стейт состояния прелоудора
@@ -29,6 +31,12 @@ function Movies() {
 
   //проверка localStorage и получение карточек
   useEffect(() => {
+    api.setToken(token);
+    api.getCards()
+      .then((res) => {
+        setSavedMovies(res);
+      })
+      .catch((err) => console.log(err));
     if (!beatfilmMovies.length) {
       moviesApi.getCards()
         .then((res) => {
@@ -38,11 +46,6 @@ function Movies() {
         .catch((err) => console.log(err))
         .finally(setIsPreloader(false));
     } else { setIsPreloader(false) };
-    api.getCards()
-      .then((res) => {
-        setSavedMovies(res);
-      })
-      .catch((err) => console.log(err))
   }, [])
 
   useEffect(() => {
