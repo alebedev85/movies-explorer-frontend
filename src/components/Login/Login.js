@@ -29,6 +29,7 @@ function Login({ onLogin, buttonText, error, cleaner }) {
   //обработчик кнопки сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
+    cleaner();
     onLogin(form)
   }
 

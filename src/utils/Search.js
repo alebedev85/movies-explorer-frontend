@@ -1,4 +1,4 @@
-import {DURATION_SHORT} from './constants';
+import { DURATION_SHORT } from './constants';
 
 class Search {
   constructor(itemsList) {
@@ -6,18 +6,21 @@ class Search {
   }
 
   //проверка на короткометражку
-  _isShort(status, movies) {
-    return status ? movies.filter(movie => movie.duration <= DURATION_SHORT) : movies
+  _isShort(status, items) {
+    return status ? items.filter(item => item.duration <= DURATION_SHORT) : items
   }
 
   /**
      * Обработчик поиска фильмов
      * @param {string} text - тектс поиска.
      * @param {string} statusCheckbox - состояние чекбокса.
+     * @returns {object} - отфильтрованный список
      */
   search(text, statusCheckbox) {
-    return this._isShort(statusCheckbox, this._itemsList).filter(movie => Object.values(movie)
-      .some(value => typeof value === "string" ? value.toLowerCase().includes(text.toLowerCase()) : value === text));
+    const searchText = text.toLowerCase()
+    return this._isShort(statusCheckbox, this._itemsList).filter(item =>
+      item.nameRU.toLowerCase().includes(searchText) || item.nameEN.toLowerCase().includes(searchText)
+    );
   };
 }
 

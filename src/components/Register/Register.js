@@ -30,6 +30,7 @@ function Register({ onRegister, buttonText, error, cleaner }) {
   //обработчик кнопки сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
+    cleaner();
     onRegister(form)
   }
   return (
