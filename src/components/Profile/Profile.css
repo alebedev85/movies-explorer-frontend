@@ -174,9 +174,7 @@
   .profile__button {
     font-size: 12px;
   }
-}
 
-@media screen and (max-width: 320px) {
   .profile__button_submit {
     width: 260px;
   }
