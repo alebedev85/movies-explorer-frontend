@@ -9,6 +9,8 @@ import { api } from '../../utils/MainApi.js';
 import { useResize } from '../hooks/useResize';
 import Search from '../../utils/Search';
 import { savedMoviesLocalStorageNames } from '../../utils/constants';
+import { MOVIES_CARDS_L, MOVIES_CARDS_M, MOVIES_CARDS_S } from '../../utils/constants';
+import { ADD_MOVIES_CARD_L, ADD_MOVIES_CARD_M, ADD_MOVIES_CARD_S } from '../../utils/constants';
 
 function SavedMovies() {
 
@@ -42,18 +44,18 @@ function SavedMovies() {
   useEffect(() => {
     if (isScreenS) {
       setCardsNumber({
-        first: 5,
-        next: 1,
+        first: MOVIES_CARDS_S,
+        next: ADD_MOVIES_CARD_S,
       })
     } else if (isScreenM) {
       setCardsNumber({
-        first: 8,
-        next: 2,
+        first: MOVIES_CARDS_M,
+        next: ADD_MOVIES_CARD_M,
       })
     } else if (isScreenL) {
       setCardsNumber({
-        first: 12,
-        next: 3,
+        first: MOVIES_CARDS_L,
+        next: ADD_MOVIES_CARD_L,
       })
     }
   }, [width])
