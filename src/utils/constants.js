@@ -2,8 +2,8 @@ export const beatfilm_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const BASE_URL = 'https://api.andrey.movies.nomoreparties.sbs';
 
 //Разрешение экрана
-export const SCREEN_S = 320;
-export const SCREEN_M = 1279;
+export const SCREEN_S = 750;
+export const SCREEN_M = 1278;
 export const SCREEN_L = 1280;
 
 //Количество отображаемых карточек с фильмами при разных разрешениях экрана
