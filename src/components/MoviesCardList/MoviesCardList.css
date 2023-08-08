@@ -12,7 +12,7 @@
   padding-bottom: 80px;
   list-style-type: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 364px);
+  grid-template-columns: repeat(3, 364px);
   column-gap: 24px;
   row-gap: 30px;
   justify-content: center;
@@ -33,6 +33,12 @@
   border: 1px solid #424242
 }
 
+@media screen and (max-width: 1279px) {
+  .card-list__container {
+    grid-template-columns: repeat(2, 364px);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .card-list {
     padding-left: 30px;
@@ -41,11 +47,19 @@
   }
 
   .card-list__container {
-    grid-template-columns: repeat(auto-fill, 339px);
+    grid-template-columns: repeat(2, 339px);
     column-gap: 30px;
     row-gap: 36px;
     padding-bottom: 75px;
     gap: 30px;
+  }
+}
+
+@media screen and (max-width: 751px) {
+  .card-list__container {
+    grid-template-columns: repeat(1, 300px);
+    padding-bottom: 75px;
+    gap: 10px;
   }
 }
 
@@ -54,11 +68,5 @@
     padding-top: 50px;
     padding-left: 10px;
     padding-right: 10px;
-  }
-
-  .card-list__container {
-    grid-template-columns: repeat(auto-fill, 300px);
-    padding-bottom: 75px;
-    gap: 10px;
   }
 }
