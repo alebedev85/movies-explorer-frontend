@@ -12,7 +12,7 @@ function AboutMe() {
       <article className='biography' aria-label='Информация про автора проекта'>
         <img src={avatar} className='biography__avatar' alt='Фотография студента' />
         <h3 className='biography__name'>
-          Андрей
+          Андрей Лебедев
         </h3>
         <h4 className='biography__info'>
           Фронтенд-разработчик.

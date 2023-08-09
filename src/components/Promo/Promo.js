@@ -1,5 +1,6 @@
 import React from 'react';
 import './Promo.css';
+import { Link } from 'react-scroll';
 import logo from '../../images/promo_logo.svg';
 
 function Promo() {
@@ -13,11 +14,14 @@ function Promo() {
         <p className='promo__subtitle'>
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-
       </div>
-      <button className='promo__button'>
+      <Link className='promo__button link'
+      to='about-project'
+      spy={true}
+      smooth={true}
+      duration={400} >
         Узнать больше
-      </button>
+      </Link>
     </section>
   );
 }

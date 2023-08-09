@@ -5,7 +5,7 @@
   padding: 75px 70px 75px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .promo__container {
@@ -51,14 +51,13 @@
 }
 
 .promo__button {
-  color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
   border: 1px solid rgb(255, 255, 255, .6);
   border-radius: 3px;
   background: #073042;
   width: 129px;
-  height: 36px;
-  padding: 0;
-  cursor: pointer;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
