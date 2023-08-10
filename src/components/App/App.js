@@ -32,10 +32,11 @@ function App() {
 
   //сброс всех сообщений об ошибках, проверки токена
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      setToken(jwt);
-    } else setLoggedIn(false);
+    // const jwt = localStorage.getItem('jwt');
+    // if (jwt) {
+    //   setToken(jwt);
+    // } else setLoggedIn(false);
+    setLoggedIn(true); // состояние для GitHub Pages
   }, []);
 
   //получение данных пользователя при обновление токена
