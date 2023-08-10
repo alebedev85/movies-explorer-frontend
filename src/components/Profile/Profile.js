@@ -56,7 +56,7 @@ function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes, clean
   return (
     <section className='profile'>
       <div className='profile__container'>
-        <h1 className='profile__title'>{`Привет, ${currentUser.name}!`}</h1>
+        <h1 className='profile__title'>{`Привет, ${currentUser.name || 'Андрей'}!`}</h1>
         <form className='profile__form' name='edit' onSubmit={handleSubmit}>
           <fieldset className='profile__fieldset'>
             <div className='profile__input-container'>
@@ -69,7 +69,7 @@ function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes, clean
                 name='name'
                 minLength='2'
                 maxLength='200'
-                value={form.name}
+                value={form.name || 'Андрей'}
                 onChange={handleChange}
                 required
                 disabled={!initChange} />
@@ -85,7 +85,7 @@ function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes, clean
                 name='email'
                 minLength='2'
                 maxLength='40'
-                value={form.email}
+                value={form.email || 'test@mail.com'}
                 onChange={handleChange}
                 pattern={regEmail.toString().slice(1,-1)}
                 required
