@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { regEmail } from '../../utils/constants';
 import './Register.css';
 
-import useForm from '../hooks/useForm'
+import { githubPage } from '../../utils/constants.js';
+
+import useForm from '../hooks/useForm';
 
 function Register({ onRegister, buttonText, error, cleaner }) {
 
@@ -19,7 +21,7 @@ function Register({ onRegister, buttonText, error, cleaner }) {
   //чистка сообщений об ошибках
   React.useEffect(() => {
     cleaner();
-  },[])
+  }, [])
 
   //проверка полной валидации формы
   React.useEffect(() => {
@@ -36,7 +38,7 @@ function Register({ onRegister, buttonText, error, cleaner }) {
   return (
     <section className='auth'>
       <div className='auth__container'>
-        <Link to="/" className="link">
+        <Link to={githubPage + "/"} className="link">
           <img src={logo} className='logo' alt='Логотип сайта' />
         </Link>
         <h1 className='auth__title'>Добро пожаловать!</h1>
@@ -72,7 +74,7 @@ function Register({ onRegister, buttonText, error, cleaner }) {
                 maxLength='30'
                 value={form.email}
                 onChange={handleChange}
-                pattern={regEmail.toString().slice(1,-1)}
+                pattern={regEmail.toString().slice(1, -1)}
                 required />
               <span className='auth__error'>{errors.email}</span>
             </div>
@@ -100,7 +102,7 @@ function Register({ onRegister, buttonText, error, cleaner }) {
           </button>
           <div className='auth__question-container'>
             <p className='auth__question'>Уже зарегистрированы?</p>
-            <Link className='auth__question auth__question_link link' to='/login'>Войти</Link>
+            <Link className='auth__question auth__question_link link' to={githubPage + '/login'}>Войти</Link>
           </div>
         </form>
       </div>

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { regEmail } from '../../utils/constants';
 import './Login.css';
 
+import { githubPage } from '../../utils/constants.js';
+
 import useForm from '../hooks/useForm'
 
 function Login({ onLogin, buttonText, error, cleaner }) {
@@ -18,7 +20,7 @@ function Login({ onLogin, buttonText, error, cleaner }) {
   //чистка сообщений об ошибках
   React.useEffect(() => {
     cleaner();
-  },[])
+  }, [])
 
   //проверка полной валидации формы
   React.useEffect(() => {
@@ -36,7 +38,7 @@ function Login({ onLogin, buttonText, error, cleaner }) {
   return (
     <section className='auth'>
       <div className='auth__container'>
-        <Link to="/" className="link">
+        <Link to={githubPage + "/"} className="link">
           <img src={logo} className='logo' alt='Логотип сайта' />
         </Link>
         <h1 className='auth__title'>Рады видеть!</h1>
@@ -57,7 +59,7 @@ function Login({ onLogin, buttonText, error, cleaner }) {
                 maxLength='30'
                 value={form.email}
                 onChange={handleChange}
-                pattern={regEmail.toString().slice(1,-1)}
+                pattern={regEmail.toString().slice(1, -1)}
                 title="Минимум 6 символов"
                 required />
               <span className='auth__error'>{errors.email}</span>

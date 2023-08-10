@@ -149,7 +149,6 @@ function App() {
             loggedIn={isLoggedIn}
           />
           <Routes>
-            {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
             <Route path={`${githubPage}/`}
               element={
                 <Main

@@ -10,8 +10,8 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return location.pathname === githubPage + '/'
-    || location.pathname === githubPage + '/movies'
-    || location.pathname === githubPage + '/saved-movies' ?
+  || location.pathname === githubPage + '/movies'
+  || location.pathname === githubPage + '/saved-movies'?
     (
       <footer className='footer'>
         <p className='footer__title'>
