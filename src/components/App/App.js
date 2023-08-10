@@ -13,7 +13,9 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import Preloader from '../Preloader/Preloader';
 import { api } from '../../utils/MainApi.js';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+
+import { githubPage } from '../../utils/constants.js';
 
 function App() {
 
@@ -147,13 +149,14 @@ function App() {
             loggedIn={isLoggedIn}
           />
           <Routes>
-            <Route path="/"
+            {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+            <Route path={`${githubPage}/`}
               element={
                 <Main
                   loggedIn={isLoggedIn} />
               }
             />
-            {!isLoggedIn && <Route path="/register"
+            {!isLoggedIn && <Route path={`${githubPage}/register`}
               element={
                 <Register
                   onRegister={handlerRegUser}
@@ -161,7 +164,7 @@ function App() {
                   buttonText={isLoading ? 'Зарегистрироваться...' : 'Зарегистрироваться'}
                   cleaner={cleanFormMasseges} />}
             />}
-            {!isLoggedIn && <Route path="/login"
+            {!isLoggedIn && <Route path={`${githubPage}/login`}
               element={
                 <Login
                   onLogin={handlerLogIn}
@@ -169,13 +172,13 @@ function App() {
                   buttonText={isLoading ? 'Войти...' : 'Войти'}
                   cleaner={cleanFormMasseges} />}
             />}
-            <Route path="/movies"
+            <Route path={`${githubPage}/movies`}
               element={<ProtectedRouteElement element={Movies} loggedIn={isLoggedIn} />}
             />
-            <Route path="/saved-movies"
+            <Route path={`${githubPage}/saved-movies`}
               element={<ProtectedRouteElement element={SavedMovies} loggedIn={isLoggedIn} />}
             />
-            <Route path="/profile"
+            <Route path={`${githubPage}/profile`}
               element={<ProtectedRouteElement
                 element={Profile}
                 loggedIn={isLoggedIn}
@@ -186,7 +189,7 @@ function App() {
                 requestRes={editUserRes}
                 cleaner={cleanFormMasseges} />}
             />
-            <Route path="/*"
+            <Route path={`${githubPage}/*`}
               element={<NotFound />}
             />
           </Routes>
