@@ -4,6 +4,8 @@ import './NavBar.css';
 
 import accountIcon from '../../images/account_icon.svg';
 
+import { githubPage } from '../../utils/constants.js';
+
 function NavBar({ loggedIn, onClick }) {
 
   const location = useLocation();
@@ -20,36 +22,36 @@ function NavBar({ loggedIn, onClick }) {
 
   return !loggedIn ? (
     <nav className='navbar'>
-      <NavLink to='/register' className='navbar__link link'>Регистрация</NavLink>
-      <NavLink to='/login' className='navbar__button link'>Войти</NavLink>
+      <NavLink to={githubPage + '/register'} className='navbar__link link'>Регистрация</NavLink>
+      <NavLink to={githubPage + '/login'} className='navbar__button link'>Войти</NavLink>
     </nav>
   ) : (
     <nav className='navbar navbar_gap_48 navbar_padding-right_9'>
       <ul className='navbar__links hidden'>
         <li>
           <NavLink
-            to='/movies'
+            to={githubPage + '/movies'}
             className={`navbar__link
           navbar__link_size_14
           link
-          ${location.pathname === '/movies' ? 'navbar__link_active' : ''}`
+          ${location.pathname === githubPage + '/movies' ? 'navbar__link_active' : ''}`
             }>
             Фильмы
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='/saved-movies'
+            to={githubPage + '/saved-movies'}
             className={`navbar__link
           navbar__link_size_14
           link
-          ${location.pathname === '/saved-movies' ? 'navbar__link_active' : ''}`
+          ${location.pathname === githubPage + '/saved-movies' ? 'navbar__link_active' : ''}`
             }>
             Сохранённые фильмы
           </NavLink>
         </li>
       </ul>
-      <NavLink to='/profile' className='account-button hidden link'>
+      <NavLink to={githubPage + '/profile'} className='account-button hidden link'>
         <p className='navbar__link navbar__link_size_14'>
           Аккаунт
         </p>
@@ -69,34 +71,34 @@ function NavBar({ loggedIn, onClick }) {
           />
           <ul className='navbar__links navbar__links_display_flex'>
             <li>
-              <NavLink to='/' className='navbar__link navbar__link_size_18 link'>
+              <NavLink to={githubPage + '/'} className='navbar__link navbar__link_size_18 link'>
                 Главная
               </NavLink>
             </li>
             <li>
               <NavLink
-                to='/movies'
+                to={githubPage + '/movies'}
                 className={`navbar__link
                     navbar__link_size_18
                     link
-                    ${location.pathname === '/movies' ? 'navbar__link_active' : ''}`
+                    ${location.pathname === githubPage + '/movies' ? 'navbar__link_active' : ''}`
                 }>
                 Фильмы
               </NavLink>
             </li>
             <li>
               <NavLink
-                to='/saved-movies'
+                to={githubPage + '/saved-movies'}
                 className={`navbar__link
                     navbar__link_size_18
                     link
-                    ${location.pathname === '/saved-movies' ? 'navbar__link_active' : ''}`
+                    ${location.pathname === githubPage + '/saved-movies' ? 'navbar__link_active' : ''}`
                 }>
                 Сохранённые фильмы
               </NavLink>
             </li>
           </ul>
-          <NavLink to='/profile' className='account-button link'>
+          <NavLink to={githubPage + '/profile'} className='account-button link'>
             <p className='navbar__link navbar__link_size_14 navbar__link_sidebar'>
               Аккаунт
             </p>
