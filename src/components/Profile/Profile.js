@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import './Profile.css';
 
 import { regEmail } from '../../utils/constants';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
-import useForm from '../hooks/useForm'
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import useForm from '../hooks/useForm';
 
 function Profile({ logOut, onEditUser, buttonText, requestErr, requestRes, cleaner }) {
 

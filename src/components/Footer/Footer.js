@@ -2,14 +2,16 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './Footer.css';
 
+import { githubPage } from '../../utils/constants.js';
+
 function Footer() {
 
   const location = useLocation();
   const currentYear = new Date().getFullYear();
 
-  return location.pathname === '/'
-    || location.pathname === '/movies'
-    || location.pathname === '/saved-movies' ?
+  return location.pathname === githubPage + '/'
+    || location.pathname === githubPage + '/movies'
+    || location.pathname === githubPage + '/saved-movies' ?
     (
       <footer className='footer'>
         <p className='footer__title'>

@@ -95,7 +95,7 @@ function App() {
         localStorage.setItem('jwt', token);
         setToken(token);
         setLoggedIn(true);
-        navigate('/movies', { replace: true });
+        navigate(githubPage + '/movies', { replace: true });
       })
       .catch(err => {
         if (err.message === 'Ошибка: 401') {
@@ -115,7 +115,7 @@ function App() {
     localStorage.clear();
     setLoggedIn(false);
     api.setToken('');
-    navigate('/', { replace: true });
+    navigate(githubPage + '/', { replace: true });
   }
 
   /**
